@@ -1,0 +1,109 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+E:\git1\stm32_c8t6_keil\Project\Keil4\keil_c8t6.uvproj
+Project File Date:  01/13/2019
+
+<h2>Output:</h2>
+Rebuild target 'Target 1'
+compiling core_cm3.c...
+compiling system_stm32f10x.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_rcc.c...
+compiling misc.c...
+compiling stm32f10x_tim.c...
+compiling stm32f10x_spi.c...
+compiling stm32f10x_usart.c...
+compiling stm32f10x_flash.c...
+compiling stm32f10x_exti.c...
+compiling stm32f10x_i2c.c...
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\main.c(27): warning:  #223-D: function "BSP_ApiDeLayMs" declared implicitly
+..\..\src\main.c(30): warning:  #223-D: function "BSP_ApiInit" declared implicitly
+..\..\src\main.c(33): warning:  #223-D: function "CMD_Init" declared implicitly
+..\..\src\main.c(34): warning:  #223-D: function "CMDTREE_Init" declared implicitly
+..\..\src\main.c(38): warning:  #223-D: function "BSP_ApiLedCtrl" declared implicitly
+..\..\src\main.c(25): warning:  #177-D: variable "i" was declared but never referenced
+compiling cmdtree.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\ccb\cmd\ccb_cmd.h(26): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
+..\..\src\ccb\cmd\ccb_cmd.h(78): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
+..\..\src\ccb\cmd\ccb_cmd.h(79): warning:  #1295-D: Deprecated declaration CMD_Proc - give arg types
+..\..\src\ccb\cmd\ccb_cmd.h(83): warning:  #1295-D: Deprecated declaration PDT_Init - give arg types
+..\..\src\ccb\cmd\ccb_cmd.h(89): warning:  #1-D: last line of file ends without a newline
+..\..\src\cmdtree.c(5): warning:  #1295-D: Deprecated declaration ShowMpu6050 - give arg types
+..\..\src\cmdtree.c(8): warning:  #223-D: function "printf" declared implicitly
+..\..\src\cmdtree.c(38): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
+..\..\src\cmdtree.c(49): warning:  #223-D: function "printf" declared implicitly
+..\..\src\cmdtree.c(56): warning:  #223-D: function "printf" declared implicitly
+..\..\src\cmdtree.c(67): warning:  #223-D: function "printf" declared implicitly
+..\..\src\cmdtree.c(85): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
+..\..\src\cmdtree.c(87): warning:  #223-D: function "printf" declared implicitly
+..\..\src\cmdtree.c(126): warning:  #1295-D: Deprecated declaration exit - give arg types
+..\..\src\cmdtree.c(127): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
+..\..\src\cmdtree.c(145): warning:  #940-D: missing return statement at end of non-void function "CMDTREE_Init"
+compiling ccb_cmd.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\ccb\cmd\ccb_cmd.h(26): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
+..\..\src\ccb\cmd\ccb_cmd.h(78): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
+..\..\src\ccb\cmd\ccb_cmd.h(79): warning:  #1295-D: Deprecated declaration CMD_Proc - give arg types
+..\..\src\ccb\cmd\ccb_cmd.h(83): warning:  #1295-D: Deprecated declaration PDT_Init - give arg types
+..\..\src\ccb\cmd\ccb_cmd.h(89): warning:  #1-D: last line of file ends without a newline
+..\..\src\ccb\cmd\ccb_cmd.c(44): warning:  #223-D: function "memset" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(95): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(220): warning:  #223-D: function "strlen" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(232): warning:  #223-D: function "memcmp" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(287): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(290): warning:  #940-D: missing return statement at end of non-void function "CMD_Reg"
+..\..\src\ccb\cmd\ccb_cmd.c(324): warning:  #223-D: function "strcmp" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(355): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(314): warning:  #177-D: variable "i" was declared but never referenced
+..\..\src\ccb\cmd\ccb_cmd.c(382): warning:  #223-D: function "CMD_ChangeBit" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(413): warning:  #550-D: variable "pucPos" was set but never used
+..\..\src\ccb\cmd\ccb_cmd.c(485): warning:  #223-D: function "CMD_ChangeBit" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(469): warning:  #550-D: variable "pucPos" was set but never used
+..\..\src\ccb\cmd\ccb_cmd.c(551): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(544): warning:  #177-D: variable "pucPos" was declared but never referenced
+..\..\src\ccb\cmd\ccb_cmd.c(545): warning:  #177-D: variable "i" was declared but never referenced
+..\..\src\ccb\cmd\ccb_cmd.c(546): warning:  #177-D: variable "ulMacPos" was declared but never referenced
+..\..\src\ccb\cmd\ccb_cmd.c(547): warning:  #177-D: variable "ulMACValue" was declared but never referenced
+..\..\src\ccb\cmd\ccb_cmd.c(557): warning:  #1-D: last line of file ends without a newline
+compiling drv_init.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\drv\drv_init.h(22): warning:  #1295-D: Deprecated declaration DRV_Init - give arg types
+..\..\src\drv\drv_init.c(64): warning:  #223-D: function "Timer2_init" declared implicitly
+..\..\src\drv\drv_init.c(108): warning:  #223-D: function "NVIC_Configuration" declared implicitly
+..\..\src\drv\drv_init.c(42): warning:  #177-D: variable "TIM_TimeBaseStructure" was declared but never referenced
+..\..\src\drv\drv_init.c(43): warning:  #177-D: variable "TIM_OCInitStructure" was declared but never referenced
+..\..\src\drv\drv_init.c(44): warning:  #550-D: variable "GPIO_InitStructure" was set but never used
+..\..\src\drv\drv_init.c(45): warning:  #550-D: variable "EXTI_InitStructure" was set but never used
+..\..\src\drv\drv_init.c(46): warning:  #550-D: variable "I2C_InitStructure" was set but never used
+compiling drv_util.c...
+compiling bsp.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\bsp\bsp.c(86): warning:  #940-D: missing return statement at end of non-void function "BSP_GpioRead"
+..\..\src\bsp\bsp.c(414): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\bsp\bsp.c(493): warning:  #940-D: missing return statement at end of non-void function "BSP_InterruptInit"
+..\..\src\bsp\bsp.c(580): warning:  #940-D: missing return statement at end of non-void function "BSP_SpiInit"
+..\..\src\bsp\bsp.c(646): warning:  #940-D: missing return statement at end of non-void function "BSP_I2CInit"
+..\..\src\bsp\bsp.c(734): warning:  #177-D: variable "TIM_TimeBaseStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(735): warning:  #177-D: variable "TIM_OCInitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(736): warning:  #177-D: variable "GPIO_InitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(737): warning:  #177-D: variable "I2C_InitStructure" was declared but never referenced
+compiling stm32f10x_it.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\bsp\stm32f10x_it.c(157): warning:  #223-D: function "CMD_Rx" declared implicitly
+..\..\src\bsp\stm32f10x_it.c(163): warning:  #223-D: function "printf" declared implicitly
+..\..\src\bsp\stm32f10x_it.c(210): warning:  #223-D: function "printf" declared implicitly
+compiling drv_interrupt.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+linking...
+Program Size: Code=15792 RO-data=268 RW-data=508 ZI-data=2388  
+FromELF: creating hex file...
+"keil_c8t6.axf" - 0 Error(s), 73 Warning(s).
+Clean started: Project: 'keil_c8t6'
+   deleting intermediate output files for target 'Target 1'

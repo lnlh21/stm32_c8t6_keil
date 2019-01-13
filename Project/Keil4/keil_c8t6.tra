@@ -1,0 +1,39 @@
+*** Creating Trace Output File 'keil_c8t6.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"core_cm3.o"'
+### List of Objects: adding '"system_stm32f10x.o"'
+### List of Objects: adding '"stm32f10x_gpio.o"'
+### List of Objects: adding '"stm32f10x_rcc.o"'
+### List of Objects: adding '"misc.o"'
+### List of Objects: adding '"stm32f10x_tim.o"'
+### List of Objects: adding '"stm32f10x_spi.o"'
+### List of Objects: adding '"stm32f10x_usart.o"'
+### List of Objects: adding '"stm32f10x_flash.o"'
+### List of Objects: adding '"stm32f10x_exti.o"'
+### List of Objects: adding '"stm32f10x_i2c.o"'
+### List of Objects: adding '".\startup_stm32f10x_md.o"'
+### List of Objects: adding '"main.o"'
+### List of Objects: adding '"cmdtree.o"'
+### List of Objects: adding '"ccb_cmd.o"'
+### List of Objects: adding '"drv_init.o"'
+### List of Objects: adding '"drv_util.o"'
+### List of Objects: adding '"bsp.o"'
+### List of Objects: adding '"stm32f10x_it.o"'
+### List of Objects: adding '"drv_interrupt.o"'
+### ADS-LD Command completed:
+--cpu Cortex-M3 "core_cm3.o" "system_stm32f10x.o" "stm32f10x_gpio.o" "stm32f10x_rcc.o" "misc.o" "stm32f10x_tim.o" "stm32f10x_spi.o" "stm32f10x_usart.o" "stm32f10x_flash.o" "stm32f10x_exti.o" "stm32f10x_i2c.o" ".\startup_stm32f10x_md.o" "main.o" "cmdtree.o" "ccb_cmd.o" "drv_init.o" "drv_util.o" "bsp.o" "stm32f10x_it.o" "drv_interrupt.o" 
+--library_type=microlib --strict --scatter "keil_c8t6.sct" 
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\keil_c8t6.map" -o keil_c8t6.axf### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'keil_c8t6.axf'
+### ADS-LD Command File: 'keil_c8t6.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'keil_c8t6.lnp', Handle=0x0000068C
+### Writing '.lnp' file
+### ADS-LD Command file 'keil_c8t6.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.
