@@ -130,7 +130,7 @@
           <Target>
             <UseTarget>1</UseTarget>
             <LoadApplicationAtStartup>1</LoadApplicationAtStartup>
-            <RunToMain>0</RunToMain>
+            <RunToMain>1</RunToMain>
             <RestoreBreakpoints>1</RestoreBreakpoints>
             <RestoreWatchpoints>1</RestoreWatchpoints>
             <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
@@ -334,7 +334,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>1</Optim>
+            <Optim>3</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>0</OneElfS>
@@ -350,7 +350,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F10X_MD</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\Libraries\CMSIS;..\..\Libraries\STM32F10x_StdPeriph_Driver\inc;..\..\src;..\..\src\ccb\def;..\..\src\ccb\cmd;..\..\src\bsp;..\..\src\drv</IncludePath>
+              <IncludePath>..\..\Libraries\CMSIS;..\..\Libraries\STM32F10x_StdPeriph_Driver\inc;..\..\src;..\..\src\ccb\def;..\..\src\ccb\cmd;..\..\src\bsp;..\..\src\drv;..\..\src\srv</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -472,11 +472,6 @@
               <FilePath>..\..\src\main.c</FilePath>
             </File>
             <File>
-              <FileName>cmdtree.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\cmdtree.c</FilePath>
-            </File>
-            <File>
               <FileName>ccb_cmd.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\src\ccb\cmd\ccb_cmd.c</FilePath>
@@ -505,6 +500,21 @@
               <FileName>drv_interrupt.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\src\drv\drv_interrupt.c</FilePath>
+            </File>
+            <File>
+              <FileName>cmdtree.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\srv\cmdtree.c</FilePath>
+            </File>
+            <File>
+              <FileName>srv.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\srv\srv.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_nrf24l01.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\src\drv\drv_nrf24l01.c</FilePath>
             </File>
           </Files>
         </Group>

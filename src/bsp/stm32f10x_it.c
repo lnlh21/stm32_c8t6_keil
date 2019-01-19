@@ -135,14 +135,18 @@ void PendSV_Handler(void)
   * @param  None
   * @retval None
   */
-unsigned long ulSysTickTimer = 0;
-unsigned long ulSysTick = 0;
+unsigned long ulSysTickSecond = 0;
+unsigned long g_ulSysTick = 0;
 void SysTick_Handler(void)
 {
-  ulSysTick++;
-  //OSIntEnter();
-  //OSTimeTick();
-  //OSIntExit();
+     g_ulSysTick++;
+	 ulSysTickSecond++;
+
+	 if (ulSysTickSecond == 100)
+	 {
+	 	 ulSysTickSecond = 0;
+		 BSP_SysTickSecond();
+	 }
 }
 
 void USB_LP_CAN1_RX0_IRQHandler(void)
@@ -177,6 +181,16 @@ void EXTI0_IRQHandler()
 {
 
 }
+
+void EXTI2_IRQHandler()
+{
+	if (EXTI_GetITStatus(EXTI_Line2) != RESET)
+	{
+ 	    DRV_NRF24L01_Irq();
+		EXTI_ClearITPendingBit(EXTI_Line2);
+	}	  
+}
+
 
 
 

@@ -22,7 +22,37 @@
 #include "bsp.h"
 #include <stdio.h>
 
+UCHAR g_ucBoardId = 0xf0;
 
+
+
+#if 0  
+#pragma import(__use_no_semihosting)               
+ //标准库需要的支持函数 				  
+ struct __FILE	 
+ {	 
+	 int handle;   
+	 /* Whatever you require here. If the only file you are using is */   
+	 /* standard output using printf() for debugging, no file handling */	
+	 /* is required. */   
+ };   
+ /* FILE is typedef’ d in stdio.h. */	 
+ FILE __stdout; 		
+ //定义_sys_exit()以避免使用半主机模式		
+ _sys_exit(int x)	
+ {	 
+	 x = x;   
+ }	 
+ //重定向fputc函数	
+ //printf的输出，指向fputc，由fputc输出到串口  
+ //这里使用串口1(USART1)输出printf信息	
+ int fputc(int ch, FILE *f)  
+ {		  
+	 while((USART1->SR&0X40)==0);//等待上一次串口数据发送完成	 
+	 USART1->DR = (u8) ch;		  //写DR,串口1将发送数据  
+	 return ch;  
+ }	
+#else
  int fputc(int ch, FILE *f)
  {
            USART_SendData(USART1, (uint8_t) ch);
@@ -30,59 +60,60 @@
          {}
          return ch;
  }
-
+#endif
 
 
 #if DESC("GPIO")
+BSP_GPIO_S g_stBspGpio[] = 
+{
+	{BSP_GPIO_2401_CE,  GPIO_Mode_Out_PP, GPIO_Speed_50MHz, 0, (ULONG)GPIOA, GPIO_Pin_3},
+	{BSP_GPIO_2401_CSN, GPIO_Mode_Out_PP, GPIO_Speed_50MHz, 1, (ULONG)GPIOA, GPIO_Pin_4},
+	{BSP_GPIO_2401_IRQ, GPIO_Mode_IPU,    GPIO_Speed_50MHz, 1, (ULONG)GPIOA, GPIO_Pin_2},
+	{BSP_GPIO_LED_0,    GPIO_Mode_Out_PP, GPIO_Speed_50MHz, 1, (ULONG)GPIOB, GPIO_Pin_12},
+};
+
 VOID BSP_GpioInit()
 {
     GPIO_InitTypeDef  GPIO_InitStructure;
+	ULONG i;
+	ULONG ulNum;
 
-    GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_8 | GPIO_Pin_14| GPIO_Pin_15;
-    GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_IPU; 
-    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-    GPIO_Init(GPIOB, &GPIO_InitStructure);
+	ulNum = sizeof(g_stBspGpio) / sizeof(g_stBspGpio[0]);
 
-	GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7;
-    GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_IPU; 
-    GPIO_Init(GPIOC, &GPIO_InitStructure);
-
-	//GPIO_ResetBits(GPIOA, GPIO_Pin_3);
-	//GPIO_SetBits(GPIOA, GPIO_Pin_4);
-}
-
-VOID BSP_GpioSet(ULONG ulDevId, ULONG ulSw)
-{
-	if (BSP_GPIO_OUT_2401_CE == ulDevId)
+	for (i = 0; i < ulNum; i++)
 	{
-		if (ulSw)
+	    GPIO_InitStructure.GPIO_Pin   = g_stBspGpio[i].usGpioPin;
+	    GPIO_InitStructure.GPIO_Mode  = g_stBspGpio[i].ucGpioMode;
+	    GPIO_InitStructure.GPIO_Speed = g_stBspGpio[i].ucGpioSpeed;
+	    GPIO_Init((GPIO_TypeDef *)g_stBspGpio[i].ulGpioPort, &GPIO_InitStructure);
+
+		if (g_stBspGpio[i].ucGpioDftValue)
 		{
-			GPIO_SetBits(GPIOA, GPIO_Pin_3);
+			GPIO_SetBits((GPIO_TypeDef *)g_stBspGpio[i].ulGpioPort, g_stBspGpio[i].usGpioPin);
 		}
 		else
 		{
-			GPIO_ResetBits(GPIOA, GPIO_Pin_3);
-		}
-	}
-	else if (BSP_GPIO_OUT_2401_CSN == ulDevId)
-	{
-		if (ulSw)
-		{
-			GPIO_SetBits(GPIOA, GPIO_Pin_4);
-		}
-		else
-		{
-			GPIO_ResetBits(GPIOA, GPIO_Pin_4);
+			GPIO_ResetBits((GPIO_TypeDef *)g_stBspGpio[i].ulGpioPort, g_stBspGpio[i].usGpioPin);
 		}
 	}
 }
 
-ULONG BSP_GpioRead(ULONG ulDevId)
+VOID BSP_GpioSet(ULONG ulGpioId, ULONG ulSw)
 {
-    if (BSP_GPIO_IN_2401_IRQ == ulDevId)
-    {
-		return GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_2);
-    }
+
+	if (ulSw)
+	{
+		GPIO_SetBits((GPIO_TypeDef *)g_stBspGpio[ulGpioId].ulGpioPort, g_stBspGpio[ulGpioId].usGpioPin);
+	}
+	else
+	{
+		GPIO_ResetBits((GPIO_TypeDef *)g_stBspGpio[ulGpioId].ulGpioPort, g_stBspGpio[ulGpioId].usGpioPin);
+	}
+}
+
+ULONG BSP_GpioRead(ULONG ulGpioId)
+{
+	return GPIO_ReadInputDataBit((GPIO_TypeDef *)g_stBspGpio[ulGpioId].ulGpioPort, g_stBspGpio[ulGpioId].usGpioPin);
 }
 
 #endif
@@ -190,6 +221,12 @@ void BSP_KeyInit()
 #endif
 
 #if DESC("定时器")
+
+void BSP_SysTickSecond()
+{
+	//printf("\r\n hello");
+}
+
 #if 0
 void TIM3_DMA_Config(void)
 {
@@ -434,20 +471,28 @@ ULONG BSP_InterruptInit()
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2); 
 
     /* 外部中断配置 */
-    //GPIO_EXTILineConfig(GPIO_PortSourceGPIOB, GPIO_PinSource8);
-    //GPIO_EXTILineConfig(GPIO_PortSourceGPIOB, GPIO_PinSource15);
+    GPIO_EXTILineConfig(GPIO_PortSourceGPIOA, GPIO_PinSource2);
 	
-    EXTI_InitStructure.EXTI_Line    = EXTI_Line8;
+    EXTI_InitStructure.EXTI_Line    = EXTI_Line2;
     EXTI_InitStructure.EXTI_Mode    = EXTI_Mode_Interrupt;
-    EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising_Falling;
+    EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;
     EXTI_InitStructure.EXTI_LineCmd = ENABLE;
     EXTI_Init(&EXTI_InitStructure);
 
+	/* Enable the EXTI2 Interrupt */
+	NVIC_InitStructure.NVIC_IRQChannel					 = EXTI2_IRQn;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 2;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority		 = 5;
+	NVIC_InitStructure.NVIC_IRQChannelCmd				 = ENABLE;
+	NVIC_Init(&NVIC_InitStructure);
+	
+#if 0
     EXTI_InitStructure.EXTI_Line    = EXTI_Line15;
     EXTI_InitStructure.EXTI_Mode    = EXTI_Mode_Interrupt;
     EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;
     EXTI_InitStructure.EXTI_LineCmd = ENABLE;
     EXTI_Init(&EXTI_InitStructure);
+#endif
 
 	/* 串口中断 */
 	NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;
@@ -495,49 +540,9 @@ ULONG BSP_InterruptInit()
 
 #if DESC("点灯")
 
-void BSP_LedInit()
-{
-    GPIO_InitTypeDef  GPIO_InitStructure;
-	
-	GPIO_InitStructure.GPIO_Pin   = BSP_LED_PIN_1;
-	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_Out_PP; 
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_Init(BSP_LED_GPIO, &GPIO_InitStructure);
-	BSP_LED_GPIO->BRR = BSP_LED_PIN_1;
-#if (2 == BSP_LED_NUM)
-	GPIO_InitStructure.GPIO_Pin   = BSP_LED_PIN_2;
-	GPIO_Init(BSP_LED_GPIO, &GPIO_InitStructure);
-	BSP_LED_GPIO->BRR = BSP_LED_PIN_2;
-#endif
-}
-
 void BSP_ApiLedCtrl(ULONG ulNo, ULONG ulSw)
 {
-
-    if (ulNo == BSP_LED_0)
-    {
-    	if (ulSw == COM_ENABLE)
-    	{
-        	GPIO_ResetBits(BSP_LED_GPIO, BSP_LED_PIN_1);
-    	}
-		else
-		{
-			GPIO_SetBits(BSP_LED_GPIO, BSP_LED_PIN_1);
-		}
-    }
-#if (2 == BSP_LED_NUM)
-	if (ulNo == BSP_LED_1)
-    {
-    	if (ulSw == COM_ENABLE)
-    	{
-        	GPIO_ResetBits(BSP_LED_GPIO, BSP_LED_PIN_2);
-    	}
-		else
-		{
-			GPIO_SetBits(BSP_LED_GPIO, BSP_LED_PIN_2);
-		}
-    }
-#endif
+    BSP_GpioSet(ulNo, !ulSw);
 }
 
 #endif
@@ -673,7 +678,7 @@ void BSP_UartInit()
     GPIO_InitTypeDef  GPIO_InitStructure;
 
     /* 串口配置 */
-    USART_InitStructure.USART_BaudRate = 115200;
+    USART_InitStructure.USART_BaudRate = 9600;
     USART_InitStructure.USART_WordLength = USART_WordLength_8b;
     USART_InitStructure.USART_StopBits = USART_StopBits_1;
     USART_InitStructure.USART_Parity = USART_Parity_No;
@@ -712,6 +717,15 @@ void BSP_ApiUartPutc(UCHAR ch)
 
 #endif
 
+#if DESC("其他")
+
+ULONG BSP_ApiGetBoardId()
+{
+	return g_ucBoardId;
+}
+
+#endif
+
 #if DESC("初始化")
 /*****************************************************************************
  函 数 名  : BSP_Init
@@ -735,9 +749,20 @@ VOID BSP_ApiInit()
     TIM_OCInitTypeDef  TIM_OCInitStructure;
     GPIO_InitTypeDef GPIO_InitStructure;
 	I2C_InitTypeDef I2C_InitStructure;
+	ULONG uId;
 
 	/* 初始化 */
 	SystemInit();
+
+	uId = *(__IO uint32_t*)(0x1FFFF7F0);
+	if (0x67072151 == uId)
+	{
+		g_ucBoardId = 1;
+	}
+	else if (0x87104523 == uId)
+	{
+		g_ucBoardId = 2;
+	}
 
 	/* 各电源模块的开启 */
     RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3 | RCC_APB1Periph_TIM2 | 
@@ -751,26 +776,27 @@ VOID BSP_ApiInit()
     /* TICK初始化 */
     SysTick_CLKSourceConfig(SysTick_CLKSource_HCLK);
     RCC_GetClocksFreq(&RCC_Clocks);
-    //SysTick_Config(RCC_Clocks.SYSCLK_Frequency / OS_TICKS_PER_SEC);
-
-    /* 初始化灯 */
-    BSP_LedInit();
-    
-    /* 初始化串口 */
-    BSP_UartInit();
+    SysTick_Config(RCC_Clocks.SYSCLK_Frequency / 100);  //10 ms tick
 
 	/* 初始化GPIO */
 	BSP_GpioInit();
 
-	Timer2_init();
+    /* 初始化串口 */
+    BSP_UartInit();
+
+	//Timer2_init();
 
 	/* 初始化SPI */
-	//BSP_SpiInit();
+	BSP_SpiInit();
 
-	BSP_I2CInit();
+	//BSP_I2CInit();
 	
     /* 初始化中断 */
     BSP_InterruptInit();
+
+	__enable_irq();
+
+	printf("\r\n bsp init ok, boardid = %u", g_ucBoardId);
 }
 #endif
 

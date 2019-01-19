@@ -19,50 +19,23 @@
 #ifndef __DRV_INIT_H__
 #define __DRV_INIT_H__
 
-#define BSP_BOARD_HW_TYPE_C8T6_NEW    1
-#define BSP_BOARD_HW_TYPE_C8T6_OLD    2 
-#define BSP_BOARD_HW_TYPE_MINISTM32   3 
-
-#define BSP_BOARD_SOFT_TYPE_DEFAULT   0
-#define BSP_BOARD_SOFT_TYPE_MAIN      1
-#define BSP_BOARD_SOFT_TYPE_SUB1      2
-#define BSP_BOARD_SOFT_TYPE_SUB2      3
-#define BSP_BOARD_SOFT_TYPE_SUB3      4
-
-#define BSP_BOARD_HW_TYPE       BSP_BOARD_HW_TYPE_C8T6_NEW
-#define BSP_BOARD_SOFT_TYPE     BSP_BOARD_SOFT_TYPE_DEFAULT
-
-#if (BSP_BOARD_HW_TYPE == BSP_BOARD_HW_TYPE_C8T6_NEW)
-#define BSP_LED_NUM       	1
-#define BSP_LED_PIN_1   	GPIO_Pin_12
-#define BSP_LED_GPIO 		GPIOB
-#elif (BSP_BOARD_HW_TYPE == BSP_BOARD_HW_TYPE_C8T6_OLD)
-#define BSP_LED_NUM       	1
-#define BSP_LED_PIN_1   	GPIO_Pin_13
-#define BSP_LED_GPIO  		GPIOC
-#endif
-
-#define BSP_24L01_SW        0
+typedef struct
+{
+    UCHAR ucGpioId;
+	UCHAR ucGpioMode;
+	UCHAR ucGpioSpeed;
+	UCHAR ucGpioDftValue;
+    ULONG ulGpioPort;
+	USHORT usGpioPin;
+}BSP_GPIO_S;
 
 enum
 {
-	BSP_GPIO_OUT_2401_CE,
-	BSP_GPIO_OUT_2401_CSN,
-	BSP_GPIO_OUT_BUTT
-};
-
-enum
-{
-	BSP_GPIO_IN_2401_IRQ,
-	BSP_GPIO_IN_BUTT
-};
-
-
-enum
-{
-	BSP_LED_0,
-	BSP_LED_1,
-	BSP_LED_BUTT
+	BSP_GPIO_2401_CE,
+	BSP_GPIO_2401_CSN,
+	BSP_GPIO_2401_IRQ,
+	BSP_GPIO_LED_0,
+	BSP_GPIO_BUTT
 };
 
 enum

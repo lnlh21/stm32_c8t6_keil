@@ -23,23 +23,18 @@
 int main(void)
 {   
     ULONG i;
+	ULONG ulRet;
 
     BSP_ApiDeLayMs(500);
         
 	/* 初始化BSP */
 	BSP_ApiInit();
-
-	/* 初始化VOS */
+	
+	/* 初始化CMD */
 	CMD_Init();
-	CMDTREE_Init();
 
-	while(1)
-	{
-		BSP_ApiLedCtrl(BSP_LED_0, 0);
-		BSP_ApiDeLayMs(50);
-		BSP_ApiLedCtrl(BSP_LED_0, 1);
-		BSP_ApiDeLayMs(50);
-	}
+	/* 业务处理 */
+	SRV_Main();
 }
 
 #endif
