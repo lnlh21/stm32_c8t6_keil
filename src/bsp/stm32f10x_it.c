@@ -186,7 +186,6 @@ void EXTI2_IRQHandler()
 {
 	if (EXTI_GetITStatus(EXTI_Line2) != RESET)
 	{
- 	    DRV_NRF24L01_Irq();
 		EXTI_ClearITPendingBit(EXTI_Line2);
 	}	  
 }
@@ -204,7 +203,7 @@ ULONG  g_lJs;
 void TIM2_IRQHandler()
 {
 	TIM_ClearITPendingBit(TIM2, TIM_IT_CC2);
-
+#if 0
 	IC2Value = TIM_GetCapture2(TIM2);
 	if (IC2Value != 0)
 	{
@@ -225,6 +224,7 @@ void TIM2_IRQHandler()
 		}
 		g_lJsOld = g_lJs;
 	}
+#endif
 }
 
 

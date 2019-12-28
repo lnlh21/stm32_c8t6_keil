@@ -1,20 +1,20 @@
 /******************************************************************************
 
-              °æÈ¨ËùÓÐ (C)2010, ÉîÛÚÊÐÖÐÐË³¤ÌìÐÅÏ¢¼¼ÊõÓÐÏÞ¹«Ë¾
+              ç‰ˆæƒæ‰€æœ‰ (C)2010, æ·±åœ³å¸‚ä¸­å…´é•¿å¤©ä¿¡æ¯æŠ€æœ¯æœ‰é™å…¬å¸
 
  ******************************************************************************
-  ÎÄ ¼þ Ãû   : drv_init.c
-  °æ ±¾ ºÅ   : ³õ¸å
-  ×÷    Õß   : linhao
-  Éú³ÉÈÕÆÚ   : 2013Äê12ÔÂ18ÈÕ
-  ×î½üÐÞ¸Ä   :
-  ¹¦ÄÜÃèÊö   : Çý¶¯³õÊ¼»¯
-  º¯ÊýÁÐ±í   :
+  æ–‡ ä»¶ å   : drv_init.c
+  ç‰ˆ æœ¬ å·   : åˆç¨¿
+  ä½œ    è€…   : linhao
+  ç”Ÿæˆæ—¥æœŸ   : 2013å¹´12æœˆ18æ—¥
+  æœ€è¿‘ä¿®æ”¹   :
+  åŠŸèƒ½æè¿°   : é©±åŠ¨åˆå§‹åŒ–
+  å‡½æ•°åˆ—è¡¨   :
               DRV_Init
-  ÐÞ¸ÄÀúÊ·   :
-  1.ÈÕ    ÆÚ   : 2013Äê12ÔÂ18ÈÕ
-    ×÷    Õß   : linhao
-    ÐÞ¸ÄÄÚÈÝ   : ´´½¨ÎÄ¼þ
+  ä¿®æ”¹åŽ†å²   :
+  1.æ—¥    æœŸ   : 2013å¹´12æœˆ18æ—¥
+    ä½œ    è€…   : linhao
+    ä¿®æ”¹å†…å®¹   : åˆ›å»ºæ–‡ä»¶
 
 ******************************************************************************/
 #include "ccb_def.h"
@@ -28,7 +28,7 @@ UCHAR g_ucBoardId = 0xf0;
 
 #if 0  
 #pragma import(__use_no_semihosting)               
- //±ê×¼¿âÐèÒªµÄÖ§³Öº¯Êý 				  
+ //æ ‡å‡†åº“éœ€è¦çš„æ”¯æŒå‡½æ•° 				  
  struct __FILE	 
  {	 
 	 int handle;   
@@ -36,20 +36,20 @@ UCHAR g_ucBoardId = 0xf0;
 	 /* standard output using printf() for debugging, no file handling */	
 	 /* is required. */   
  };   
- /* FILE is typedef¡¯ d in stdio.h. */	 
+ /* FILE is typedefâ€™ d in stdio.h. */	 
  FILE __stdout; 		
- //¶¨Òå_sys_exit()ÒÔ±ÜÃâÊ¹ÓÃ°ëÖ÷»úÄ£Ê½		
+ //å®šä¹‰_sys_exit()ä»¥é¿å…ä½¿ç”¨åŠä¸»æœºæ¨¡å¼		
  _sys_exit(int x)	
  {	 
 	 x = x;   
  }	 
- //ÖØ¶¨Ïòfputcº¯Êý	
- //printfµÄÊä³ö£¬Ö¸Ïòfputc£¬ÓÉfputcÊä³öµ½´®¿Ú  
- //ÕâÀïÊ¹ÓÃ´®¿Ú1(USART1)Êä³öprintfÐÅÏ¢	
+ //é‡å®šå‘fputcå‡½æ•°	
+ //printfçš„è¾“å‡ºï¼ŒæŒ‡å‘fputcï¼Œç”±fputcè¾“å‡ºåˆ°ä¸²å£  
+ //è¿™é‡Œä½¿ç”¨ä¸²å£1(USART1)è¾“å‡ºprintfä¿¡æ¯	
  int fputc(int ch, FILE *f)  
  {		  
-	 while((USART1->SR&0X40)==0);//µÈ´ýÉÏÒ»´Î´®¿ÚÊý¾Ý·¢ËÍÍê³É	 
-	 USART1->DR = (u8) ch;		  //Ð´DR,´®¿Ú1½«·¢ËÍÊý¾Ý  
+	 while((USART1->SR&0X40)==0);//ç­‰å¾…ä¸Šä¸€æ¬¡ä¸²å£æ•°æ®å‘é€å®Œæˆ	 
+	 USART1->DR = (u8) ch;		  //å†™DR,ä¸²å£1å°†å‘é€æ•°æ®  
 	 return ch;  
  }	
 #else
@@ -118,20 +118,20 @@ ULONG BSP_GpioRead(ULONG ulGpioId)
 
 #endif
 
-#if DESC("CPUÑÓÊ±")
+#if DESC("CPUå»¶æ—¶")
 /*****************************************************************************
- º¯ Êý Ãû  : TIME_ApiDeLayMs
- ¹¦ÄÜÃèÊö  : ÑÓÊ±º¯Êý£¬´ó¸ÅÎªºÁÃë¼¶£¬²»¾«È·
- ÊäÈë²ÎÊý  : USHORT usTime  
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  : 
- µ÷ÓÃº¯Êý  : 
- ±»µ÷º¯Êý  : 
+ å‡½ æ•° å  : TIME_ApiDeLayMs
+ åŠŸèƒ½æè¿°  : å»¶æ—¶å‡½æ•°ï¼Œå¤§æ¦‚ä¸ºæ¯«ç§’çº§ï¼Œä¸ç²¾ç¡®
+ è¾“å…¥å‚æ•°  : USHORT usTime  
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  : 
+ è°ƒç”¨å‡½æ•°  : 
+ è¢«è°ƒå‡½æ•°  : 
  
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2013Äê10ÔÂ10ÈÕ
-    ×÷    Õß   : linhao
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2013å¹´10æœˆ10æ—¥
+    ä½œ    è€…   : linhao
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 VOID BSP_ApiDeLayMs(USHORT usTime)
@@ -149,18 +149,18 @@ VOID BSP_ApiDeLayMs(USHORT usTime)
 }
 
 /*****************************************************************************
- º¯ Êý Ãû  : TIME_ApiDeLayUs
- ¹¦ÄÜÃèÊö  : ÑÓÊ±º¯Êý£¬´ó¸ÅÎªºÁÃë¼¶£¬²»¾«È·
- ÊäÈë²ÎÊý  : USHORT usTime  
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  : 
- µ÷ÓÃº¯Êý  : 
- ±»µ÷º¯Êý  : 
+ å‡½ æ•° å  : TIME_ApiDeLayUs
+ åŠŸèƒ½æè¿°  : å»¶æ—¶å‡½æ•°ï¼Œå¤§æ¦‚ä¸ºæ¯«ç§’çº§ï¼Œä¸ç²¾ç¡®
+ è¾“å…¥å‚æ•°  : USHORT usTime  
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  : 
+ è°ƒç”¨å‡½æ•°  : 
+ è¢«è°ƒå‡½æ•°  : 
  
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2013Äê10ÔÂ10ÈÕ
-    ×÷    Õß   : linhao
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2013å¹´10æœˆ10æ—¥
+    ä½œ    è€…   : linhao
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 VOID BSP_ApiDeLayUs(USHORT usTime)
@@ -179,7 +179,7 @@ VOID BSP_ApiDeLayUs(USHORT usTime)
 
 #endif
 
-#if DESC("¼üÅÌ")
+#if DESC("é”®ç›˜")
 void BSP_KeyInit()
 {
     GPIO_InitTypeDef  GPIO_InitStructure;
@@ -220,7 +220,7 @@ void BSP_KeyInit()
 
 #endif
 
-#if DESC("¶¨Ê±Æ÷")
+#if DESC("å®šæ—¶å™¨")
 
 void BSP_SysTickSecond()
 {
@@ -309,36 +309,36 @@ void Timer2_init(void)
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
     GPIO_Init(GPIOA, &GPIO_InitStructure);
 
-	/* ÅäÖÃ¶¨Ê±Æ÷»ù±¾ÐÅÏ¢ */
+	/* é…ç½®å®šæ—¶å™¨åŸºæœ¬ä¿¡æ¯ */
     TIM_TimeBaseStructure.TIM_Period = 0xFFFF; // 800kHz 
     TIM_TimeBaseStructure.TIM_Prescaler = 35;
     TIM_TimeBaseStructure.TIM_ClockDivision = 0;
     TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
     TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);
 
-	/* Í¨µÀÑ¡Ôñ */
+	/* é€šé“é€‰æ‹© */
 	TIM_ICInitStruct.TIM_Channel = TIM_Channel_2;
-	/* ÉÏÉýÑØ´¥·¢ */
+	/* ä¸Šå‡æ²¿è§¦å‘ */
 	TIM_ICInitStruct.TIM_ICPolarity = TIM_ICPolarity_Rising;
-    /* ¹Ü½ÅÓë¼Ä´æÆ÷¶ÔÓ¦¹ØÏµ */
+    /* ç®¡è„šä¸Žå¯„å­˜å™¨å¯¹åº”å…³ç³» */
 	TIM_ICInitStruct.TIM_ICSelection = TIM_ICSelection_DirectTI;
-	/* ÊäÈëÔ¤·ÖÆµ */
+	/* è¾“å…¥é¢„åˆ†é¢‘ */
 	TIM_ICInitStruct.TIM_ICPrescaler = TIM_ICPSC_DIV8;
-	/* ÂË²¨ */
+	/* æ»¤æ³¢ */
 	TIM_ICInitStruct.TIM_ICFilter = 0x0;
-    /* ÅäÖÃ */
+    /* é…ç½® */
 	TIM_PWMIConfig(TIM2, &TIM_ICInitStruct);
 
 	
-	/* IC2Îª´¥·¢Ô´ */
+	/* IC2ä¸ºè§¦å‘æº */
 	TIM_SelectInputTrigger(TIM2, TIM_TS_TI2FP2);
-	/* ÉÏÉýÑØÖØÐÂ¼ÆÊý */
+	/* ä¸Šå‡æ²¿é‡æ–°è®¡æ•° */
 	TIM_SelectSlaveMode(TIM2, TIM_SlaveMode_Reset);
-	/* Æô¶¯¶¨Ê±Æ÷µÄ±»¶¯´¥·¢ */
+	/* å¯åŠ¨å®šæ—¶å™¨çš„è¢«åŠ¨è§¦å‘ */
 	TIM_SelectMasterSlaveMode(TIM2, TIM_MasterSlaveMode_Enable);
-	/* TIM2Ê¹ÄÜ */
+	/* TIM2ä½¿èƒ½ */
 	TIM_Cmd(TIM2, ENABLE);
-	/* ´ò¿ªÖÐ¶Ï */
+	/* æ‰“å¼€ä¸­æ–­ */
 	TIM_ITConfig(TIM2, TIM_IT_CC2, ENABLE);
 }
 
@@ -348,20 +348,20 @@ void Timer2_init(void)
 #if DESC("FLASH")
 
 /*****************************************************************************
- º¯ Êý Ãû  : FLASH_ApiSaveData
- ¹¦ÄÜÃèÊö  : FLASHÄ£¿éÐ´ÈëÊý¾Ý
- ÊäÈë²ÎÊý  : ULONG ulFlashAddr  
+ å‡½ æ•° å  : FLASH_ApiSaveData
+ åŠŸèƒ½æè¿°  : FLASHæ¨¡å—å†™å…¥æ•°æ®
+ è¾“å…¥å‚æ•°  : ULONG ulFlashAddr  
              UCHAR *pucSavebuf  
              ULONG ulLen        
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  : 
- µ÷ÓÃº¯Êý  : 
- ±»µ÷º¯Êý  : 
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  : 
+ è°ƒç”¨å‡½æ•°  : 
+ è¢«è°ƒå‡½æ•°  : 
  
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2013Äê9ÔÂ17ÈÕ
-    ×÷    Õß   : linhao
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2013å¹´9æœˆ17æ—¥
+    ä½œ    è€…   : linhao
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 ULONG FLASH_ApiSaveData(ULONG ulFlashAddr, UCHAR *pucSavebuf, ULONG ulLen)
@@ -371,7 +371,7 @@ ULONG FLASH_ApiSaveData(ULONG ulFlashAddr, UCHAR *pucSavebuf, ULONG ulLen)
     ULONG ulAddr;
     ULONG ulLenTemp;
     
-    /* µØÖ·ºÏ·¨ÐÔ¼ì²é */
+    /* åœ°å€åˆæ³•æ€§æ£€æŸ¥ */
 #if 0
     if ((FLASH_API_DATA_ADDR_START > ulFlashAddr)
         || (FLASH_API_DATA_ADDR_END < ulFlashAddr)
@@ -383,22 +383,22 @@ ULONG FLASH_ApiSaveData(ULONG ulFlashAddr, UCHAR *pucSavebuf, ULONG ulLen)
 
     __disable_irq();
 
-    /* ½âËøFLASH */
+    /* è§£é”FLASH */
     FLASH_Unlock();
     
-    /* ¼ÆËãÒª²Á³ýµÄ¿é */
+    /* è®¡ç®—è¦æ“¦é™¤çš„å— */
     ulPageStart = FLASH_API_GET_PAGE_ADDR(ulFlashAddr);
     ulPageEnd   = FLASH_API_GET_PAGE_ADDR(ulFlashAddr + ulLen);
 
     printf("%08x,%08x", ulPageStart, ulPageStart);
-    /* ²Á³ýFLASH */
+    /* æ“¦é™¤FLASH */
     for (ulAddr = ulPageStart; ulAddr <= ulPageEnd; ulAddr+=FLASH_API_PAGE_SIZE)
     {
         printf("\r\n Flash E %08x", ulAddr);
         FLASH_ErasePage(ulAddr);
     }
 
-    /* ±à³ÌFLASH */
+    /* ç¼–ç¨‹FLASH */
     ulAddr = ulFlashAddr;
     for (ulLenTemp = 0; ulLenTemp < ulLen; ulLenTemp+=2)
     {
@@ -406,7 +406,7 @@ ULONG FLASH_ApiSaveData(ULONG ulFlashAddr, UCHAR *pucSavebuf, ULONG ulLen)
         ulAddr+=2;
     }
     
-    /* ËøFLASH */
+    /* é”FLASH */
     FLASH_Lock();
 
     __enable_irq();
@@ -416,26 +416,26 @@ ULONG FLASH_ApiSaveData(ULONG ulFlashAddr, UCHAR *pucSavebuf, ULONG ulLen)
 
 
 /*****************************************************************************
- º¯ Êý Ãû  : FLASH_ApiReadData
- ¹¦ÄÜÃèÊö  : FLASHÄ£¿é¶ÁÈ¡Êý¾Ý
- ÊäÈë²ÎÊý  : ULONG ulFlashAddr  
+ å‡½ æ•° å  : FLASH_ApiReadData
+ åŠŸèƒ½æè¿°  : FLASHæ¨¡å—è¯»å–æ•°æ®
+ è¾“å…¥å‚æ•°  : ULONG ulFlashAddr  
              UCHAR *pucReadbuf  
              ULONG ulLen        
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  : 
- µ÷ÓÃº¯Êý  : 
- ±»µ÷º¯Êý  : 
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  : 
+ è°ƒç”¨å‡½æ•°  : 
+ è¢«è°ƒå‡½æ•°  : 
  
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2013Äê9ÔÂ17ÈÕ
-    ×÷    Õß   : linhao
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2013å¹´9æœˆ17æ—¥
+    ä½œ    è€…   : linhao
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 ULONG FLASH_ApiReadData(ULONG ulFlashAddr, UCHAR *pucReadbuf, ULONG ulLen)
 {
 #if 0
-    /* µØÖ·ºÏ·¨ÐÔ¼ì²é */
+    /* åœ°å€åˆæ³•æ€§æ£€æŸ¥ */
     if ((FLASH_API_DATA_ADDR_START > ulFlashAddr)
         || (FLASH_API_DATA_ADDR_END < ulFlashAddr)
         || (FLASH_API_DATA_ADDR_END < (ulFlashAddr + ulLen)))
@@ -444,13 +444,13 @@ ULONG FLASH_ApiReadData(ULONG ulFlashAddr, UCHAR *pucReadbuf, ULONG ulLen)
     }
 #endif
 
-    /* ½âËøFLASH */
+    /* è§£é”FLASH */
     FLASH_Unlock();
 
-    /* ¶ÁÈ¡ */
+    /* è¯»å– */
     memcpy(pucReadbuf, (VOID *)ulFlashAddr, ulLen);
 
-    /* ËøFLASH */
+    /* é”FLASH */
     FLASH_Lock();
 
     return COM_OK;
@@ -458,19 +458,19 @@ ULONG FLASH_ApiReadData(ULONG ulFlashAddr, UCHAR *pucReadbuf, ULONG ulLen)
 
 #endif
 
-#if DESC("ÖÐ¶Ï")
+#if DESC("ä¸­æ–­")
 ULONG BSP_InterruptInit()
 {
 	NVIC_InitTypeDef   NVIC_InitStructure;
     EXTI_InitTypeDef   EXTI_InitStructure;
 
-	/* ÉèÖÃÖÐ¶ÏÏòÁ¿µØÖ· */
+	/* è®¾ç½®ä¸­æ–­å‘é‡åœ°å€ */
 	NVIC_SetVectorTable(NVIC_VectTab_FLASH, 0x0);
 	
-	/* ÉèÖÃÓÅÏÈ¼¶ */
+	/* è®¾ç½®ä¼˜å…ˆçº§ */
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2); 
 
-    /* Íâ²¿ÖÐ¶ÏÅäÖÃ */
+    /* å¤–éƒ¨ä¸­æ–­é…ç½® */
     GPIO_EXTILineConfig(GPIO_PortSourceGPIOA, GPIO_PinSource2);
 	
     EXTI_InitStructure.EXTI_Line    = EXTI_Line2;
@@ -494,14 +494,14 @@ ULONG BSP_InterruptInit()
     EXTI_Init(&EXTI_InitStructure);
 #endif
 
-	/* ´®¿ÚÖÐ¶Ï */
+	/* ä¸²å£ä¸­æ–­ */
 	NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 2;
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
 
-	/* ´®¿ÚÖÐ¶Ï */
+	/* ä¸²å£ä¸­æ–­ */
 	NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 2;
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
@@ -538,7 +538,7 @@ ULONG BSP_InterruptInit()
 }
 #endif
 
-#if DESC("µãµÆ")
+#if DESC("ç‚¹ç¯")
 
 void BSP_ApiLedCtrl(ULONG ulNo, ULONG ulSw)
 {
@@ -549,7 +549,7 @@ void BSP_ApiLedCtrl(ULONG ulNo, ULONG ulSw)
 
 #if DESC("SPI")
 
-/*   STM32F103 SPI½Ó¿Ú¶¨Òå
+/*   STM32F103 SPIæŽ¥å£å®šä¹‰
      PA4  ---  CS
      PA5  ---  SCK
      PA6  ---  MISO
@@ -658,18 +658,18 @@ ULONG BSP_I2CInit()
 
 
 /*****************************************************************************
- º¯ Êý Ãû  : DRV_UsartInit
- ¹¦ÄÜÃèÊö  : ´®¿Ú³õÊ¼»¯
- ÊäÈë²ÎÊý  : ÎÞ
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  : 
- µ÷ÓÃº¯Êý  : 
- ±»µ÷º¯Êý  : 
+ å‡½ æ•° å  : DRV_UsartInit
+ åŠŸèƒ½æè¿°  : ä¸²å£åˆå§‹åŒ–
+ è¾“å…¥å‚æ•°  : æ— 
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  : 
+ è°ƒç”¨å‡½æ•°  : 
+ è¢«è°ƒå‡½æ•°  : 
  
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2013Äê12ÔÂ18ÈÕ
-    ×÷    Õß   : linhao
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2013å¹´12æœˆ18æ—¥
+    ä½œ    è€…   : linhao
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 void BSP_UartInit()
@@ -677,7 +677,7 @@ void BSP_UartInit()
     USART_InitTypeDef USART_InitStructure;
     GPIO_InitTypeDef  GPIO_InitStructure;
 
-    /* ´®¿ÚÅäÖÃ */
+    /* ä¸²å£é…ç½® */
     USART_InitStructure.USART_BaudRate = 9600;
     USART_InitStructure.USART_WordLength = USART_WordLength_8b;
     USART_InitStructure.USART_StopBits = USART_StopBits_1;
@@ -685,39 +685,39 @@ void BSP_UartInit()
     USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
     USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
 
-    /* ´®¿Ú1Tx Gpio */
+    /* ä¸²å£1Tx Gpio */
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
     GPIO_Init(GPIOA, &GPIO_InitStructure);
 
-    /* ´®¿Ú1Rx Gpio */
+    /* ä¸²å£1Rx Gpio */
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10;
     GPIO_Init(GPIOA, &GPIO_InitStructure);
 
     USART_Init(USART1, &USART_InitStructure);
 
-    /* ¿ªÆô´®¿Ú */
+    /* å¼€å¯ä¸²å£ */
     USART_Cmd(USART1, ENABLE);
 
-    /* ¿ªÆôÖÐ¶Ï */
+    /* å¼€å¯ä¸­æ–­ */
     USART_ITConfig(USART1, USART_IT_RXNE, ENABLE); 
 }
 
 void BSP_ApiUartPutc(UCHAR ch)
 {
-    /* Íù´®¿ÚÐ´Èë */
+    /* å¾€ä¸²å£å†™å…¥ */
     while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET)
     {}
   
-    /* ´«Êä */
+    /* ä¼ è¾“ */
     USART_SendData(USART1, (uint8_t)ch);
 }
 
 #endif
 
-#if DESC("ÆäËû")
+#if DESC("å…¶ä»–")
 
 ULONG BSP_ApiGetBoardId()
 {
@@ -726,20 +726,20 @@ ULONG BSP_ApiGetBoardId()
 
 #endif
 
-#if DESC("³õÊ¼»¯")
+#if DESC("åˆå§‹åŒ–")
 /*****************************************************************************
- º¯ Êý Ãû  : BSP_Init
- ¹¦ÄÜÃèÊö  : BSP³õÊ¼»¯
- ÊäÈë²ÎÊý  : ÎÞ
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  : 
- µ÷ÓÃº¯Êý  : 
- ±»µ÷º¯Êý  : 
+ å‡½ æ•° å  : BSP_Init
+ åŠŸèƒ½æè¿°  : BSPåˆå§‹åŒ–
+ è¾“å…¥å‚æ•°  : æ— 
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  : 
+ è°ƒç”¨å‡½æ•°  : 
+ è¢«è°ƒå‡½æ•°  : 
  
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2013Äê12ÔÂ18ÈÕ
-    ×÷    Õß   : linhao
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2013å¹´12æœˆ18æ—¥
+    ä½œ    è€…   : linhao
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 VOID BSP_ApiInit()
@@ -751,7 +751,7 @@ VOID BSP_ApiInit()
 	I2C_InitTypeDef I2C_InitStructure;
 	ULONG uId;
 
-	/* ³õÊ¼»¯ */
+	/* åˆå§‹åŒ– */
 	SystemInit();
 
 	uId = *(__IO uint32_t*)(0x1FFFF7F0);
@@ -764,7 +764,7 @@ VOID BSP_ApiInit()
 		g_ucBoardId = 2;
 	}
 
-	/* ¸÷µçÔ´Ä£¿éµÄ¿ªÆô */
+	/* å„ç”µæºæ¨¡å—çš„å¼€å¯ */
     RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3 | RCC_APB1Periph_TIM2 | 
 		                   RCC_APB1Periph_I2C1 | RCC_APB1Periph_I2C2 | RCC_AHBPeriph_DMA1,  ENABLE);
     
@@ -773,25 +773,25 @@ VOID BSP_ApiInit()
                               RCC_APB2Periph_AFIO, ENABLE);
 
 
-    /* TICK³õÊ¼»¯ */
+    /* TICKåˆå§‹åŒ– */
     SysTick_CLKSourceConfig(SysTick_CLKSource_HCLK);
     RCC_GetClocksFreq(&RCC_Clocks);
     SysTick_Config(RCC_Clocks.SYSCLK_Frequency / 100);  //10 ms tick
 
-	/* ³õÊ¼»¯GPIO */
+	/* åˆå§‹åŒ–GPIO */
 	BSP_GpioInit();
 
-    /* ³õÊ¼»¯´®¿Ú */
+    /* åˆå§‹åŒ–ä¸²å£ */
     BSP_UartInit();
 
 	//Timer2_init();
 
-	/* ³õÊ¼»¯SPI */
+	/* åˆå§‹åŒ–SPI */
 	BSP_SpiInit();
 
 	//BSP_I2CInit();
 	
-    /* ³õÊ¼»¯ÖÐ¶Ï */
+    /* åˆå§‹åŒ–ä¸­æ–­ */
     BSP_InterruptInit();
 
 	__enable_irq();

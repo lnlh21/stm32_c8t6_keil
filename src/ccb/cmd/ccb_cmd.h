@@ -1,27 +1,5 @@
-/******************************************************************************
-
-              版权所有 (C)2010, 深圳市中兴长天信息技术有限公司
-
- ******************************************************************************
-  文 件 名   : Cmd_Main.h
-  版 本 号   : 初稿
-  作    者   : linhao
-  生成日期   : 2013年9月10日
-  最近修改   :
-  功能描述   : Cmd_Main.c 的头文件
-  函数列表   :
-  修改历史   :
-  1.日    期   : 2013年9月10日
-    作    者   : linhao
-    修改内容   : 创建文件
-
-******************************************************************************/
-#ifndef __CMD_MAIN_H__
-#define __CMD_MAIN_H__
-
-#ifdef __cplusplus
-	extern "C"{
-#endif /* __cplusplus */
+#ifndef __CCB_CMD_H__
+#define __CCB_CMD_H__
 
 typedef VOID (*CMD_FUN)(VOID);
 
@@ -32,25 +10,25 @@ typedef VOID (*CMD_FUN)(VOID);
 
 typedef struct
 {
-    UCHAR ucCmd[CMD_NAME_LEN];
-    UCHAR ucDesc[CMD_DESC_LEN];
-    ULONG ulNum;
-    VOID  *pFunOrNext;
-}CMD_S;
+    UCHAR cmd[CMD_NAME_LEN];
+    UCHAR desc[CMD_DESC_LEN];
+    ULONG num;
+    VOID* sub;
+} CmdNode;
 
 typedef struct
 {
-    CMD_S stRootCmd;
-    CMD_S astRootCmdGroup[CMD_ROOT_CMD_NUM];                      //总共支持16条根命令注册
-    ULONG ulCmdCount;
-    UCHAR ucCmdBufOld[CMD_BUF_LEN];
-    UCHAR ucCmdBuf[CMD_BUF_LEN];
-    UCHAR *pucCurPos;
-    UCHAR ucCmdLen;
-    UCHAR ucCmdLenOld;
-}CMD_CTRL_S;
+    CmdNode rootCmd;
+    CmdNode rootCmdG[CMD_ROOT_CMD_NUM];                      //鎬诲叡鏀寔16鏉℃牴鍛戒护娉ㄥ唽
+    ULONG cmdCount;
+    UCHAR cmdBufOld[CMD_BUF_LEN];
+    UCHAR cmdBuf[CMD_BUF_LEN];
+    UCHAR *curPos;
+    UCHAR cmdLen;
+    UCHAR cmdLenOld;
+} CmdCtrl;
 
-#define SUB_CMD(x) (sizeof(x)/sizeof(CMD_S)), x
+#define SUB_CMD(x) (sizeof(x)/sizeof(CmdNode)), x
 #define CMD_FUN(x)  0, (VOID*)x
 
 
@@ -79,11 +57,7 @@ VOID CMD_DisplayVersion(VOID);
 VOID CMD_Proc();
 ULONG CMD_GetULONG(ULONG *pulPara);
 ULONG CMD_GetIp(UCHAR *ucIp);
-ULONG CMD_Reg(CMD_S *pCmd);
+ULONG CMD_Reg(CmdNode *pCmd);
 ULONG PDT_Init();
 
-#ifdef __cplusplus
-	}
-#endif /* __cplusplus */ 
-
-#endif /* __CMD_MAIN_H__ */
+#endif

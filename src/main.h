@@ -1,28 +1,11 @@
-/******************************************************************************
 
-                  °æÈ¨ËùÓÐ (C), 2001-2011, ÉñÖÝÊýÂëÍøÂçÓÐÏÞ¹«Ë¾
-
- ******************************************************************************
-  ÎÄ ¼þ Ãû   : main.h
-  °æ ±¾ ºÅ   : ³õ¸å
-  ×÷    Õß   : lnlh21
-  Éú³ÉÈÕÆÚ   : 2014Äê8ÔÂ31ÈÕ
-  ×î½üÐÞ¸Ä   :
-  ¹¦ÄÜÃèÊö   : main.c µÄÍ·ÎÄ¼þ
-  º¯ÊýÁÐ±í   :
-  ÐÞ¸ÄÀúÊ·   :
-  1.ÈÕ    ÆÚ   : 2014Äê8ÔÂ31ÈÕ
-    ×÷    Õß   : lnlh21
-    ÐÞ¸ÄÄÚÈÝ   : ´´½¨ÎÄ¼þ
-
-******************************************************************************/
 #ifndef __MAIN_H__
 #define __MAIN_H__
 
-/*  MINI STM32 ½ÓÏß
+/*  MINI STM32 ï¿½ï¿½ï¿½ï¿½
     PA0 -- LED1
     PA1 -- LED2
-    PA2 -- ¿É±äµç×è
+    PA2 -- ï¿½É±ï¿½ï¿½ï¿½ï¿½
     PA3 -- KEY1
     PA4 -- CS
     PA5 -- SCK
@@ -69,7 +52,7 @@
     PC12
 */
 
-/*  ENC28J60Ä£¿éÍ¼
+/*  ENC28J60
 
                _________
     CLKOUT-----|1     6 |-----INT  (J1)
@@ -93,30 +76,30 @@
 #define SYS_DEFAULT_HTTP_PORT           8089
 #define SYS_DEFAULT_TELNET_PORT         23
 
-#define START_MAGIC  0x5aa55aa5         /* ·ÅÔÚÄÚ´æµÄ¼ÓÔØÄ§Êõ×Ö */
+#define START_MAGIC  0x5aa55aa5         /* ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½Ä¼ï¿½ï¿½ï¿½Ä§ï¿½ï¿½ï¿½ï¿½ */
 #define APP_MAGIC  0x5a5a0aa5
-#define LOAD_PARA_ADDR  0x20004F00   /* ·Å¼ÓÔØ²ÎÊýµÄÄÚ´æµØÖ· */
+#define LOAD_PARA_ADDR  0x20004F00   /* ï¿½Å¼ï¿½ï¿½Ø²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½Ö· */
 
 #pragma pack(1)
 
 typedef struct
 {
-    ULONG  ulTag;                   /* ²ÎÊýÇø±êÊ¶ */
-    ULONG  ulVer;                   /* °æ±¾ºÅ */
-    UCHAR  aucMacAddr[6];           /* MACµØÖ· */ 
-    UCHAR  aucIpAddr[4];            /* IPµØÖ· */
-    UCHAR  aucMask[4];              /* ÑÚÂë */
-    UCHAR  aucGw[4];                /* Íø¹Ø */
-    UCHAR  ucRemoteTftpIp[4];       /* TFTPÔ¶³ÌµØÖ· */
-    USHORT usHttpPort;              /* HTTP¶Ë¿Ú */
-    USHORT usTelnetPort;            /* TFTPÔ¶³Ì¶Ë¿Ú */
-    USHORT usLocalTftpPort;         /* TFTP±¾µØ¶Ë¿Ú */
-    USHORT usRemoteTftpPort;        /* TFTPÔ¶³Ì¶Ë¿Ú */
+    ULONG  ulTag;                   /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¶ */
+    ULONG  ulVer;                   /* ï¿½æ±¾ï¿½ï¿½ */
+    UCHAR  aucMacAddr[6];           /* MACï¿½ï¿½Ö· */ 
+    UCHAR  aucIpAddr[4];            /* IPï¿½ï¿½Ö· */
+    UCHAR  aucMask[4];              /* ï¿½ï¿½ï¿½ï¿½ */
+    UCHAR  aucGw[4];                /* ï¿½ï¿½ï¿½ï¿½ */
+    UCHAR  ucRemoteTftpIp[4];       /* TFTPÔ¶ï¿½Ìµï¿½Ö· */
+    USHORT usHttpPort;              /* HTTPï¿½Ë¿ï¿½ */
+    USHORT usTelnetPort;            /* TFTPÔ¶ï¿½Ì¶Ë¿ï¿½ */
+    USHORT usLocalTftpPort;         /* TFTPï¿½ï¿½ï¿½Ø¶Ë¿ï¿½ */
+    USHORT usRemoteTftpPort;        /* TFTPÔ¶ï¿½Ì¶Ë¿ï¿½ */
     UCHAR  aucTftpFile[32];
 }SYS_INFO_S;
 
 
-/* ·Å¼ÓÔØ²ÎÊýµÄ½á¹¹ */
+/* ï¿½Å¼ï¿½ï¿½Ø²ï¿½ï¿½ï¿½ï¿½Ä½á¹¹ */
 typedef struct
 {
     ULONG ulStartMagic;

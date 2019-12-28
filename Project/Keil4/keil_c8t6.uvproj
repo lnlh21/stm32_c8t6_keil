@@ -163,8 +163,9 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>4104</DriverSelection>
+            <DriverSelection>4103</DriverSelection>
           </Flash1>
+          <bUseTDR>0</bUseTDR>
           <Flash2>STLink\ST-LINKIII-KEIL_SWO.dll</Flash2>
           <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
@@ -477,16 +478,6 @@
               <FilePath>..\..\src\ccb\cmd\ccb_cmd.c</FilePath>
             </File>
             <File>
-              <FileName>drv_init.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\drv\drv_init.c</FilePath>
-            </File>
-            <File>
-              <FileName>drv_util.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\drv\drv_util.c</FilePath>
-            </File>
-            <File>
               <FileName>bsp.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\src\bsp\bsp.c</FilePath>
@@ -495,26 +486,6 @@
               <FileName>stm32f10x_it.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\src\bsp\stm32f10x_it.c</FilePath>
-            </File>
-            <File>
-              <FileName>drv_interrupt.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\drv\drv_interrupt.c</FilePath>
-            </File>
-            <File>
-              <FileName>cmdtree.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\srv\cmdtree.c</FilePath>
-            </File>
-            <File>
-              <FileName>srv.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\srv\srv.c</FilePath>
-            </File>
-            <File>
-              <FileName>drv_nrf24l01.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\src\drv\drv_nrf24l01.c</FilePath>
             </File>
           </Files>
         </Group>

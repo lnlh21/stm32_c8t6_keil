@@ -1,176 +1,122 @@
- /******************************************************************************
+ /*
+  æ–‡ ä»¶ å   : Cmd_Main.c
+  ä½œ    è€…   : linhao
+*/
 
-              °æÈ¨ËùÓĞ (C)2010, ÉîÛÚÊĞÖĞĞË³¤ÌìĞÅÏ¢¼¼ÊõÓĞÏŞ¹«Ë¾
-
- ******************************************************************************
-  ÎÄ ¼ş Ãû   : Cmd_Main.c
-  °æ ±¾ ºÅ   : ³õ¸å
-  ×÷    Õß   : linhao
-  Éú³ÉÈÕÆÚ   : 2013Äê9ÔÂ10ÈÕ
-  ×î½üĞŞ¸Ä   :
-  ¹¦ÄÜÃèÊö   : CMDÄ£¿éÖ÷ÎÄ¼ş
-  º¯ÊıÁĞ±í   :
-              
-  ĞŞ¸ÄÀúÊ·   :
-  1.ÈÕ    ÆÚ   : 2013Äê9ÔÂ10ÈÕ
-    ×÷    Õß   : linhao
-    ĞŞ¸ÄÄÚÈİ   : ´´½¨ÎÄ¼ş
-
-******************************************************************************/
 #include "stdio.h"
 #include "stdlib.h"
 #include "ccb_def.h"
 #include "ccb_cmd.h"
 
-CMD_CTRL_S g_stCmdCtrl;
+CmdCtrl g_cmdCtrl;
+ULONG g_cmdOverFlow = 0;
+ULONG g_cmdOverFlowCount = 0;
+UCHAR g_cmdOverFlowContext[2];
 
-/*****************************************************************************
- º¯ Êı Ãû  : CMD_Init
- ¹¦ÄÜÃèÊö  : CMDÄ£¿é³õÊ¼»¯
- ÊäÈë²ÎÊı  : ÎŞ
- Êä³ö²ÎÊı  : ÎŞ
- ·µ »Ø Öµ  : 
- µ÷ÓÃº¯Êı  : 
- ±»µ÷º¯Êı  : 
- 
- ĞŞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2013Äê9ÔÂ18ÈÕ
-    ×÷    Õß   : linhao
-    ĞŞ¸ÄÄÚÈİ   : ĞÂÉú³Éº¯Êı
-
-*****************************************************************************/
+/*
+ åŠŸèƒ½æè¿°  : CMDæ¨¡å—åˆå§‹åŒ–
+ */
 VOID CMD_Init()
 {
-    memset(&g_stCmdCtrl, 0, sizeof(g_stCmdCtrl));
-
-	g_stCmdCtrl.stRootCmd.pFunOrNext = g_stCmdCtrl.astRootCmdGroup;
+    memset(&g_cmdCtrl, 0, sizeof(g_cmdCtrl));
+	g_cmdCtrl.rootCmd.sub = g_cmdCtrl.rootCmdG;
 }
 
-/*****************************************************************************
- º¯ Êı Ãû  : CMD_Rx
- ¹¦ÄÜÃèÊö  : CMDÄ£¿éÊäÈëº¯Êı
- ÊäÈë²ÎÊı  : unsigned char ch  
- Êä³ö²ÎÊı  : ÎŞ
- ·µ »Ø Öµ  : 
- µ÷ÓÃº¯Êı  : 
- ±»µ÷º¯Êı  : 
- 
- ĞŞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2013Äê9ÔÂ18ÈÕ
-    ×÷    Õß   : linhao
-    ĞŞ¸ÄÄÚÈİ   : ĞÂÉú³Éº¯Êı
-
-*****************************************************************************/
-ULONG g_ulCmdOverFlow = 0;
-ULONG g_ulCmdOverFlowCount = 0;
-UCHAR g_aucCmdOverFlowContext[2];
-
+/*
+ åŠŸèƒ½æè¿°  : CMDæ¨¡å—è¾“å…¥å‡½æ•°
+*/
 VOID CMD_Rx(UCHAR ch)
 {
     ULONG i; 
 
-    if (g_ulCmdOverFlow)
+    if (g_cmdOverFlow)
     {
-        g_aucCmdOverFlowContext[g_ulCmdOverFlowCount] = ch;
-        g_ulCmdOverFlowCount++;
+        g_cmdOverFlowContext[g_cmdOverFlowCount] = ch;
+        g_cmdOverFlowCount++;
 
-		//ÌØÊâ´¦Àí
-        if (CMD_KEY_FUN_LEN == g_ulCmdOverFlowCount)
+		//ç‰¹æ®Šå¤„ç†
+        if (CMD_KEY_FUN_LEN == g_cmdOverFlowCount)
         {
-            g_ulCmdOverFlow = 0;
-            g_ulCmdOverFlowCount = 0;
+            g_cmdOverFlow = 0;
+            g_cmdOverFlowCount = 0;
 
-            if (CMD_KEY_UP == g_aucCmdOverFlowContext[0])
+            if (CMD_KEY_UP == g_cmdOverFlowContext[0])
             {
-                if (0 == g_stCmdCtrl.ucCmdLenOld)
+                if (0 == g_cmdCtrl.cmdLenOld)
                 {
                     return;
                 }
                 
-                for (i = 0; i< g_stCmdCtrl.ucCmdLen; i++)
+                for (i = 0; i< g_cmdCtrl.cmdLen; i++)
                 {
                     printf("\b\b  \b\b");
                 }
 				
-                memcpy(g_stCmdCtrl.ucCmdBuf, g_stCmdCtrl.ucCmdBufOld, 64);
-                g_stCmdCtrl.ucCmdLen = g_stCmdCtrl.ucCmdLenOld;
-                g_stCmdCtrl.ucCmdBufOld[g_stCmdCtrl.ucCmdLenOld] = 0;
-                printf("%s", g_stCmdCtrl.ucCmdBufOld);
+                memcpy(g_cmdCtrl.cmdBuf, g_cmdCtrl.cmdBufOld, 64);
+                g_cmdCtrl.cmdLen = g_cmdCtrl.cmdLenOld;
+                g_cmdCtrl.cmdBufOld[g_cmdCtrl.cmdLenOld] = 0;
+                printf("%s", g_cmdCtrl.cmdBufOld);
             }
         }
         return;
     }
         
-    /* Òç³ö */
+    /* æº¢å‡º */
     if (ch == CMD_KEY_FUNC)
     {
-        g_ulCmdOverFlow = 1;
-        g_ulCmdOverFlowCount = 0;
+        g_cmdOverFlow = 1;
+        g_cmdOverFlowCount = 0;
 		return;
     }
 
-    /* »Ø³µ */
+    /* å›è½¦ */
     else if (ch == 0x0D)
     {
         printf("\r");
         CMD_Proc();
     }
 
-    /* ÍË¸ñ */
+    /* é€€æ ¼ */
     else if (ch == 0x08)
     {
-        if (g_stCmdCtrl.ucCmdLen > 0)
+        if (g_cmdCtrl.cmdLen > 0)
         {
-            g_stCmdCtrl.ucCmdLen--;
+            g_cmdCtrl.cmdLen--;
             printf("\b \b");
         }
     }
 
-    /* °ïÖú */
+    /* å¸®åŠ© */
     else if (ch == '?')
     {
-        if (g_stCmdCtrl.ucCmdLen < CMD_BUF_LEN)
+        if (g_cmdCtrl.cmdLen < CMD_BUF_LEN)
         {
-            g_stCmdCtrl.ucCmdBuf[g_stCmdCtrl.ucCmdLen] = ch;
-            g_stCmdCtrl.ucCmdLen++;
+            g_cmdCtrl.cmdBuf[g_cmdCtrl.cmdLen] = ch;
+            g_cmdCtrl.cmdLen++;
             CMD_Proc();
         }
     }
-    /* Ö±½ÓÏÔÊ¾ */
+    /* ç›´æ¥æ˜¾ç¤º */
     else if (ch >= 0x20)
     {
-        if (g_stCmdCtrl.ucCmdLen < CMD_BUF_LEN)
+        if (g_cmdCtrl.cmdLen < CMD_BUF_LEN)
         {
             printf("%c", ch);
-            g_stCmdCtrl.ucCmdBuf[g_stCmdCtrl.ucCmdLen] = ch;
-            g_stCmdCtrl.ucCmdLen++;
+            g_cmdCtrl.cmdBuf[g_cmdCtrl.cmdLen] = ch;
+            g_cmdCtrl.cmdLen++;
         }
     }
 }
 
-/*****************************************************************************
- º¯ Êı Ãû  : CMD_GetCmdName
- ¹¦ÄÜÃèÊö  : CMDÄ£¿é»ñÈ¡ÃüÁîÃû
- ÊäÈë²ÎÊı  : UCHAR *pucBuf        
-             UCHAR *ucCmdName     
-             ULONG *ulCmdNameLen  
- Êä³ö²ÎÊı  : ÎŞ
- ·µ »Ø Öµ  : UCHAR
- µ÷ÓÃº¯Êı  : 
- ±»µ÷º¯Êı  : 
- 
- ĞŞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2013Äê9ÔÂ18ÈÕ
-    ×÷    Õß   : linhao
-    ĞŞ¸ÄÄÚÈİ   : ĞÂÉú³Éº¯Êı
-
-*****************************************************************************/
+/*
+ åŠŸèƒ½æè¿°  : CMDæ¨¡å—è·å–å‘½ä»¤å
+*/
 VOID CMD_GetCmdName(UCHAR *ucCmdName, ULONG *ulCmdNameLen)
 {
     UCHAR *pucPosTemp;
     ULONG ulLenTemp;
 
-    pucPosTemp = g_stCmdCtrl.pucCurPos;
+    pucPosTemp = g_cmdCtrl.curPos;
     ulLenTemp = 0;
     
     while (*pucPosTemp != ' ' && *pucPosTemp != 0)
@@ -182,54 +128,41 @@ VOID CMD_GetCmdName(UCHAR *ucCmdName, ULONG *ulCmdNameLen)
 
     ucCmdName[ulLenTemp] = 0;
 
-    /* È¥µô¶àÓà¿Õ¸ñ */
+    /* å»æ‰å¤šä½™ç©ºæ ¼ */
     while (*pucPosTemp==' ')
     {
         pucPosTemp++;
     }
 
     *ulCmdNameLen = ulLenTemp;
-    g_stCmdCtrl.pucCurPos = pucPosTemp;
+    g_cmdCtrl.curPos = pucPosTemp;
     
 }
 
-/*****************************************************************************
- º¯ Êı Ãû  : CMD_Find
- ¹¦ÄÜÃèÊö  : CMDÄ£¿é²éÕÒÃüÁî
- ÊäÈë²ÎÊı  : UCHAR *pucCmdName  
-             CMD_S *pstCurCmd   
- Êä³ö²ÎÊı  : ÎŞ
- ·µ »Ø Öµ  : CMD_S
- µ÷ÓÃº¯Êı  : 
- ±»µ÷º¯Êı  : 
- 
- ĞŞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2013Äê9ÔÂ18ÈÕ
-    ×÷    Õß   : linhao
-    ĞŞ¸ÄÄÚÈİ   : ĞÂÉú³Éº¯Êı
-
-*****************************************************************************/
-CMD_S * CMD_Find(UCHAR *pucCmdName, CMD_S *pstCurCmd)
+/*
+ åŠŸèƒ½æè¿°  : CMDæ¨¡å—æŸ¥æ‰¾å‘½ä»¤
+ */
+CmdNode * CMD_Find(UCHAR *pucCmdName, CmdNode *pstCurCmd)
 {
     ULONG i;
-    CMD_S *pstCmdSub;
-    CMD_S *pstCmdFind = NULL;
+    CmdNode *pstCmdSub;
+    CmdNode *pstCmdFind = NULL;
     ULONG ulCmdNameLen1;
     ULONG ulCmdNameLen2;
 
     ulCmdNameLen1 = strlen((char *)pucCmdName);
-    pstCmdSub = (CMD_S *)pstCurCmd->pFunOrNext;
+    pstCmdSub = (CmdNode *)pstCurCmd->sub;
     
-    for (i = 0; i < pstCurCmd->ulNum; i++)
+    for (i = 0; i < pstCurCmd->num; i++)
     {
-        ulCmdNameLen2 = strlen((char *)pstCmdSub[i].ucCmd);
+        ulCmdNameLen2 = strlen((char *)pstCmdSub[i].cmd);
 
         if (ulCmdNameLen1 > ulCmdNameLen2)
         {
             continue;
         }
  
-        if (0 == (memcmp(pucCmdName, pstCmdSub[i].ucCmd, ulCmdNameLen1)))
+        if (0 == (memcmp(pucCmdName, pstCmdSub[i].cmd, ulCmdNameLen1)))
         {
             pstCmdFind = &pstCmdSub[i];
 
@@ -243,79 +176,55 @@ CMD_S * CMD_Find(UCHAR *pucCmdName, CMD_S *pstCurCmd)
     return pstCmdFind;
 }
 
-/*****************************************************************************
- º¯ Êı Ãû  : CMD_Help
- ¹¦ÄÜÃèÊö  : CMDÄ£¿éÏÔÊ¾°ïÖúÃüÁî
- ÊäÈë²ÎÊı  : CMD_S *pCmd  
- Êä³ö²ÎÊı  : ÎŞ
- ·µ »Ø Öµ  : 
- µ÷ÓÃº¯Êı  : 
- ±»µ÷º¯Êı  : 
- 
- ĞŞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2013Äê9ÔÂ18ÈÕ
-    ×÷    Õß   : linhao
-    ĞŞ¸ÄÄÚÈİ   : ĞÂÉú³Éº¯Êı
-
-*****************************************************************************/
-VOID CMD_Help(CMD_S *pCmd)
+/*
+ åŠŸèƒ½æè¿°  : CMDæ¨¡å—æ˜¾ç¤ºå¸®åŠ©å‘½ä»¤
+ */
+VOID CMD_Help(CmdNode *pCmd)
 {
-    CMD_S * pCmdSub;
+    CmdNode * pCmdSub;
     ULONG i;
     
-    if (pCmd->ulNum == 0)
+    if (pCmd->num == 0)
     {
-         printf("\r\n %-20s  %s", pCmd->ucCmd, pCmd->ucDesc);
+         printf("\r\n %-20s  %s", pCmd->cmd, pCmd->desc);
     }
     else
     {
-        pCmdSub = (CMD_S *)pCmd->pFunOrNext;
-        for (i = 0; i < pCmd->ulNum; i++)
+        pCmdSub = (CmdNode *)pCmd->sub;
+        for (i = 0; i < pCmd->num; i++)
         {
-            printf("\r\n %-20s  %s", pCmdSub[i].ucCmd, pCmdSub[i].ucDesc);
+            printf("\r\n %-20s  %s", pCmdSub[i].cmd, pCmdSub[i].desc);
         }
     }
 }
 
-ULONG CMD_Reg(CMD_S *pCmd)
+ULONG CMD_Reg(CmdNode *pCmd)
 {
-    if (g_stCmdCtrl.ulCmdCount >= CMD_ROOT_CMD_NUM)
+    if (g_cmdCtrl.cmdCount >= CMD_ROOT_CMD_NUM)
     {
 		return COM_ERR;
     }
 
-	memcpy(&g_stCmdCtrl.astRootCmdGroup[g_stCmdCtrl.ulCmdCount], pCmd, sizeof(CMD_S));
-	g_stCmdCtrl.ulCmdCount++;
-	g_stCmdCtrl.stRootCmd.ulNum = g_stCmdCtrl.ulCmdCount;
+	memcpy(&g_cmdCtrl.rootCmdG[g_cmdCtrl.cmdCount], pCmd, sizeof(CmdNode));
+	g_cmdCtrl.cmdCount++;
+	g_cmdCtrl.rootCmd.num = g_cmdCtrl.cmdCount;
 }
 
-/*****************************************************************************
- º¯ Êı Ãû  : CMD_Proc
- ¹¦ÄÜÃèÊö  : CMDÄ£¿éÃüÁî´¦Àíº¯Êı
- ÊäÈë²ÎÊı  : ÎŞ
- Êä³ö²ÎÊı  : ÎŞ
- ·µ »Ø Öµ  : 
- µ÷ÓÃº¯Êı  : 
- ±»µ÷º¯Êı  : 
- 
- ĞŞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2013Äê9ÔÂ18ÈÕ
-    ×÷    Õß   : linhao
-    ĞŞ¸ÄÄÚÈİ   : ĞÂÉú³Éº¯Êı
-
-*****************************************************************************/
+/*
+ åŠŸèƒ½æè¿°  : CMDæ¨¡å—å‘½ä»¤å¤„ç†å‡½æ•°
+ */
 VOID CMD_Proc()
 {
-    CMD_S * pCmd;
+    CmdNode * pCmd;
     UCHAR aucCmdName[CMD_NAME_LEN];
     ULONG ulCmdNameLen;
     CMD_FUN aa;
     ULONG ulCount = 0;
     ULONG i;
 
-    g_stCmdCtrl.ucCmdBuf[g_stCmdCtrl.ucCmdLen] = 0;
-    g_stCmdCtrl.pucCurPos = g_stCmdCtrl.ucCmdBuf;
-    pCmd = &g_stCmdCtrl.stRootCmd;
+    g_cmdCtrl.cmdBuf[g_cmdCtrl.cmdLen] = 0;
+    g_cmdCtrl.curPos = g_cmdCtrl.cmdBuf;
+    pCmd = &g_cmdCtrl.rootCmd;
                 
     while (1)
     {
@@ -331,7 +240,7 @@ VOID CMD_Proc()
         {
             if (0!=ulCount)
             {
-                printf("\r\n ÃüÁî¸ñÊ½´íÎó");
+                printf("\r\n cmd format error");
                 CMD_Help(pCmd);
             }
             break;
@@ -340,11 +249,11 @@ VOID CMD_Proc()
         pCmd = CMD_Find(aucCmdName, pCmd);
         if (NULL == pCmd)
         {
-            printf("\r\n Ã»ÓĞÕÒµ½´ËÃüÁî");
+            printf("\r\n cmd not found");
             break;
         }
 
-        if (pCmd->ulNum != 0)
+        if (pCmd->num != 0)
         {
             ulCount++;
             continue;
@@ -352,19 +261,19 @@ VOID CMD_Proc()
 
         printf("\r\n");
 
-        memcpy(g_stCmdCtrl.ucCmdBufOld, g_stCmdCtrl.ucCmdBuf, 64);
-        g_stCmdCtrl.ucCmdLenOld = g_stCmdCtrl.ucCmdLen;
-        aa = (CMD_FUN)(pCmd->pFunOrNext);
+        memcpy(g_cmdCtrl.cmdBufOld, g_cmdCtrl.cmdBuf, 64);
+        g_cmdCtrl.cmdLenOld = g_cmdCtrl.cmdLen;
+        aa = (CMD_FUN)(pCmd->sub);
         aa();
         
         break;
     }
     printf("\r\nLNLH>");
-    g_stCmdCtrl.ucCmdLen = 0;
+    g_cmdCtrl.cmdLen = 0;
     return;
 }
 
-#if DESC("»ñµÃ²ÎÊı²¿·Ö")
+#if DESC("è·å¾—å‚æ•°éƒ¨åˆ†")
 ULONG CMD_GetULONG(ULONG *pulPara)
 {
     ULONG ulCmdNameLen;
@@ -379,7 +288,7 @@ ULONG CMD_GetULONG(ULONG *pulPara)
         return COM_ERR;
     }
 
-    CMD_ChangeBit(ucCmdName);
+    //CMD_ChangeBit(ucCmdName);
 
     pucPos = ucCmdName;
     if ('0' == ucCmdName[0] && 'X' == ucCmdName[1])
@@ -470,7 +379,7 @@ ULONG CMD_GetMac(UCHAR *ucMac)
     ULONG i;
     ULONG ulMacPos;
     ULONG ulMACValue;
-    CMD_GetCmdName(ucCmdName, &ulCmdNameLen);
+    //CMD_GetCmdName(ucCmdName, &ulCmdNameLen);
     
     if (ulCmdNameLen != 14)
     {
@@ -482,7 +391,7 @@ ULONG CMD_GetMac(UCHAR *ucMac)
         return COM_ERR;
     }
 
-    CMD_ChangeBit(ucCmdName);
+    //CMD_ChangeBit(ucCmdName);
 
     pucPos = ucCmdName;
     ulMacPos = 0;
