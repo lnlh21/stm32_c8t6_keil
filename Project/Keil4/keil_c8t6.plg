@@ -7,6 +7,52 @@ F:\git_new\new\stm32_c8t6_keil\Project\Keil4\keil_c8t6.uvproj
 Project File Date:  12/29/2019
 
 <h2>Output:</h2>
+Load "F:\\git_new\\new\\stm32_c8t6_keil\\Project\\Keil4\\keil_c8t6.axf" 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...
+Build target 'Target 1'
+compiling usb_core.c...
+..\..\Libraries\STM32_USB-FS-Device_Driver\src\usb_core.c(50): error:  #5: cannot open source input file "usb_lib.h": No such file or directory
+compiling usb_init.c...
+..\..\Libraries\STM32_USB-FS-Device_Driver\src\usb_init.c(50): error:  #5: cannot open source input file "usb_lib.h": No such file or directory
+compiling usb_int.c...
+..\..\Libraries\STM32_USB-FS-Device_Driver\src\usb_int.c(49): error:  #5: cannot open source input file "usb_lib.h": No such file or directory
+compiling usb_mem.c...
+..\..\Libraries\STM32_USB-FS-Device_Driver\src\usb_mem.c(49): error:  #5: cannot open source input file "usb_lib.h": No such file or directory
+compiling usb_regs.c...
+..\..\Libraries\STM32_USB-FS-Device_Driver\src\usb_regs.c(49): error:  #5: cannot open source input file "usb_lib.h": No such file or directory
+compiling usb_sil.c...
+..\..\Libraries\STM32_USB-FS-Device_Driver\src\usb_sil.c(51): error:  #5: cannot open source input file "usb_lib.h": No such file or directory
+compiling main.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\main.c(11): warning:  #223-D: function "BSP_ApiDeLayMs" declared implicitly
+..\..\src\main.c(12): warning:  #223-D: function "BSP_ApiInit" declared implicitly
+..\..\src\main.c(13): warning:  #223-D: function "USB_Interrupts_Config" declared implicitly
+..\..\src\main.c(15): warning:  #223-D: function "CMD_Init" declared implicitly
+..\..\src\main.c(9): warning:  #177-D: variable "i" was declared but never referenced
+compiling bsp.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\bsp\bsp.c(69): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(70): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(71): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(72): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(86): warning:  #188-D: enumerated type mixed with another type
+..\..\src\bsp\bsp.c(87): warning:  #188-D: enumerated type mixed with another type
+..\..\src\bsp\bsp.c(427): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\bsp\bsp.c(450): error:  #20: identifier "USB_LP_IRQn" is undefined
+..\..\src\bsp\bsp.c(522): warning:  #940-D: missing return statement at end of non-void function "BSP_InterruptInit"
+..\..\src\bsp\bsp.c(569): warning:  #940-D: missing return statement at end of non-void function "BSP_SpiInit"
+..\..\src\bsp\bsp.c(635): warning:  #940-D: missing return statement at end of non-void function "BSP_I2CInit"
+..\..\src\bsp\bsp.c(701): error:  #20: identifier "GPIO_InitStructure" is undefined
+..\..\src\bsp\bsp.c(705): warning:  #940-D: missing return statement at end of non-void function "BSP_UsbInit"
+..\..\src\bsp\bsp.c(716): warning:  #177-D: variable "TIM_TimeBaseStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(717): warning:  #177-D: variable "TIM_OCInitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(718): warning:  #177-D: variable "GPIO_InitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(719): warning:  #177-D: variable "I2C_InitStructure" was declared but never referenced
+".\keil_c8t6.axf" - 8 Errors, 22 Warning(s).
+Target not created
 Build target 'Target 1'
 compiling core_cm3.c...
 compiling system_stm32f10x.c...
@@ -19,53 +65,51 @@ compiling stm32f10x_usart.c...
 compiling stm32f10x_flash.c...
 compiling stm32f10x_exti.c...
 compiling stm32f10x_i2c.c...
-assembling startup_stm32f10x_md.s...
+compiling usb_core.c...
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_lib.h(44): error:  #5: cannot open source input file "hw_config.h": No such file or directory
+compiling usb_init.c...
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_lib.h(44): error:  #5: cannot open source input file "hw_config.h": No such file or directory
+compiling usb_int.c...
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_lib.h(44): error:  #5: cannot open source input file "hw_config.h": No such file or directory
+compiling usb_mem.c...
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_lib.h(44): error:  #5: cannot open source input file "hw_config.h": No such file or directory
+compiling usb_regs.c...
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_lib.h(44): error:  #5: cannot open source input file "hw_config.h": No such file or directory
+compiling usb_sil.c...
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_lib.h(44): error:  #5: cannot open source input file "hw_config.h": No such file or directory
 compiling main.c...
 ..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
-..\..\src\main.c(28): warning:  #223-D: function "BSP_ApiDeLayMs" declared implicitly
-..\..\src\main.c(31): warning:  #223-D: function "BSP_ApiInit" declared implicitly
-..\..\src\main.c(34): warning:  #223-D: function "CMD_Init" declared implicitly
-..\..\src\main.c(37): warning:  #223-D: function "SRV_Main" declared implicitly
-..\..\src\main.c(25): warning:  #177-D: variable "i" was declared but never referenced
-..\..\src\main.c(26): warning:  #177-D: variable "ulRet" was declared but never referenced
+..\..\src\main.c(11): warning:  #223-D: function "BSP_ApiDeLayMs" declared implicitly
+..\..\src\main.c(12): warning:  #223-D: function "BSP_ApiInit" declared implicitly
+..\..\src\main.c(13): warning:  #223-D: function "USB_Interrupts_Config" declared implicitly
+..\..\src\main.c(15): warning:  #223-D: function "CMD_Init" declared implicitly
+..\..\src\main.c(9): warning:  #177-D: variable "i" was declared but never referenced
 compiling ccb_cmd.c...
 ..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
-..\..\src\ccb\cmd\ccb_cmd.h(26): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
-..\..\src\ccb\cmd\ccb_cmd.h(78): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
-..\..\src\ccb\cmd\ccb_cmd.h(79): warning:  #1295-D: Deprecated declaration CMD_Proc - give arg types
-..\..\src\ccb\cmd\ccb_cmd.h(83): warning:  #1295-D: Deprecated declaration PDT_Init - give arg types
-..\..\src\ccb\cmd\ccb_cmd.h(89): warning:  #1-D: last line of file ends without a newline
-..\..\src\ccb\cmd\ccb_cmd.c(44): warning:  #223-D: function "memset" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(95): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(220): warning:  #223-D: function "strlen" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(232): warning:  #223-D: function "memcmp" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(287): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(290): warning:  #940-D: missing return statement at end of non-void function "CMD_Reg"
-..\..\src\ccb\cmd\ccb_cmd.c(324): warning:  #223-D: function "strcmp" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(355): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(314): warning:  #177-D: variable "i" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(382): warning:  #223-D: function "CMD_ChangeBit" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(413): warning:  #550-D: variable "pucPos" was set but never used
-..\..\src\ccb\cmd\ccb_cmd.c(485): warning:  #223-D: function "CMD_ChangeBit" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(469): warning:  #550-D: variable "pucPos" was set but never used
-..\..\src\ccb\cmd\ccb_cmd.c(551): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(544): warning:  #177-D: variable "pucPos" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(545): warning:  #177-D: variable "i" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(546): warning:  #177-D: variable "ulMacPos" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(547): warning:  #177-D: variable "ulMACValue" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(557): warning:  #1-D: last line of file ends without a newline
-..\..\src\ccb\cmd\ccb_cmd.c(374): warning: C4017W: ulTemp may be used before being set
-compiling drv_init.c...
-..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
-..\..\src\drv\drv_init.h(22): warning:  #1295-D: Deprecated declaration DRV_Init - give arg types
-..\..\src\drv\drv_init.c(64): warning:  #223-D: function "Timer2_init" declared implicitly
-..\..\src\drv\drv_init.c(108): warning:  #223-D: function "NVIC_Configuration" declared implicitly
-..\..\src\drv\drv_init.c(42): warning:  #177-D: variable "TIM_TimeBaseStructure" was declared but never referenced
-..\..\src\drv\drv_init.c(43): warning:  #177-D: variable "TIM_OCInitStructure" was declared but never referenced
-..\..\src\drv\drv_init.c(44): warning:  #550-D: variable "GPIO_InitStructure" was set but never used
-..\..\src\drv\drv_init.c(45): warning:  #550-D: variable "EXTI_InitStructure" was set but never used
-..\..\src\drv\drv_init.c(46): warning:  #550-D: variable "I2C_InitStructure" was set but never used
-compiling drv_util.c...
+..\..\src\ccb\cmd\ccb_cmd.h(4): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
+..\..\src\ccb\cmd\ccb_cmd.h(56): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
+..\..\src\ccb\cmd\ccb_cmd.h(57): warning:  #1295-D: Deprecated declaration CMD_Proc - give arg types
+..\..\src\ccb\cmd\ccb_cmd.h(61): warning:  #1295-D: Deprecated declaration PDT_Init - give arg types
+..\..\src\ccb\cmd\ccb_cmd.h(63): warning:  #1-D: last line of file ends without a newline
+..\..\src\ccb\cmd\ccb_cmd.c(21): warning:  #223-D: function "memset" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(55): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(153): warning:  #223-D: function "strlen" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(165): warning:  #223-D: function "memcmp" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(208): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(211): warning:  #940-D: missing return statement at end of non-void function "CMD_Reg"
+..\..\src\ccb\cmd\ccb_cmd.c(233): warning:  #223-D: function "strcmp" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(264): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(223): warning:  #177-D: variable "i" was declared but never referenced
+..\..\src\ccb\cmd\ccb_cmd.c(322): warning:  #550-D: variable "pucPos" was set but never used
+..\..\src\ccb\cmd\ccb_cmd.c(378): warning:  #550-D: variable "pucPos" was set but never used
+..\..\src\ccb\cmd\ccb_cmd.c(460): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(453): warning:  #177-D: variable "pucPos" was declared but never referenced
+..\..\src\ccb\cmd\ccb_cmd.c(454): warning:  #177-D: variable "i" was declared but never referenced
+..\..\src\ccb\cmd\ccb_cmd.c(455): warning:  #177-D: variable "ulMacPos" was declared but never referenced
+..\..\src\ccb\cmd\ccb_cmd.c(456): warning:  #177-D: variable "ulMACValue" was declared but never referenced
+..\..\src\ccb\cmd\ccb_cmd.c(466): warning:  #1-D: last line of file ends without a newline
+..\..\src\ccb\cmd\ccb_cmd.c(283): warning: C4017W: ulTemp may be used before being set
+..\..\src\ccb\cmd\ccb_cmd.c(376): warning: C4017W: ulCmdNameLen may be used before being set
 compiling bsp.c...
 ..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
 ..\..\src\bsp\bsp.c(69): warning:  #1296-D: extended constant initialiser used
@@ -74,74 +118,877 @@ compiling bsp.c...
 ..\..\src\bsp\bsp.c(72): warning:  #1296-D: extended constant initialiser used
 ..\..\src\bsp\bsp.c(86): warning:  #188-D: enumerated type mixed with another type
 ..\..\src\bsp\bsp.c(87): warning:  #188-D: enumerated type mixed with another type
-..\..\src\bsp\bsp.c(451): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\bsp\bsp.c(538): warning:  #940-D: missing return statement at end of non-void function "BSP_InterruptInit"
-..\..\src\bsp\bsp.c(585): warning:  #940-D: missing return statement at end of non-void function "BSP_SpiInit"
-..\..\src\bsp\bsp.c(651): warning:  #940-D: missing return statement at end of non-void function "BSP_I2CInit"
-..\..\src\bsp\bsp.c(748): warning:  #177-D: variable "TIM_TimeBaseStructure" was declared but never referenced
-..\..\src\bsp\bsp.c(749): warning:  #177-D: variable "TIM_OCInitStructure" was declared but never referenced
-..\..\src\bsp\bsp.c(750): warning:  #177-D: variable "GPIO_InitStructure" was declared but never referenced
-..\..\src\bsp\bsp.c(751): warning:  #177-D: variable "I2C_InitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(427): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\bsp\bsp.c(450): error:  #20: identifier "USB_LP_IRQn" is undefined
+..\..\src\bsp\bsp.c(522): warning:  #940-D: missing return statement at end of non-void function "BSP_InterruptInit"
+..\..\src\bsp\bsp.c(569): warning:  #940-D: missing return statement at end of non-void function "BSP_SpiInit"
+..\..\src\bsp\bsp.c(635): warning:  #940-D: missing return statement at end of non-void function "BSP_I2CInit"
+..\..\src\bsp\bsp.c(701): error:  #20: identifier "GPIO_InitStructure" is undefined
+..\..\src\bsp\bsp.c(705): warning:  #940-D: missing return statement at end of non-void function "BSP_UsbInit"
+..\..\src\bsp\bsp.c(716): warning:  #177-D: variable "TIM_TimeBaseStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(717): warning:  #177-D: variable "TIM_OCInitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(718): warning:  #177-D: variable "GPIO_InitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(719): warning:  #177-D: variable "I2C_InitStructure" was declared but never referenced
 compiling stm32f10x_it.c...
 ..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
 ..\..\src\bsp\stm32f10x_it.c(148): warning:  #223-D: function "BSP_SysTickSecond" declared implicitly
 ..\..\src\bsp\stm32f10x_it.c(161): warning:  #223-D: function "CMD_Rx" declared implicitly
 ..\..\src\bsp\stm32f10x_it.c(167): warning:  #223-D: function "printf" declared implicitly
+".\keil_c8t6.axf" - 8 Errors, 51 Warning(s).
+Target not created
+Build target 'Target 1'
+compiling core_cm3.c...
+compiling system_stm32f10x.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_rcc.c...
+compiling misc.c...
+compiling stm32f10x_tim.c...
+compiling stm32f10x_spi.c...
+compiling stm32f10x_usart.c...
+compiling stm32f10x_flash.c...
+compiling stm32f10x_exti.c...
+compiling stm32f10x_i2c.c...
+compiling usb_core.c...
+..\..\src\usb\hw_config.h(44): error:  #5: cannot open source input file "platform_config.h": No such file or directory
+compiling usb_init.c...
+..\..\src\usb\hw_config.h(44): error:  #5: cannot open source input file "platform_config.h": No such file or directory
+compiling usb_int.c...
+..\..\src\usb\hw_config.h(44): error:  #5: cannot open source input file "platform_config.h": No such file or directory
+compiling usb_mem.c...
+..\..\src\usb\hw_config.h(44): error:  #5: cannot open source input file "platform_config.h": No such file or directory
+compiling usb_regs.c...
+..\..\src\usb\hw_config.h(44): error:  #5: cannot open source input file "platform_config.h": No such file or directory
+compiling usb_sil.c...
+..\..\src\usb\hw_config.h(44): error:  #5: cannot open source input file "platform_config.h": No such file or directory
+compiling main.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\main.c(11): warning:  #223-D: function "BSP_ApiDeLayMs" declared implicitly
+..\..\src\main.c(12): warning:  #223-D: function "BSP_ApiInit" declared implicitly
+..\..\src\main.c(13): warning:  #223-D: function "USB_Interrupts_Config" declared implicitly
+..\..\src\main.c(15): warning:  #223-D: function "CMD_Init" declared implicitly
+..\..\src\main.c(9): warning:  #177-D: variable "i" was declared but never referenced
+compiling ccb_cmd.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\ccb\cmd\ccb_cmd.h(4): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
+..\..\src\ccb\cmd\ccb_cmd.h(56): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
+..\..\src\ccb\cmd\ccb_cmd.h(57): warning:  #1295-D: Deprecated declaration CMD_Proc - give arg types
+..\..\src\ccb\cmd\ccb_cmd.h(61): warning:  #1295-D: Deprecated declaration PDT_Init - give arg types
+..\..\src\ccb\cmd\ccb_cmd.h(63): warning:  #1-D: last line of file ends without a newline
+..\..\src\ccb\cmd\ccb_cmd.c(21): warning:  #223-D: function "memset" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(55): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(153): warning:  #223-D: function "strlen" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(165): warning:  #223-D: function "memcmp" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(208): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(211): warning:  #940-D: missing return statement at end of non-void function "CMD_Reg"
+..\..\src\ccb\cmd\ccb_cmd.c(233): warning:  #223-D: function "strcmp" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(264): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(223): warning:  #177-D: variable "i" was declared but never referenced
+..\..\src\ccb\cmd\ccb_cmd.c(322): warning:  #550-D: variable "pucPos" was set but never used
+..\..\src\ccb\cmd\ccb_cmd.c(378): warning:  #550-D: variable "pucPos" was set but never used
+..\..\src\ccb\cmd\ccb_cmd.c(460): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(453): warning:  #177-D: variable "pucPos" was declared but never referenced
+..\..\src\ccb\cmd\ccb_cmd.c(454): warning:  #177-D: variable "i" was declared but never referenced
+..\..\src\ccb\cmd\ccb_cmd.c(455): warning:  #177-D: variable "ulMacPos" was declared but never referenced
+..\..\src\ccb\cmd\ccb_cmd.c(456): warning:  #177-D: variable "ulMACValue" was declared but never referenced
+..\..\src\ccb\cmd\ccb_cmd.c(466): warning:  #1-D: last line of file ends without a newline
+..\..\src\ccb\cmd\ccb_cmd.c(283): warning: C4017W: ulTemp may be used before being set
+..\..\src\ccb\cmd\ccb_cmd.c(376): warning: C4017W: ulCmdNameLen may be used before being set
+compiling bsp.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\bsp\bsp.c(69): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(70): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(71): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(72): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(86): warning:  #188-D: enumerated type mixed with another type
+..\..\src\bsp\bsp.c(87): warning:  #188-D: enumerated type mixed with another type
+..\..\src\bsp\bsp.c(427): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\bsp\bsp.c(450): error:  #20: identifier "USB_LP_IRQn" is undefined
+..\..\src\bsp\bsp.c(522): warning:  #940-D: missing return statement at end of non-void function "BSP_InterruptInit"
+..\..\src\bsp\bsp.c(569): warning:  #940-D: missing return statement at end of non-void function "BSP_SpiInit"
+..\..\src\bsp\bsp.c(635): warning:  #940-D: missing return statement at end of non-void function "BSP_I2CInit"
+..\..\src\bsp\bsp.c(701): error:  #20: identifier "GPIO_InitStructure" is undefined
+..\..\src\bsp\bsp.c(705): warning:  #940-D: missing return statement at end of non-void function "BSP_UsbInit"
+..\..\src\bsp\bsp.c(716): warning:  #177-D: variable "TIM_TimeBaseStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(717): warning:  #177-D: variable "TIM_OCInitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(718): warning:  #177-D: variable "GPIO_InitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(719): warning:  #177-D: variable "I2C_InitStructure" was declared but never referenced
+compiling stm32f10x_it.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\bsp\stm32f10x_it.c(148): warning:  #223-D: function "BSP_SysTickSecond" declared implicitly
+..\..\src\bsp\stm32f10x_it.c(161): warning:  #223-D: function "CMD_Rx" declared implicitly
+..\..\src\bsp\stm32f10x_it.c(167): warning:  #223-D: function "printf" declared implicitly
+compiling hw_config.c...
+..\..\src\usb\hw_config.h(44): error:  #5: cannot open source input file "platform_config.h": No such file or directory
+compiling usb_desc.c...
+..\..\src\usb\hw_config.h(44): error:  #5: cannot open source input file "platform_config.h": No such file or directory
+compiling usb_endp.c...
+..\..\src\usb\hw_config.h(44): error:  #5: cannot open source input file "platform_config.h": No such file or directory
+compiling usb_istr.c...
+..\..\src\usb\hw_config.h(44): error:  #5: cannot open source input file "platform_config.h": No such file or directory
+compiling usb_prop.c...
+..\..\src\usb\hw_config.h(44): error:  #5: cannot open source input file "platform_config.h": No such file or directory
+compiling usb_pwr.c...
+..\..\src\usb\hw_config.h(44): error:  #5: cannot open source input file "platform_config.h": No such file or directory
+".\keil_c8t6.axf" - 14 Errors, 51 Warning(s).
+Target not created
+Build target 'Target 1'
+compiling usb_core.c...
+..\..\src\usb\usb_desc.h(70): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(71): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(72): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(73): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(74): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(75): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(76): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(61): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(62): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(103): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(104): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(105): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(106): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(106): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(113): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(114): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(120): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(123): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(124): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(131): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(132): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(137): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(138): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(139): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(140): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(141): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(172): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(183): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(193): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(193): error:  #20: identifier "uint8_t" is undefined
+compiling usb_init.c...
+..\..\src\usb\usb_desc.h(70): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(71): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(72): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(73): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(74): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(75): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(76): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(61): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(62): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(103): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(104): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(105): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(106): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(106): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(113): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(114): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(120): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(123): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(124): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(131): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(132): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(137): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(138): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(139): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(140): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(141): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(172): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(183): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(193): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(193): error:  #20: identifier "uint8_t" is undefined
+compiling usb_int.c...
+..\..\src\usb\usb_desc.h(70): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(71): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(72): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(73): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(74): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(75): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(76): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(61): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(62): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(103): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(104): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(105): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(106): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(106): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(113): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(114): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(120): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(123): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(124): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(131): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(132): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(137): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(138): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(139): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(140): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(141): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(172): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(183): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(193): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(193): error:  #20: identifier "uint8_t" is undefined
+compiling usb_mem.c...
+..\..\src\usb\usb_desc.h(70): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(71): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(72): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(73): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(74): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(75): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(76): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(61): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(62): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(103): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(104): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(105): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(106): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(106): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(113): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(114): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(120): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(123): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(124): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(131): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(132): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(137): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(138): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(139): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(140): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(141): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(172): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(183): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(193): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(193): error:  #20: identifier "uint8_t" is undefined
+compiling usb_regs.c...
+..\..\src\usb\usb_desc.h(70): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(71): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(72): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(73): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(74): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(75): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(76): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(61): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(62): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(103): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(104): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(105): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(106): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(106): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(113): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(114): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(120): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(123): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(124): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(131): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(132): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(137): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(138): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(139): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(140): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(141): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(172): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(183): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(193): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(193): error:  #20: identifier "uint8_t" is undefined
+compiling usb_sil.c...
+..\..\src\usb\usb_desc.h(70): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(71): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(72): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(73): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(74): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(75): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(76): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(61): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(62): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(103): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(104): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(105): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(106): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(106): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(113): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(114): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(120): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(123): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(124): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(131): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(132): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(137): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(138): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(139): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(140): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(141): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(172): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(183): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(193): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(193): error:  #20: identifier "uint8_t" is undefined
+compiling bsp.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\bsp\bsp.c(69): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(70): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(71): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(72): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(86): warning:  #188-D: enumerated type mixed with another type
+..\..\src\bsp\bsp.c(87): warning:  #188-D: enumerated type mixed with another type
+..\..\src\bsp\bsp.c(427): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\bsp\bsp.c(450): error:  #20: identifier "USB_LP_IRQn" is undefined
+..\..\src\bsp\bsp.c(522): warning:  #940-D: missing return statement at end of non-void function "BSP_InterruptInit"
+..\..\src\bsp\bsp.c(569): warning:  #940-D: missing return statement at end of non-void function "BSP_SpiInit"
+..\..\src\bsp\bsp.c(635): warning:  #940-D: missing return statement at end of non-void function "BSP_I2CInit"
+..\..\src\bsp\bsp.c(701): error:  #20: identifier "GPIO_InitStructure" is undefined
+..\..\src\bsp\bsp.c(705): warning:  #940-D: missing return statement at end of non-void function "BSP_UsbInit"
+..\..\src\bsp\bsp.c(716): warning:  #177-D: variable "TIM_TimeBaseStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(717): warning:  #177-D: variable "TIM_OCInitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(718): warning:  #177-D: variable "GPIO_InitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(719): warning:  #177-D: variable "I2C_InitStructure" was declared but never referenced
+compiling hw_config.c...
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(687): error:  #20: identifier "__IO" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(687): error:  #65: expected a ";"
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(690): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(691): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(692): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(693): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(694): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(695): error:  #757: variable "uint16_t" is not a type name
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(696): error:  #757: variable "uint16_t" is not a type name
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(697): error:  #757: variable "uint16_t" is not a type name
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(698): error:  #757: variable "uint16_t" is not a type name
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(699): error:  #757: variable "uint16_t" is not a type name
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(700): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(701): error:  #757: variable "uint16_t" is not a type name
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(701): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(702): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(703): error:  #757: variable "uint16_t" is not a type name
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(703): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(704): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(705): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(706): error:  #100: duplicate parameter name
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(706): error:  #18: expected a ")"
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(706): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(707): error:  #757: variable "uint16_t" is not a type name
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(707): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(708): error:  #757: variable "uint16_t" is not a type name
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(708): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(709): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(710): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(711): error:  #757: variable "uint16_t" is not a type name
+compiling usb_desc.c...
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(61): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(62): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(103): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(104): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(105): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(106): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(106): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(113): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(114): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(120): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(123): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(124): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(131): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(132): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(137): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(138): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(139): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(140): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(141): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(172): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(183): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(193): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(193): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(195): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(195): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(199): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(199): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(200): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(200): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(206): error:  #20: identifier "uint8_t" is undefined
+compiling usb_endp.c...
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(687): error:  #20: identifier "__IO" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(687): error:  #65: expected a ";"
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(690): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(691): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(692): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(693): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(694): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(695): error:  #757: variable "uint16_t" is not a type name
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(696): error:  #757: variable "uint16_t" is not a type name
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(697): error:  #757: variable "uint16_t" is not a type name
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(698): error:  #757: variable "uint16_t" is not a type name
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(699): error:  #757: variable "uint16_t" is not a type name
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(700): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(701): error:  #757: variable "uint16_t" is not a type name
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(701): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(702): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(703): error:  #757: variable "uint16_t" is not a type name
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(703): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(704): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(705): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(706): error:  #100: duplicate parameter name
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(706): error:  #18: expected a ")"
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(706): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(707): error:  #757: variable "uint16_t" is not a type name
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(707): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(708): error:  #757: variable "uint16_t" is not a type name
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(708): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(709): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(710): error:  #92: identifier-list parameters may only be used in a function definition
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_regs.h(711): error:  #757: variable "uint16_t" is not a type name
+compiling usb_istr.c...
+..\..\src\usb\usb_desc.h(70): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(71): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(72): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(73): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(74): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(75): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(76): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(61): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(62): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(103): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(104): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(105): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(106): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(106): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(113): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(114): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(120): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(123): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(124): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(131): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(132): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(137): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(138): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(139): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(140): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(141): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(172): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(183): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(193): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(193): error:  #20: identifier "uint8_t" is undefined
+compiling usb_prop.c...
+..\..\src\usb\usb_desc.h(70): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(71): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(72): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(73): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(74): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(75): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(76): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(61): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(62): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(103): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(104): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(105): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(106): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(106): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(113): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(114): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(120): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(123): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(124): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(131): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(132): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(137): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(138): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(139): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(140): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(141): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(172): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(183): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(193): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(193): error:  #20: identifier "uint8_t" is undefined
+compiling usb_pwr.c...
+..\..\src\usb\usb_desc.h(70): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(71): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(72): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(73): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(74): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(75): error:  #20: identifier "uint8_t" is undefined
+..\..\src\usb\usb_desc.h(76): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(61): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(62): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(103): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(104): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(105): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(106): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(106): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(113): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(114): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(120): error:  #20: identifier "uint16_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(123): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(124): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(131): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(132): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(137): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(138): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(139): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(140): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(141): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(172): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(183): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(193): error:  #20: identifier "uint8_t" is undefined
+..\..\Libraries\STM32_USB-FS-Device_Driver\inc\usb_core.h(193): error:  #20: identifier "uint8_t" is undefined
+".\keil_c8t6.axf" - 362 Errors, 16 Warning(s).
+Target not created
+Build target 'Target 1'
+compiling usb_core.c...
+..\..\src\usb\platform_config.h(66): error:  #35: #error directive: "Missing define: Evaluation board (ie. USE_STM3210E_EVAL)"
+compiling usb_init.c...
+..\..\src\usb\platform_config.h(66): error:  #35: #error directive: "Missing define: Evaluation board (ie. USE_STM3210E_EVAL)"
+compiling usb_int.c...
+..\..\src\usb\platform_config.h(66): error:  #35: #error directive: "Missing define: Evaluation board (ie. USE_STM3210E_EVAL)"
+compiling usb_mem.c...
+..\..\src\usb\platform_config.h(66): error:  #35: #error directive: "Missing define: Evaluation board (ie. USE_STM3210E_EVAL)"
+compiling usb_regs.c...
+..\..\src\usb\platform_config.h(66): error:  #35: #error directive: "Missing define: Evaluation board (ie. USE_STM3210E_EVAL)"
+compiling usb_sil.c...
+..\..\src\usb\platform_config.h(66): error:  #35: #error directive: "Missing define: Evaluation board (ie. USE_STM3210E_EVAL)"
+compiling bsp.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\bsp\bsp.c(69): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(70): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(71): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(72): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(86): warning:  #188-D: enumerated type mixed with another type
+..\..\src\bsp\bsp.c(87): warning:  #188-D: enumerated type mixed with another type
+..\..\src\bsp\bsp.c(427): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\bsp\bsp.c(450): error:  #20: identifier "USB_LP_IRQn" is undefined
+..\..\src\bsp\bsp.c(522): warning:  #940-D: missing return statement at end of non-void function "BSP_InterruptInit"
+..\..\src\bsp\bsp.c(569): warning:  #940-D: missing return statement at end of non-void function "BSP_SpiInit"
+..\..\src\bsp\bsp.c(635): warning:  #940-D: missing return statement at end of non-void function "BSP_I2CInit"
+..\..\src\bsp\bsp.c(701): error:  #20: identifier "GPIO_InitStructure" is undefined
+..\..\src\bsp\bsp.c(705): warning:  #940-D: missing return statement at end of non-void function "BSP_UsbInit"
+..\..\src\bsp\bsp.c(716): warning:  #177-D: variable "TIM_TimeBaseStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(717): warning:  #177-D: variable "TIM_OCInitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(718): warning:  #177-D: variable "GPIO_InitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(719): warning:  #177-D: variable "I2C_InitStructure" was declared but never referenced
+compiling hw_config.c...
+..\..\src\usb\platform_config.h(66): error:  #35: #error directive: "Missing define: Evaluation board (ie. USE_STM3210E_EVAL)"
+compiling usb_desc.c...
+..\..\src\usb\platform_config.h(66): error:  #35: #error directive: "Missing define: Evaluation board (ie. USE_STM3210E_EVAL)"
+compiling usb_endp.c...
+..\..\src\usb\platform_config.h(66): error:  #35: #error directive: "Missing define: Evaluation board (ie. USE_STM3210E_EVAL)"
+compiling usb_istr.c...
+..\..\src\usb\platform_config.h(66): error:  #35: #error directive: "Missing define: Evaluation board (ie. USE_STM3210E_EVAL)"
+compiling usb_prop.c...
+..\..\src\usb\platform_config.h(66): error:  #35: #error directive: "Missing define: Evaluation board (ie. USE_STM3210E_EVAL)"
+compiling usb_pwr.c...
+..\..\src\usb\platform_config.h(66): error:  #35: #error directive: "Missing define: Evaluation board (ie. USE_STM3210E_EVAL)"
+".\keil_c8t6.axf" - 14 Errors, 16 Warning(s).
+Target not created
+Build target 'Target 1'
+compiling usb_core.c...
+..\..\src\usb\platform_config.h(44): error:  #5: cannot open source input file "stm3210b_eval.h": No such file or directory
+compiling usb_init.c...
+..\..\src\usb\platform_config.h(44): error:  #5: cannot open source input file "stm3210b_eval.h": No such file or directory
+compiling usb_int.c...
+..\..\src\usb\platform_config.h(44): error:  #5: cannot open source input file "stm3210b_eval.h": No such file or directory
+compiling usb_mem.c...
+..\..\src\usb\platform_config.h(44): error:  #5: cannot open source input file "stm3210b_eval.h": No such file or directory
+compiling usb_regs.c...
+..\..\src\usb\platform_config.h(44): error:  #5: cannot open source input file "stm3210b_eval.h": No such file or directory
+compiling usb_sil.c...
+..\..\src\usb\platform_config.h(44): error:  #5: cannot open source input file "stm3210b_eval.h": No such file or directory
+compiling bsp.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\bsp\bsp.c(69): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(70): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(71): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(72): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(86): warning:  #188-D: enumerated type mixed with another type
+..\..\src\bsp\bsp.c(87): warning:  #188-D: enumerated type mixed with another type
+..\..\src\bsp\bsp.c(427): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\bsp\bsp.c(450): error:  #20: identifier "USB_LP_IRQn" is undefined
+..\..\src\bsp\bsp.c(522): warning:  #940-D: missing return statement at end of non-void function "BSP_InterruptInit"
+..\..\src\bsp\bsp.c(569): warning:  #940-D: missing return statement at end of non-void function "BSP_SpiInit"
+..\..\src\bsp\bsp.c(635): warning:  #940-D: missing return statement at end of non-void function "BSP_I2CInit"
+..\..\src\bsp\bsp.c(701): error:  #20: identifier "GPIO_InitStructure" is undefined
+..\..\src\bsp\bsp.c(705): warning:  #940-D: missing return statement at end of non-void function "BSP_UsbInit"
+..\..\src\bsp\bsp.c(716): warning:  #177-D: variable "TIM_TimeBaseStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(717): warning:  #177-D: variable "TIM_OCInitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(718): warning:  #177-D: variable "GPIO_InitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(719): warning:  #177-D: variable "I2C_InitStructure" was declared but never referenced
+compiling hw_config.c...
+..\..\src\usb\platform_config.h(44): error:  #5: cannot open source input file "stm3210b_eval.h": No such file or directory
+compiling usb_desc.c...
+..\..\src\usb\platform_config.h(44): error:  #5: cannot open source input file "stm3210b_eval.h": No such file or directory
+compiling usb_endp.c...
+..\..\src\usb\platform_config.h(44): error:  #5: cannot open source input file "stm3210b_eval.h": No such file or directory
+compiling usb_istr.c...
+..\..\src\usb\platform_config.h(44): error:  #5: cannot open source input file "stm3210b_eval.h": No such file or directory
+compiling usb_prop.c...
+..\..\src\usb\platform_config.h(44): error:  #5: cannot open source input file "stm3210b_eval.h": No such file or directory
+compiling usb_pwr.c...
+..\..\src\usb\platform_config.h(44): error:  #5: cannot open source input file "stm3210b_eval.h": No such file or directory
+".\keil_c8t6.axf" - 14 Errors, 16 Warning(s).
+Target not created
+Build target 'Target 1'
+compiling usb_core.c...
+..\..\src\usb\stm3210b_eval.h(40): error:  #5: cannot open source input file "stm32_eval_legacy.h": No such file or directory
+compiling usb_init.c...
+..\..\src\usb\stm3210b_eval.h(40): error:  #5: cannot open source input file "stm32_eval_legacy.h": No such file or directory
+compiling usb_int.c...
+..\..\src\usb\stm3210b_eval.h(40): error:  #5: cannot open source input file "stm32_eval_legacy.h": No such file or directory
+compiling usb_mem.c...
+..\..\src\usb\stm3210b_eval.h(40): error:  #5: cannot open source input file "stm32_eval_legacy.h": No such file or directory
+compiling usb_regs.c...
+..\..\src\usb\stm3210b_eval.h(40): error:  #5: cannot open source input file "stm32_eval_legacy.h": No such file or directory
+compiling usb_sil.c...
+..\..\src\usb\stm3210b_eval.h(40): error:  #5: cannot open source input file "stm32_eval_legacy.h": No such file or directory
+compiling bsp.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\bsp\bsp.c(69): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(70): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(71): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(72): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(86): warning:  #188-D: enumerated type mixed with another type
+..\..\src\bsp\bsp.c(87): warning:  #188-D: enumerated type mixed with another type
+..\..\src\bsp\bsp.c(427): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\bsp\bsp.c(450): error:  #20: identifier "USB_LP_IRQn" is undefined
+..\..\src\bsp\bsp.c(522): warning:  #940-D: missing return statement at end of non-void function "BSP_InterruptInit"
+..\..\src\bsp\bsp.c(569): warning:  #940-D: missing return statement at end of non-void function "BSP_SpiInit"
+..\..\src\bsp\bsp.c(635): warning:  #940-D: missing return statement at end of non-void function "BSP_I2CInit"
+..\..\src\bsp\bsp.c(701): error:  #20: identifier "GPIO_InitStructure" is undefined
+..\..\src\bsp\bsp.c(705): warning:  #940-D: missing return statement at end of non-void function "BSP_UsbInit"
+..\..\src\bsp\bsp.c(716): warning:  #177-D: variable "TIM_TimeBaseStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(717): warning:  #177-D: variable "TIM_OCInitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(718): warning:  #177-D: variable "GPIO_InitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(719): warning:  #177-D: variable "I2C_InitStructure" was declared but never referenced
+compiling hw_config.c...
+..\..\src\usb\stm3210b_eval.h(40): error:  #5: cannot open source input file "stm32_eval_legacy.h": No such file or directory
+compiling usb_desc.c...
+..\..\src\usb\stm3210b_eval.h(40): error:  #5: cannot open source input file "stm32_eval_legacy.h": No such file or directory
+compiling usb_endp.c...
+..\..\src\usb\stm3210b_eval.h(40): error:  #5: cannot open source input file "stm32_eval_legacy.h": No such file or directory
+compiling usb_istr.c...
+..\..\src\usb\stm3210b_eval.h(40): error:  #5: cannot open source input file "stm32_eval_legacy.h": No such file or directory
+compiling usb_prop.c...
+..\..\src\usb\stm3210b_eval.h(40): error:  #5: cannot open source input file "stm32_eval_legacy.h": No such file or directory
+compiling usb_pwr.c...
+..\..\src\usb\stm3210b_eval.h(40): error:  #5: cannot open source input file "stm32_eval_legacy.h": No such file or directory
+".\keil_c8t6.axf" - 14 Errors, 16 Warning(s).
+Target not created
+Build target 'Target 1'
+compiling usb_core.c...
+compiling usb_init.c...
+compiling usb_int.c...
+compiling usb_mem.c...
+compiling usb_regs.c...
+compiling usb_sil.c...
+compiling bsp.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\bsp\bsp.c(69): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(70): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(71): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(72): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(86): warning:  #188-D: enumerated type mixed with another type
+..\..\src\bsp\bsp.c(87): warning:  #188-D: enumerated type mixed with another type
+..\..\src\bsp\bsp.c(427): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\bsp\bsp.c(450): error:  #20: identifier "USB_LP_IRQn" is undefined
+..\..\src\bsp\bsp.c(522): warning:  #940-D: missing return statement at end of non-void function "BSP_InterruptInit"
+..\..\src\bsp\bsp.c(569): warning:  #940-D: missing return statement at end of non-void function "BSP_SpiInit"
+..\..\src\bsp\bsp.c(635): warning:  #940-D: missing return statement at end of non-void function "BSP_I2CInit"
+..\..\src\bsp\bsp.c(701): error:  #20: identifier "GPIO_InitStructure" is undefined
+..\..\src\bsp\bsp.c(705): warning:  #940-D: missing return statement at end of non-void function "BSP_UsbInit"
+..\..\src\bsp\bsp.c(716): warning:  #177-D: variable "TIM_TimeBaseStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(717): warning:  #177-D: variable "TIM_OCInitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(718): warning:  #177-D: variable "GPIO_InitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(719): warning:  #177-D: variable "I2C_InitStructure" was declared but never referenced
+compiling hw_config.c...
+compiling usb_desc.c...
+compiling usb_endp.c...
+compiling usb_istr.c...
+compiling usb_prop.c...
+compiling usb_pwr.c...
+".\keil_c8t6.axf" - 2 Errors, 16 Warning(s).
+Target not created
+Build target 'Target 1'
+compiling usb_core.c...
+compiling usb_init.c...
+compiling usb_int.c...
+compiling usb_mem.c...
+compiling usb_regs.c...
+compiling usb_sil.c...
+compiling bsp.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\bsp\bsp.c(69): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(70): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(71): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(72): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(86): warning:  #188-D: enumerated type mixed with another type
+..\..\src\bsp\bsp.c(87): warning:  #188-D: enumerated type mixed with another type
+..\..\src\bsp\bsp.c(427): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\bsp\bsp.c(522): warning:  #940-D: missing return statement at end of non-void function "BSP_InterruptInit"
+..\..\src\bsp\bsp.c(569): warning:  #940-D: missing return statement at end of non-void function "BSP_SpiInit"
+..\..\src\bsp\bsp.c(635): warning:  #940-D: missing return statement at end of non-void function "BSP_I2CInit"
+..\..\src\bsp\bsp.c(701): error:  #20: identifier "GPIO_InitStructure" is undefined
+..\..\src\bsp\bsp.c(705): warning:  #940-D: missing return statement at end of non-void function "BSP_UsbInit"
+..\..\src\bsp\bsp.c(716): warning:  #177-D: variable "TIM_TimeBaseStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(717): warning:  #177-D: variable "TIM_OCInitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(718): warning:  #177-D: variable "GPIO_InitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(719): warning:  #177-D: variable "I2C_InitStructure" was declared but never referenced
+compiling hw_config.c...
+compiling usb_desc.c...
+compiling usb_endp.c...
+compiling usb_istr.c...
+compiling usb_prop.c...
+compiling usb_pwr.c...
+".\keil_c8t6.axf" - 1 Errors, 16 Warning(s).
+Target not created
+Build target 'Target 1'
+compiling bsp.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\bsp\bsp.c(69): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(70): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(71): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(72): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(86): warning:  #188-D: enumerated type mixed with another type
+..\..\src\bsp\bsp.c(87): warning:  #188-D: enumerated type mixed with another type
+..\..\src\bsp\bsp.c(427): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\bsp\bsp.c(522): warning:  #940-D: missing return statement at end of non-void function "BSP_InterruptInit"
+..\..\src\bsp\bsp.c(569): warning:  #940-D: missing return statement at end of non-void function "BSP_SpiInit"
+..\..\src\bsp\bsp.c(635): warning:  #940-D: missing return statement at end of non-void function "BSP_I2CInit"
+..\..\src\bsp\bsp.c(707): warning:  #940-D: missing return statement at end of non-void function "BSP_UsbInit"
+..\..\src\bsp\bsp.c(718): warning:  #177-D: variable "TIM_TimeBaseStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(719): warning:  #177-D: variable "TIM_OCInitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(720): warning:  #177-D: variable "GPIO_InitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(721): warning:  #177-D: variable "I2C_InitStructure" was declared but never referenced
 linking...
-.\keil_c8t6.axf: Error: L6218E: Undefined symbol SRV_Main (referred from main.o).
-.\keil_c8t6.axf: Error: L6218E: Undefined symbol CMD_ChangeBit (referred from ccb_cmd.o).
-.\keil_c8t6.axf: Error: L6218E: Undefined symbol NVIC_Configuration (referred from drv_init.o).
-".\keil_c8t6.axf" - 3 Errors, 61 Warning(s).
+.\keil_c8t6.axf: Error: L6218E: Undefined symbol PrevXferComplete (referred from hw_config.o).
+.\keil_c8t6.axf: Error: L6218E: Undefined symbol STM_EVAL_PBGetState (referred from hw_config.o).
+.\keil_c8t6.axf: Error: L6218E: Undefined symbol STM_EVAL_PBInit (referred from hw_config.o).
+".\keil_c8t6.axf" - 3 Errors, 16 Warning(s).
 Target not created
 Build target 'Target 1'
 compiling main.c...
 ..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
-..\..\src\main.c(28): warning:  #223-D: function "BSP_ApiDeLayMs" declared implicitly
-..\..\src\main.c(31): warning:  #223-D: function "BSP_ApiInit" declared implicitly
-..\..\src\main.c(34): warning:  #223-D: function "CMD_Init" declared implicitly
-..\..\src\main.c(25): warning:  #177-D: variable "i" was declared but never referenced
-..\..\src\main.c(26): warning:  #177-D: variable "ulRet" was declared but never referenced
-linking...
-.\keil_c8t6.axf: Error: L6218E: Undefined symbol CMD_ChangeBit (referred from ccb_cmd.o).
-.\keil_c8t6.axf: Error: L6218E: Undefined symbol NVIC_Configuration (referred from drv_init.o).
-".\keil_c8t6.axf" - 2 Errors, 6 Warning(s).
+..\..\src\main.c(13): warning:  #223-D: function "BSP_ApiDeLayMs" declared implicitly
+..\..\src\main.c(14): warning:  #223-D: function "BSP_ApiInit" declared implicitly
+..\..\src\main.c(15): warning:  #223-D: function "USB_Interrupts_Config" declared implicitly
+..\..\src\main.c(17): warning:  #223-D: function "CMD_Init" declared implicitly
+..\..\src\main.c(11): warning:  #177-D: variable "i" was declared but never referenced
+compiling bsp.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\bsp\bsp.c(69): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(70): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(71): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(72): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(86): warning:  #188-D: enumerated type mixed with another type
+..\..\src\bsp\bsp.c(87): warning:  #188-D: enumerated type mixed with another type
+..\..\src\bsp\bsp.c(427): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\bsp\bsp.c(522): warning:  #940-D: missing return statement at end of non-void function "BSP_InterruptInit"
+..\..\src\bsp\bsp.c(569): warning:  #940-D: missing return statement at end of non-void function "BSP_SpiInit"
+..\..\src\bsp\bsp.c(635): warning:  #940-D: missing return statement at end of non-void function "BSP_I2CInit"
+..\..\src\bsp\bsp.c(707): warning:  #940-D: missing return statement at end of non-void function "BSP_UsbInit"
+..\..\src\bsp\bsp.c(718): warning:  #177-D: variable "TIM_TimeBaseStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(719): warning:  #177-D: variable "TIM_OCInitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(720): warning:  #177-D: variable "GPIO_InitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(721): warning:  #177-D: variable "I2C_InitStructure" was declared but never referenced
+compiling hw_config.c...
+..\..\src\usb\hw_config.c(418): error:  #127: expected a statement
+..\..\src\usb\hw_config.c(422): warning:  #12-D: parsing restarts here after previous syntax error
+..\..\src\usb\hw_config.c(422): warning:  #940-D: missing return statement at end of non-void function "JoyState"
+".\keil_c8t6.axf" - 1 Errors, 24 Warning(s).
 Target not created
 Build target 'Target 1'
+compiling hw_config.c...
 linking...
-.\keil_c8t6.axf: Error: L6218E: Undefined symbol CMD_ChangeBit (referred from ccb_cmd.o).
+.\keil_c8t6.axf: Error: L6218E: Undefined symbol STM_EVAL_PBInit (referred from hw_config.o).
 ".\keil_c8t6.axf" - 1 Errors, 0 Warning(s).
 Target not created
 Build target 'Target 1'
-compiling ccb_cmd.c...
-..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
-..\..\src\ccb\cmd\ccb_cmd.h(26): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
-..\..\src\ccb\cmd\ccb_cmd.h(78): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
-..\..\src\ccb\cmd\ccb_cmd.h(79): warning:  #1295-D: Deprecated declaration CMD_Proc - give arg types
-..\..\src\ccb\cmd\ccb_cmd.h(83): warning:  #1295-D: Deprecated declaration PDT_Init - give arg types
-..\..\src\ccb\cmd\ccb_cmd.h(89): warning:  #1-D: last line of file ends without a newline
-..\..\src\ccb\cmd\ccb_cmd.c(44): warning:  #223-D: function "memset" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(95): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(220): warning:  #223-D: function "strlen" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(232): warning:  #223-D: function "memcmp" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(287): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(290): warning:  #940-D: missing return statement at end of non-void function "CMD_Reg"
-..\..\src\ccb\cmd\ccb_cmd.c(324): warning:  #223-D: function "strcmp" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(355): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(314): warning:  #177-D: variable "i" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(413): warning:  #550-D: variable "pucPos" was set but never used
-..\..\src\ccb\cmd\ccb_cmd.c(485): warning:  #223-D: function "CMD_ChangeBit" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(469): warning:  #550-D: variable "pucPos" was set but never used
-..\..\src\ccb\cmd\ccb_cmd.c(551): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(544): warning:  #177-D: variable "pucPos" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(545): warning:  #177-D: variable "i" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(546): warning:  #177-D: variable "ulMacPos" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(547): warning:  #177-D: variable "ulMACValue" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(557): warning:  #1-D: last line of file ends without a newline
-..\..\src\ccb\cmd\ccb_cmd.c(374): warning: C4017W: ulTemp may be used before being set
+compiling hw_config.c...
 linking...
-.\keil_c8t6.axf: Error: L6218E: Undefined symbol CMD_ChangeBit (referred from ccb_cmd.o).
-".\keil_c8t6.axf" - 1 Errors, 25 Warning(s).
+Program Size: Code=14920 RO-data=268 RW-data=152 ZI-data=2416  
+FromELF: creating hex file...
+".\keil_c8t6.axf" - 0 Errors, 0 Warning(s).
+Build target 'Target 1'
+compiling usb_init.c...
+compiling bsp.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\bsp\bsp.c(69): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(70): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(71): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(72): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(86): warning:  #188-D: enumerated type mixed with another type
+..\..\src\bsp\bsp.c(87): warning:  #188-D: enumerated type mixed with another type
+..\..\src\bsp\bsp.c(427): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\bsp\bsp.c(522): warning:  #940-D: missing return statement at end of non-void function "BSP_InterruptInit"
+..\..\src\bsp\bsp.c(569): warning:  #940-D: missing return statement at end of non-void function "BSP_SpiInit"
+..\..\src\bsp\bsp.c(635): warning:  #940-D: missing return statement at end of non-void function "BSP_I2CInit"
+..\..\src\bsp\bsp.c(708): warning:  #223-D: function "USB_Init" declared implicitly
+..\..\src\bsp\bsp.c(709): warning:  #940-D: missing return statement at end of non-void function "BSP_UsbInit"
+..\..\src\bsp\bsp.c(720): warning:  #177-D: variable "TIM_TimeBaseStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(721): warning:  #177-D: variable "TIM_OCInitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(722): warning:  #177-D: variable "GPIO_InitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(723): warning:  #177-D: variable "I2C_InitStructure" was declared but never referenced
+compiling stm32f10x_it.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\bsp\stm32f10x_it.c(148): warning:  #223-D: function "BSP_SysTickSecond" declared implicitly
+..\..\src\bsp\stm32f10x_it.c(154): warning:  #223-D: function "USB_Istr" declared implicitly
+..\..\src\bsp\stm32f10x_it.c(161): warning:  #223-D: function "CMD_Rx" declared implicitly
+..\..\src\bsp\stm32f10x_it.c(167): warning:  #223-D: function "printf" declared implicitly
+compiling hw_config.c...
+compiling usb_istr.c...
+linking...
+Program Size: Code=18582 RO-data=466 RW-data=416 ZI-data=2448  
+FromELF: creating hex file...
+".\keil_c8t6.axf" - 0 Errors, 22 Warning(s).
+Load "F:\\git_new\\new\\stm32_c8t6_keil\\Project\\Keil4\\keil_c8t6.axf" 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...
+Build target 'Target 1'
+compiling main.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\main.c(13): warning:  #223-D: function "BSP_ApiDeLayMs" declared implicitly
+..\..\src\main.c(14): warning:  #223-D: function "BSP_ApiInit" declared implicitly
+..\..\src\main.c(15): warning:  #223-D: function "USB_Interrupts_Config" declared implicitly
+..\..\src\main.c(17): warning:  #223-D: function "CMD_Init" declared implicitly
+..\..\src\main.c(24): error:  #20: identifier "bDeviceState" is undefined
+..\..\src\main.c(24): error:  #20: identifier "CONFIGURED" is undefined
+..\..\src\main.c(29): warning:  #223-D: function "Joystick_Send" declared implicitly
+..\..\src\main.c(29): warning:  #223-D: function "JoyState" declared implicitly
+..\..\src\main.c(11): warning:  #177-D: variable "i" was declared but never referenced
+..\..\src\main.c(35): error: At end of source:  #67: expected a "}"
+".\keil_c8t6.axf" - 3 Errors, 8 Warning(s).
 Target not created
+Build target 'Target 1'
+compiling main.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\main.c(14): warning:  #223-D: function "BSP_ApiDeLayMs" declared implicitly
+..\..\src\main.c(15): warning:  #223-D: function "BSP_ApiInit" declared implicitly
+..\..\src\main.c(16): warning:  #223-D: function "USB_Interrupts_Config" declared implicitly
+..\..\src\main.c(18): warning:  #223-D: function "CMD_Init" declared implicitly
+..\..\src\main.c(25): error:  #20: identifier "CONFIGURED" is undefined
+..\..\src\main.c(30): warning:  #223-D: function "Joystick_Send" declared implicitly
+..\..\src\main.c(30): warning:  #223-D: function "JoyState" declared implicitly
+..\..\src\main.c(12): warning:  #177-D: variable "i" was declared but never referenced
+..\..\src\main.c(36): error: At end of source:  #67: expected a "}"
+".\keil_c8t6.axf" - 2 Errors, 8 Warning(s).
+Target not created
+Build target 'Target 1'
+compiling main.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\main.c(13): warning:  #223-D: function "BSP_ApiDeLayMs" declared implicitly
+..\..\src\main.c(14): warning:  #223-D: function "BSP_ApiInit" declared implicitly
+..\..\src\main.c(17): warning:  #223-D: function "CMD_Init" declared implicitly
+..\..\src\main.c(11): warning:  #177-D: variable "i" was declared but never referenced
+..\..\src\main.c(35): error: At end of source:  #67: expected a "}"
+".\keil_c8t6.axf" - 1 Errors, 5 Warning(s).
+Target not created
+Build target 'Target 1'
+compiling main.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\main.c(14): warning:  #223-D: function "BSP_ApiDeLayMs" declared implicitly
+..\..\src\main.c(15): warning:  #223-D: function "BSP_ApiInit" declared implicitly
+..\..\src\main.c(18): warning:  #223-D: function "CMD_Init" declared implicitly
+..\..\src\main.c(12): warning:  #177-D: variable "i" was declared but never referenced
+linking...
+Program Size: Code=18614 RO-data=466 RW-data=416 ZI-data=2448  
+FromELF: creating hex file...
+".\keil_c8t6.axf" - 0 Errors, 5 Warning(s).
+Load "F:\\git_new\\new\\stm32_c8t6_keil\\Project\\Keil4\\keil_c8t6.axf" 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...
 Rebuild target 'Target 1'
 compiling core_cm3.c...
 compiling system_stm32f10x.c...
@@ -154,41 +1001,45 @@ compiling stm32f10x_usart.c...
 compiling stm32f10x_flash.c...
 compiling stm32f10x_exti.c...
 compiling stm32f10x_i2c.c...
+compiling usb_core.c...
+compiling usb_init.c...
+compiling usb_int.c...
+compiling usb_mem.c...
+compiling usb_regs.c...
+compiling usb_sil.c...
 assembling startup_stm32f10x_md.s...
 compiling main.c...
 ..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
-..\..\src\main.c(28): warning:  #223-D: function "BSP_ApiDeLayMs" declared implicitly
-..\..\src\main.c(31): warning:  #223-D: function "BSP_ApiInit" declared implicitly
-..\..\src\main.c(34): warning:  #223-D: function "CMD_Init" declared implicitly
-..\..\src\main.c(25): warning:  #177-D: variable "i" was declared but never referenced
-..\..\src\main.c(26): warning:  #177-D: variable "ulRet" was declared but never referenced
+..\..\src\main.c(14): warning:  #223-D: function "BSP_ApiDeLayMs" declared implicitly
+..\..\src\main.c(15): warning:  #223-D: function "BSP_ApiInit" declared implicitly
+..\..\src\main.c(18): warning:  #223-D: function "CMD_Init" declared implicitly
+..\..\src\main.c(12): warning:  #177-D: variable "i" was declared but never referenced
 compiling ccb_cmd.c...
 ..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
-..\..\src\ccb\cmd\ccb_cmd.h(26): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
-..\..\src\ccb\cmd\ccb_cmd.h(78): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
-..\..\src\ccb\cmd\ccb_cmd.h(79): warning:  #1295-D: Deprecated declaration CMD_Proc - give arg types
-..\..\src\ccb\cmd\ccb_cmd.h(83): warning:  #1295-D: Deprecated declaration PDT_Init - give arg types
-..\..\src\ccb\cmd\ccb_cmd.h(89): warning:  #1-D: last line of file ends without a newline
-..\..\src\ccb\cmd\ccb_cmd.c(44): warning:  #223-D: function "memset" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(95): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(220): warning:  #223-D: function "strlen" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(232): warning:  #223-D: function "memcmp" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(287): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(290): warning:  #940-D: missing return statement at end of non-void function "CMD_Reg"
-..\..\src\ccb\cmd\ccb_cmd.c(324): warning:  #223-D: function "strcmp" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(355): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(314): warning:  #177-D: variable "i" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(413): warning:  #550-D: variable "pucPos" was set but never used
-..\..\src\ccb\cmd\ccb_cmd.c(485): warning:  #223-D: function "CMD_ChangeBit" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(469): warning:  #550-D: variable "pucPos" was set but never used
-..\..\src\ccb\cmd\ccb_cmd.c(551): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(544): warning:  #177-D: variable "pucPos" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(545): warning:  #177-D: variable "i" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(546): warning:  #177-D: variable "ulMacPos" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(547): warning:  #177-D: variable "ulMACValue" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(557): warning:  #1-D: last line of file ends without a newline
-..\..\src\ccb\cmd\ccb_cmd.c(374): warning: C4017W: ulTemp may be used before being set
-..\..\src\ccb\cmd\ccb_cmd.c(467): warning: C4017W: ulCmdNameLen may be used before being set
+..\..\src\ccb\cmd\ccb_cmd.h(4): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
+..\..\src\ccb\cmd\ccb_cmd.h(56): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
+..\..\src\ccb\cmd\ccb_cmd.h(57): warning:  #1295-D: Deprecated declaration CMD_Proc - give arg types
+..\..\src\ccb\cmd\ccb_cmd.h(61): warning:  #1295-D: Deprecated declaration PDT_Init - give arg types
+..\..\src\ccb\cmd\ccb_cmd.h(63): warning:  #1-D: last line of file ends without a newline
+..\..\src\ccb\cmd\ccb_cmd.c(21): warning:  #223-D: function "memset" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(55): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(153): warning:  #223-D: function "strlen" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(165): warning:  #223-D: function "memcmp" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(208): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(211): warning:  #940-D: missing return statement at end of non-void function "CMD_Reg"
+..\..\src\ccb\cmd\ccb_cmd.c(233): warning:  #223-D: function "strcmp" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(264): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(223): warning:  #177-D: variable "i" was declared but never referenced
+..\..\src\ccb\cmd\ccb_cmd.c(322): warning:  #550-D: variable "pucPos" was set but never used
+..\..\src\ccb\cmd\ccb_cmd.c(378): warning:  #550-D: variable "pucPos" was set but never used
+..\..\src\ccb\cmd\ccb_cmd.c(460): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(453): warning:  #177-D: variable "pucPos" was declared but never referenced
+..\..\src\ccb\cmd\ccb_cmd.c(454): warning:  #177-D: variable "i" was declared but never referenced
+..\..\src\ccb\cmd\ccb_cmd.c(455): warning:  #177-D: variable "ulMacPos" was declared but never referenced
+..\..\src\ccb\cmd\ccb_cmd.c(456): warning:  #177-D: variable "ulMACValue" was declared but never referenced
+..\..\src\ccb\cmd\ccb_cmd.c(466): warning:  #1-D: last line of file ends without a newline
+..\..\src\ccb\cmd\ccb_cmd.c(283): warning: C4017W: ulTemp may be used before being set
+..\..\src\ccb\cmd\ccb_cmd.c(376): warning: C4017W: ulCmdNameLen may be used before being set
 compiling bsp.c...
 ..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
 ..\..\src\bsp\bsp.c(69): warning:  #1296-D: extended constant initialiser used
@@ -197,225 +1048,217 @@ compiling bsp.c...
 ..\..\src\bsp\bsp.c(72): warning:  #1296-D: extended constant initialiser used
 ..\..\src\bsp\bsp.c(86): warning:  #188-D: enumerated type mixed with another type
 ..\..\src\bsp\bsp.c(87): warning:  #188-D: enumerated type mixed with another type
-..\..\src\bsp\bsp.c(451): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\bsp\bsp.c(538): warning:  #940-D: missing return statement at end of non-void function "BSP_InterruptInit"
-..\..\src\bsp\bsp.c(585): warning:  #940-D: missing return statement at end of non-void function "BSP_SpiInit"
-..\..\src\bsp\bsp.c(651): warning:  #940-D: missing return statement at end of non-void function "BSP_I2CInit"
-..\..\src\bsp\bsp.c(748): warning:  #177-D: variable "TIM_TimeBaseStructure" was declared but never referenced
-..\..\src\bsp\bsp.c(749): warning:  #177-D: variable "TIM_OCInitStructure" was declared but never referenced
-..\..\src\bsp\bsp.c(750): warning:  #177-D: variable "GPIO_InitStructure" was declared but never referenced
-..\..\src\bsp\bsp.c(751): warning:  #177-D: variable "I2C_InitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(427): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\bsp\bsp.c(522): warning:  #940-D: missing return statement at end of non-void function "BSP_InterruptInit"
+..\..\src\bsp\bsp.c(569): warning:  #940-D: missing return statement at end of non-void function "BSP_SpiInit"
+..\..\src\bsp\bsp.c(635): warning:  #940-D: missing return statement at end of non-void function "BSP_I2CInit"
+..\..\src\bsp\bsp.c(708): warning:  #223-D: function "USB_Init" declared implicitly
+..\..\src\bsp\bsp.c(709): warning:  #940-D: missing return statement at end of non-void function "BSP_UsbInit"
+..\..\src\bsp\bsp.c(720): warning:  #177-D: variable "TIM_TimeBaseStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(721): warning:  #177-D: variable "TIM_OCInitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(722): warning:  #177-D: variable "GPIO_InitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(723): warning:  #177-D: variable "I2C_InitStructure" was declared but never referenced
 compiling stm32f10x_it.c...
 ..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
 ..\..\src\bsp\stm32f10x_it.c(148): warning:  #223-D: function "BSP_SysTickSecond" declared implicitly
+..\..\src\bsp\stm32f10x_it.c(154): warning:  #223-D: function "USB_Istr" declared implicitly
 ..\..\src\bsp\stm32f10x_it.c(161): warning:  #223-D: function "CMD_Rx" declared implicitly
 ..\..\src\bsp\stm32f10x_it.c(167): warning:  #223-D: function "printf" declared implicitly
+compiling hw_config.c...
+compiling usb_desc.c...
+compiling usb_endp.c...
+compiling usb_istr.c...
+compiling usb_prop.c...
+compiling usb_pwr.c...
 linking...
-.\keil_c8t6.axf: Error: L6218E: Undefined symbol CMD_ChangeBit (referred from ccb_cmd.o).
-".\keil_c8t6.axf" - 1 Errors, 51 Warning(s).
-Target not created
-Build target 'Target 1'
-compiling ccb_cmd.c...
-..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
-..\..\src\ccb\cmd\ccb_cmd.h(26): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
-..\..\src\ccb\cmd\ccb_cmd.h(78): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
-..\..\src\ccb\cmd\ccb_cmd.h(79): warning:  #1295-D: Deprecated declaration CMD_Proc - give arg types
-..\..\src\ccb\cmd\ccb_cmd.h(83): warning:  #1295-D: Deprecated declaration PDT_Init - give arg types
-..\..\src\ccb\cmd\ccb_cmd.h(89): warning:  #1-D: last line of file ends without a newline
-..\..\src\ccb\cmd\ccb_cmd.c(44): warning:  #223-D: function "memset" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(95): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(220): warning:  #223-D: function "strlen" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(232): warning:  #223-D: function "memcmp" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(287): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(290): warning:  #940-D: missing return statement at end of non-void function "CMD_Reg"
-..\..\src\ccb\cmd\ccb_cmd.c(324): warning:  #223-D: function "strcmp" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(355): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(314): warning:  #177-D: variable "i" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(413): warning:  #550-D: variable "pucPos" was set but never used
-..\..\src\ccb\cmd\ccb_cmd.c(469): warning:  #550-D: variable "pucPos" was set but never used
-..\..\src\ccb\cmd\ccb_cmd.c(551): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(544): warning:  #177-D: variable "pucPos" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(545): warning:  #177-D: variable "i" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(546): warning:  #177-D: variable "ulMacPos" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(547): warning:  #177-D: variable "ulMACValue" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(557): warning:  #1-D: last line of file ends without a newline
-..\..\src\ccb\cmd\ccb_cmd.c(374): warning: C4017W: ulTemp may be used before being set
-..\..\src\ccb\cmd\ccb_cmd.c(467): warning: C4017W: ulCmdNameLen may be used before being set
-linking...
-Program Size: Code=12444 RO-data=268 RW-data=116 ZI-data=2388  
+Program Size: Code=18622 RO-data=466 RW-data=416 ZI-data=2448  
 FromELF: creating hex file...
-".\keil_c8t6.axf" - 0 Errors, 25 Warning(s).
+".\keil_c8t6.axf" - 0 Errors, 52 Warning(s).
+Load "F:\\git_new\\new\\stm32_c8t6_keil\\Project\\Keil4\\keil_c8t6.axf" 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...
 Build target 'Target 1'
 compiling main.c...
 ..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
-..\..\src\main.c(27): warning:  #223-D: function "BSP_ApiDeLayMs" declared implicitly
-..\..\src\main.c(30): warning:  #223-D: function "BSP_ApiInit" declared implicitly
-..\..\src\main.c(33): warning:  #223-D: function "CMD_Init" declared implicitly
-..\..\src\main.c(25): warning:  #177-D: variable "i" was declared but never referenced
+..\..\src\main.c(14): warning:  #223-D: function "BSP_ApiDeLayMs" declared implicitly
+..\..\src\main.c(15): warning:  #223-D: function "BSP_ApiInit" declared implicitly
+..\..\src\main.c(18): warning:  #223-D: function "CMD_Init" declared implicitly
+..\..\src\main.c(12): warning:  #177-D: variable "i" was declared but never referenced
 linking...
-Program Size: Code=12468 RO-data=268 RW-data=116 ZI-data=2388  
+Program Size: Code=18602 RO-data=466 RW-data=416 ZI-data=2448  
 FromELF: creating hex file...
 ".\keil_c8t6.axf" - 0 Errors, 5 Warning(s).
 Load "F:\\git_new\\new\\stm32_c8t6_keil\\Project\\Keil4\\keil_c8t6.axf" 
-Load "F:\\git_new\\new\\stm32_c8t6_keil\\Project\\Keil4\\keil_c8t6.axf" 
-Internal command error
-Internal command error
-Build target 'Target 1'
-linking...
-Program Size: Code=12468 RO-data=268 RW-data=116 ZI-data=2388  
-FromELF: creating hex file...
-".\keil_c8t6.axf" - 0 Errors, 0 Warning(s).
-Load "F:\\git_new\\new\\stm32_c8t6_keil\\Project\\Keil4\\keil_c8t6.axf" 
-Load "F:\\git_new\\new\\stm32_c8t6_keil\\Project\\Keil4\\keil_c8t6.axf" 
-Internal command error
-Internal command error
-Load "F:\\git_new\\new\\stm32_c8t6_keil\\Project\\Keil4\\keil_c8t6.axf" 
 Erase Done.
 Programming Done.
 Verify OK.
 Application running ...
 Build target 'Target 1'
-compiling system_stm32f10x.c...
-compiling stm32f10x_gpio.c...
-compiling stm32f10x_rcc.c...
-compiling misc.c...
-compiling stm32f10x_tim.c...
-compiling stm32f10x_spi.c...
-compiling stm32f10x_usart.c...
-compiling stm32f10x_flash.c...
-compiling stm32f10x_exti.c...
-compiling stm32f10x_i2c.c...
 compiling main.c...
 ..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
-..\..\src\main.c(11): warning:  #223-D: function "BSP_ApiDeLayMs" declared implicitly
-..\..\src\main.c(13): warning:  #223-D: function "BSP_ApiInit" declared implicitly
-..\..\src\main.c(15): warning:  #223-D: function "CMD_Init" declared implicitly
-..\..\src\main.c(9): warning:  #177-D: variable "i" was declared but never referenced
-compiling ccb_cmd.c...
-..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
-..\..\src\ccb\cmd\ccb_cmd.h(26): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
-..\..\src\ccb\cmd\ccb_cmd.h(78): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
-..\..\src\ccb\cmd\ccb_cmd.h(79): warning:  #1295-D: Deprecated declaration CMD_Proc - give arg types
-..\..\src\ccb\cmd\ccb_cmd.h(83): warning:  #1295-D: Deprecated declaration PDT_Init - give arg types
-..\..\src\ccb\cmd\ccb_cmd.h(89): warning:  #1-D: last line of file ends without a newline
-..\..\src\ccb\cmd\ccb_cmd.c(21): warning:  #223-D: function "memset" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(55): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(153): warning:  #223-D: function "strlen" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(165): warning:  #223-D: function "memcmp" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(208): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(211): warning:  #940-D: missing return statement at end of non-void function "CMD_Reg"
-..\..\src\ccb\cmd\ccb_cmd.c(233): warning:  #223-D: function "strcmp" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(252): warning:  #870-D: invalid multibyte character sequence
-..\..\src\ccb\cmd\ccb_cmd.c(264): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(223): warning:  #177-D: variable "i" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(322): warning:  #550-D: variable "pucPos" was set but never used
-..\..\src\ccb\cmd\ccb_cmd.c(378): warning:  #550-D: variable "pucPos" was set but never used
-..\..\src\ccb\cmd\ccb_cmd.c(460): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(453): warning:  #177-D: variable "pucPos" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(454): warning:  #177-D: variable "i" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(455): warning:  #177-D: variable "ulMacPos" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(456): warning:  #177-D: variable "ulMACValue" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(466): warning:  #1-D: last line of file ends without a newline
-..\..\src\ccb\cmd\ccb_cmd.c(283): warning: C4017W: ulTemp may be used before being set
-..\..\src\ccb\cmd\ccb_cmd.c(376): warning: C4017W: ulCmdNameLen may be used before being set
-compiling bsp.c...
-..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
-..\..\src\bsp\bsp.c(69): warning:  #1296-D: extended constant initialiser used
-..\..\src\bsp\bsp.c(70): warning:  #1296-D: extended constant initialiser used
-..\..\src\bsp\bsp.c(71): warning:  #1296-D: extended constant initialiser used
-..\..\src\bsp\bsp.c(72): warning:  #1296-D: extended constant initialiser used
-..\..\src\bsp\bsp.c(86): warning:  #188-D: enumerated type mixed with another type
-..\..\src\bsp\bsp.c(87): warning:  #188-D: enumerated type mixed with another type
-..\..\src\bsp\bsp.c(451): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\bsp\bsp.c(538): warning:  #940-D: missing return statement at end of non-void function "BSP_InterruptInit"
-..\..\src\bsp\bsp.c(585): warning:  #940-D: missing return statement at end of non-void function "BSP_SpiInit"
-..\..\src\bsp\bsp.c(651): warning:  #940-D: missing return statement at end of non-void function "BSP_I2CInit"
-..\..\src\bsp\bsp.c(748): warning:  #177-D: variable "TIM_TimeBaseStructure" was declared but never referenced
-..\..\src\bsp\bsp.c(749): warning:  #177-D: variable "TIM_OCInitStructure" was declared but never referenced
-..\..\src\bsp\bsp.c(750): warning:  #177-D: variable "GPIO_InitStructure" was declared but never referenced
-..\..\src\bsp\bsp.c(751): warning:  #177-D: variable "I2C_InitStructure" was declared but never referenced
-compiling stm32f10x_it.c...
-..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
-..\..\src\bsp\stm32f10x_it.c(148): warning:  #223-D: function "BSP_SysTickSecond" declared implicitly
-..\..\src\bsp\stm32f10x_it.c(161): warning:  #223-D: function "CMD_Rx" declared implicitly
-..\..\src\bsp\stm32f10x_it.c(167): warning:  #223-D: function "printf" declared implicitly
+..\..\src\main.c(14): warning:  #223-D: function "BSP_ApiDeLayMs" declared implicitly
+..\..\src\main.c(15): warning:  #223-D: function "BSP_ApiInit" declared implicitly
+..\..\src\main.c(18): warning:  #223-D: function "CMD_Init" declared implicitly
+..\..\src\main.c(12): warning:  #177-D: variable "i" was declared but never referenced
 linking...
-Program Size: Code=12484 RO-data=268 RW-data=116 ZI-data=2388  
+Program Size: Code=18622 RO-data=466 RW-data=416 ZI-data=2448  
 FromELF: creating hex file...
-".\keil_c8t6.axf" - 0 Errors, 50 Warning(s).
-Build target 'Target 1'
-compiling ccb_cmd.c...
-..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
-..\..\src\ccb\cmd\ccb_cmd.h(4): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
-..\..\src\ccb\cmd\ccb_cmd.h(56): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
-..\..\src\ccb\cmd\ccb_cmd.h(57): warning:  #1295-D: Deprecated declaration CMD_Proc - give arg types
-..\..\src\ccb\cmd\ccb_cmd.h(61): warning:  #1295-D: Deprecated declaration PDT_Init - give arg types
-..\..\src\ccb\cmd\ccb_cmd.h(63): warning:  #1-D: last line of file ends without a newline
-..\..\src\ccb\cmd\ccb_cmd.c(21): warning:  #223-D: function "memset" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(55): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(153): warning:  #223-D: function "strlen" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(165): warning:  #223-D: function "memcmp" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(208): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(211): warning:  #940-D: missing return statement at end of non-void function "CMD_Reg"
-..\..\src\ccb\cmd\ccb_cmd.c(233): warning:  #223-D: function "strcmp" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(252): warning:  #870-D: invalid multibyte character sequence
-..\..\src\ccb\cmd\ccb_cmd.c(264): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(223): warning:  #177-D: variable "i" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(322): warning:  #550-D: variable "pucPos" was set but never used
-..\..\src\ccb\cmd\ccb_cmd.c(378): warning:  #550-D: variable "pucPos" was set but never used
-..\..\src\ccb\cmd\ccb_cmd.c(460): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(453): warning:  #177-D: variable "pucPos" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(454): warning:  #177-D: variable "i" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(455): warning:  #177-D: variable "ulMacPos" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(456): warning:  #177-D: variable "ulMACValue" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(466): warning:  #1-D: last line of file ends without a newline
-..\..\src\ccb\cmd\ccb_cmd.c(283): warning: C4017W: ulTemp may be used before being set
-..\..\src\ccb\cmd\ccb_cmd.c(376): warning: C4017W: ulCmdNameLen may be used before being set
-linking...
-Program Size: Code=12484 RO-data=268 RW-data=116 ZI-data=2388  
-FromELF: creating hex file...
-".\keil_c8t6.axf" - 0 Errors, 26 Warning(s).
+".\keil_c8t6.axf" - 0 Errors, 5 Warning(s).
 Load "F:\\git_new\\new\\stm32_c8t6_keil\\Project\\Keil4\\keil_c8t6.axf" 
 Erase Done.
 Programming Done.
 Verify OK.
 Application running ...
 Build target 'Target 1'
-compiling ccb_cmd.c...
+compiling main.c...
 ..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
-..\..\src\ccb\cmd\ccb_cmd.h(4): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
-..\..\src\ccb\cmd\ccb_cmd.h(56): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
-..\..\src\ccb\cmd\ccb_cmd.h(57): warning:  #1295-D: Deprecated declaration CMD_Proc - give arg types
-..\..\src\ccb\cmd\ccb_cmd.h(61): warning:  #1295-D: Deprecated declaration PDT_Init - give arg types
-..\..\src\ccb\cmd\ccb_cmd.h(63): warning:  #1-D: last line of file ends without a newline
-..\..\src\ccb\cmd\ccb_cmd.c(21): warning:  #223-D: function "memset" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(55): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(153): warning:  #223-D: function "strlen" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(165): warning:  #223-D: function "memcmp" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(208): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(211): warning:  #940-D: missing return statement at end of non-void function "CMD_Reg"
-..\..\src\ccb\cmd\ccb_cmd.c(233): warning:  #223-D: function "strcmp" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(264): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(223): warning:  #177-D: variable "i" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(322): warning:  #550-D: variable "pucPos" was set but never used
-..\..\src\ccb\cmd\ccb_cmd.c(378): warning:  #550-D: variable "pucPos" was set but never used
-..\..\src\ccb\cmd\ccb_cmd.c(460): warning:  #223-D: function "memcpy" declared implicitly
-..\..\src\ccb\cmd\ccb_cmd.c(453): warning:  #177-D: variable "pucPos" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(454): warning:  #177-D: variable "i" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(455): warning:  #177-D: variable "ulMacPos" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(456): warning:  #177-D: variable "ulMACValue" was declared but never referenced
-..\..\src\ccb\cmd\ccb_cmd.c(466): warning:  #1-D: last line of file ends without a newline
-..\..\src\ccb\cmd\ccb_cmd.c(283): warning: C4017W: ulTemp may be used before being set
-..\..\src\ccb\cmd\ccb_cmd.c(376): warning: C4017W: ulCmdNameLen may be used before being set
+..\..\src\main.c(14): warning:  #223-D: function "BSP_ApiDeLayMs" declared implicitly
+..\..\src\main.c(15): warning:  #223-D: function "BSP_ApiInit" declared implicitly
+..\..\src\main.c(18): warning:  #223-D: function "CMD_Init" declared implicitly
+..\..\src\main.c(12): warning:  #177-D: variable "i" was declared but never referenced
 linking...
-Program Size: Code=12472 RO-data=268 RW-data=116 ZI-data=2388  
+Program Size: Code=18642 RO-data=466 RW-data=416 ZI-data=2448  
 FromELF: creating hex file...
-".\keil_c8t6.axf" - 0 Errors, 25 Warning(s).
+".\keil_c8t6.axf" - 0 Errors, 5 Warning(s).
+Load "F:\\git_new\\new\\stm32_c8t6_keil\\Project\\Keil4\\keil_c8t6.axf" 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...
+Build target 'Target 1'
+compiling usb_prop.c...
+..\..\src\usb\usb_prop.c(134): warning:  #223-D: function "printf" declared implicitly
+linking...
+Program Size: Code=18658 RO-data=466 RW-data=416 ZI-data=2448  
+FromELF: creating hex file...
+".\keil_c8t6.axf" - 0 Errors, 1 Warning(s).
+Load "F:\\git_new\\new\\stm32_c8t6_keil\\Project\\Keil4\\keil_c8t6.axf" 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...
+Build target 'Target 1'
+compiling usb_prop.c...
+..\..\src\usb\usb_prop.c(134): warning:  #223-D: function "printf" declared implicitly
+..\..\src\usb\usb_prop.c(306): warning:  #223-D: function "printf" declared implicitly
+..\..\src\usb\usb_prop.c(319): warning:  #223-D: function "printf" declared implicitly
+..\..\src\usb\usb_prop.c(332): warning:  #223-D: function "printf" declared implicitly
+..\..\src\usb\usb_prop.c(333): error:  #268: declaration may not appear after executable statement in block
+".\keil_c8t6.axf" - 1 Errors, 4 Warning(s).
+Target not created
+Build target 'Target 1'
+compiling usb_prop.c...
+..\..\src\usb\usb_prop.c(134): warning:  #223-D: function "printf" declared implicitly
+..\..\src\usb\usb_prop.c(306): warning:  #223-D: function "printf" declared implicitly
+..\..\src\usb\usb_prop.c(319): warning:  #223-D: function "printf" declared implicitly
+..\..\src\usb\usb_prop.c(333): warning:  #223-D: function "printf" declared implicitly
+linking...
+Program Size: Code=18734 RO-data=466 RW-data=416 ZI-data=2448  
+FromELF: creating hex file...
+".\keil_c8t6.axf" - 0 Errors, 4 Warning(s).
+Load "F:\\git_new\\new\\stm32_c8t6_keil\\Project\\Keil4\\keil_c8t6.axf" 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...
+Build target 'Target 1'
+compiling usb_prop.c...
+..\..\src\usb\usb_prop.c(134): warning:  #223-D: function "printf" declared implicitly
+..\..\src\usb\usb_prop.c(156): warning:  #223-D: function "printf" declared implicitly
+..\..\src\usb\usb_prop.c(223): warning:  #223-D: function "printf" declared implicitly
+..\..\src\usb\usb_prop.c(235): warning:  #223-D: function "printf" declared implicitly
+..\..\src\usb\usb_prop.c(249): warning:  #223-D: function "printf" declared implicitly
+..\..\src\usb\usb_prop.c(313): warning:  #223-D: function "printf" declared implicitly
+..\..\src\usb\usb_prop.c(326): warning:  #223-D: function "printf" declared implicitly
+..\..\src\usb\usb_prop.c(340): warning:  #223-D: function "printf" declared implicitly
+linking...
+Program Size: Code=18802 RO-data=466 RW-data=416 ZI-data=2448  
+FromELF: creating hex file...
+".\keil_c8t6.axf" - 0 Errors, 8 Warning(s).
 Build target 'Target 1'
 linking...
-Program Size: Code=12472 RO-data=268 RW-data=116 ZI-data=2388  
+Program Size: Code=18802 RO-data=466 RW-data=416 ZI-data=2448  
 FromELF: creating hex file...
 ".\keil_c8t6.axf" - 0 Errors, 0 Warning(s).
+Load "F:\\git_new\\new\\stm32_c8t6_keil\\Project\\Keil4\\keil_c8t6.axf" 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...
+Build target 'Target 1'
+compiling main.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\main.c(14): warning:  #223-D: function "BSP_ApiDeLayMs" declared implicitly
+..\..\src\main.c(15): warning:  #223-D: function "BSP_ApiInit" declared implicitly
+..\..\src\main.c(18): warning:  #223-D: function "CMD_Init" declared implicitly
+..\..\src\main.c(12): warning:  #177-D: variable "i" was declared but never referenced
+linking...
+Program Size: Code=18798 RO-data=466 RW-data=416 ZI-data=2448  
+FromELF: creating hex file...
+".\keil_c8t6.axf" - 0 Errors, 5 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: Code=18798 RO-data=466 RW-data=416 ZI-data=2448  
+FromELF: creating hex file...
+".\keil_c8t6.axf" - 0 Errors, 0 Warning(s).
+Load "F:\\git_new\\new\\stm32_c8t6_keil\\Project\\Keil4\\keil_c8t6.axf" 
+Load "F:\\git_new\\new\\stm32_c8t6_keil\\Project\\Keil4\\keil_c8t6.axf" 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...
+Build target 'Target 1'
+compiling usb_desc.c...
+linking...
+Program Size: Code=18798 RO-data=466 RW-data=416 ZI-data=2448  
+FromELF: creating hex file...
+".\keil_c8t6.axf" - 0 Errors, 0 Warning(s).
+Load "F:\\git_new\\new\\stm32_c8t6_keil\\Project\\Keil4\\keil_c8t6.axf" 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...
+Build target 'Target 1'
+compiling main.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\main.c(16): warning:  #223-D: function "BSP_ApiDeLayMs" declared implicitly
+..\..\src\main.c(17): warning:  #223-D: function "BSP_ApiInit" declared implicitly
+..\..\src\main.c(20): warning:  #223-D: function "CMD_Init" declared implicitly
+..\..\src\main.c(12): warning:  #177-D: variable "i" was declared but never referenced
+linking...
+Program Size: Code=18802 RO-data=466 RW-data=416 ZI-data=2448  
+FromELF: creating hex file...
+".\keil_c8t6.axf" - 0 Errors, 5 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: Code=18802 RO-data=466 RW-data=416 ZI-data=2448  
+FromELF: creating hex file...
+".\keil_c8t6.axf" - 0 Errors, 0 Warning(s).
+Load "F:\\git_new\\new\\stm32_c8t6_keil\\Project\\Keil4\\keil_c8t6.axf" 
+Load "F:\\git_new\\new\\stm32_c8t6_keil\\Project\\Keil4\\keil_c8t6.axf" 
+Build target 'Target 1'
+linking...
+Program Size: Code=18802 RO-data=466 RW-data=416 ZI-data=2448  
+FromELF: creating hex file...
+".\keil_c8t6.axf" - 0 Errors, 0 Warning(s).
+Load "F:\\git_new\\new\\stm32_c8t6_keil\\Project\\Keil4\\keil_c8t6.axf" 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...
+Build target 'Target 1'
+compiling main.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\main.c(16): warning:  #223-D: function "BSP_ApiDeLayMs" declared implicitly
+..\..\src\main.c(17): warning:  #223-D: function "BSP_ApiInit" declared implicitly
+..\..\src\main.c(20): warning:  #223-D: function "CMD_Init" declared implicitly
+..\..\src\main.c(12): warning:  #177-D: variable "i" was declared but never referenced
+linking...
+Program Size: Code=18802 RO-data=466 RW-data=416 ZI-data=2448  
+FromELF: creating hex file...
+".\keil_c8t6.axf" - 0 Errors, 5 Warning(s).
 Load "F:\\git_new\\new\\stm32_c8t6_keil\\Project\\Keil4\\keil_c8t6.axf" 
 Erase Done.
 Programming Done.

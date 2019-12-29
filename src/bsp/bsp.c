@@ -73,7 +73,7 @@ BSP_GPIO_S g_stBspGpio[] =
 };
 
 VOID BSP_GpioInit()
-{
+{ 
     GPIO_InitTypeDef  GPIO_InitStructure;
 	ULONG i;
 	ULONG ulNum;
@@ -119,21 +119,9 @@ ULONG BSP_GpioRead(ULONG ulGpioId)
 #endif
 
 #if DESC("CPU延时")
-/*****************************************************************************
- 函 数 名  : TIME_ApiDeLayMs
+/*
  功能描述  : 延时函数，大概为毫秒级，不精确
- 输入参数  : USHORT usTime  
- 输出参数  : 无
- 返 回 值  : 
- 调用函数  : 
- 被调函数  : 
- 
- 修改历史      :
-  1.日    期   : 2013年10月10日
-    作    者   : linhao
-    修改内容   : 新生成函数
-
-*****************************************************************************/
+ */
 VOID BSP_ApiDeLayMs(USHORT usTime)
 {
     ULONG i;
@@ -148,21 +136,9 @@ VOID BSP_ApiDeLayMs(USHORT usTime)
     }
 }
 
-/*****************************************************************************
- 函 数 名  : TIME_ApiDeLayUs
+/*
  功能描述  : 延时函数，大概为毫秒级，不精确
- 输入参数  : USHORT usTime  
- 输出参数  : 无
- 返 回 值  : 
- 调用函数  : 
- 被调函数  : 
- 
- 修改历史      :
-  1.日    期   : 2013年10月10日
-    作    者   : linhao
-    修改内容   : 新生成函数
-
-*****************************************************************************/
+ */
 VOID BSP_ApiDeLayUs(USHORT usTime)
 {
     ULONG i;
@@ -470,6 +446,13 @@ ULONG BSP_InterruptInit()
 	/* 设置优先级 */
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2); 
 
+    /* Enable the USB interrupt */
+    NVIC_InitStructure.NVIC_IRQChannel = USB_LP_CAN1_RX0_IRQn;
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 5;
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+    NVIC_Init(&NVIC_InitStructure);
+
     /* 外部中断配置 */
     GPIO_EXTILineConfig(GPIO_PortSourceGPIOA, GPIO_PinSource2);
 	
@@ -534,7 +517,8 @@ ULONG BSP_InterruptInit()
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority		 = 0;
 	NVIC_InitStructure.NVIC_IRQChannelCmd				 = ENABLE;
 	//NVIC_Init(&NVIC_InitStructure);
-#endif 
+#endif
+
 }
 #endif
 
@@ -657,21 +641,9 @@ ULONG BSP_I2CInit()
 
 
 
-/*****************************************************************************
- 函 数 名  : DRV_UsartInit
+/*
  功能描述  : 串口初始化
- 输入参数  : 无
- 输出参数  : 无
- 返 回 值  : 
- 调用函数  : 
- 被调函数  : 
- 
- 修改历史      :
-  1.日    期   : 2013年12月18日
-    作    者   : linhao
-    修改内容   : 新生成函数
-
-*****************************************************************************/
+*/
 void BSP_UartInit()
 {
     USART_InitTypeDef USART_InitStructure;
@@ -724,24 +696,24 @@ ULONG BSP_ApiGetBoardId()
 	return g_ucBoardId;
 }
 
+ULONG BSP_UsbInit()
+{
+    GPIO_InitTypeDef  GPIO_InitStructure;  
+	
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_11 | GPIO_Pin_12;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+  GPIO_Init(GPIOA, &GPIO_InitStructure);
+
+  USB_Init();
+}
+
 #endif
 
 #if DESC("初始化")
-/*****************************************************************************
- 函 数 名  : BSP_Init
+/*
  功能描述  : BSP初始化
- 输入参数  : 无
- 输出参数  : 无
- 返 回 值  : 
- 调用函数  : 
- 被调函数  : 
- 
- 修改历史      :
-  1.日    期   : 2013年12月18日
-    作    者   : linhao
-    修改内容   : 新生成函数
-
-*****************************************************************************/
+*/
 VOID BSP_ApiInit()
 {
     RCC_ClocksTypeDef RCC_Clocks;  
@@ -765,7 +737,9 @@ VOID BSP_ApiInit()
 	}
 
 	/* 各电源模块的开启 */
-    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3 | RCC_APB1Periph_TIM2 | 
+    RCC_USBCLKConfig(RCC_USBCLKSource_PLLCLK_1Div5);
+    
+    RCC_APB1PeriphClockCmd(RCC_APB1Periph_PWR | RCC_APB1Periph_USB | RCC_APB1Periph_TIM3 | RCC_APB1Periph_TIM2 | 
 		                   RCC_APB1Periph_I2C1 | RCC_APB1Periph_I2C2 | RCC_AHBPeriph_DMA1,  ENABLE);
     
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOB | RCC_APB2Periph_GPIOC |
@@ -793,6 +767,8 @@ VOID BSP_ApiInit()
 	
     /* 初始化中断 */
     BSP_InterruptInit();
+
+    BSP_UsbInit();
 
 	__enable_irq();
 
