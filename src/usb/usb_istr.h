@@ -42,9 +42,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "usb_conf.h"
-#include "usb_lib.h"
-#include "usb_prop.h"
-#include "usb_pwr.h"
+
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
@@ -101,7 +99,6 @@ void SOF_Callback(void);
 #ifdef ESOF_CALLBACK
 void ESOF_Callback(void);
 #endif
-
 #endif /*__USB_ISTR_H*/
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

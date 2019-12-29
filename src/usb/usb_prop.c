@@ -4,7 +4,7 @@
   * @author  MCD Application Team
   * @version V4.1.0
   * @date    26-May-2017
-  * @brief   All processing related to Joystick Mouse Demo
+  * @brief   All processing related to Virtual Com Port Demo
   ******************************************************************************
   * @attention
   *
@@ -18,8 +18,7 @@
   *      this list of conditions and the following disclaimer in the documentation
   *      and/or other materials provided with the distribution.
   *   3. Neither the name of STMicroelectronics nor the names of its contributors
-  *      may be used to endorse or promote
-  products derived from this software
+  *      may be used to endorse or promote products derived from this software
   *      without specific prior written permission.
   *
   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
@@ -38,12 +37,26 @@
 
 
 /* Includes ------------------------------------------------------------------*/
+#include "usb_lib.h"
+#include "usb_conf.h"
 #include "usb_prop.h"
+#include "usb_desc.h"
+#include "usb_pwr.h"
+#include "hw_config.h"
+//#include "virtualComPort.h"
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-uint32_t ProtocolValue;
+uint8_t Request = 0;
+
+LINE_CODING linecoding =
+  {
+    115200, /* baud rate*/
+    0x00,   /* stop bits-1*/
+    0x00,   /* parity - none*/
+    0x08    /* no. of bits 8*/
+  };
 
 /* -------------------------------------------------------------------------- */
 /*  Structures initializations */
@@ -57,110 +70,105 @@ DEVICE Device_Table =
 
 DEVICE_PROP Device_Property =
   {
-    Joystick_init,
-    Joystick_Reset,
-    Joystick_Status_In,
-    Joystick_Status_Out,
-    Joystick_Data_Setup,
-    Joystick_NoData_Setup,
-    Joystick_Get_Interface_Setting,
-    Joystick_GetDeviceDescriptor,
-    Joystick_GetConfigDescriptor,
-    Joystick_GetStringDescriptor,
+    Virtual_Com_Port_init,
+    Virtual_Com_Port_Reset,
+    Virtual_Com_Port_Status_In,
+    Virtual_Com_Port_Status_Out,
+    Virtual_Com_Port_Data_Setup,
+    Virtual_Com_Port_NoData_Setup,
+    Virtual_Com_Port_Get_Interface_Setting,
+    Virtual_Com_Port_GetDeviceDescriptor,
+    Virtual_Com_Port_GetConfigDescriptor,
+    Virtual_Com_Port_GetStringDescriptor,
     0,
     0x40 /*MAX PACKET SIZE*/
   };
+
 USER_STANDARD_REQUESTS User_Standard_Requests =
   {
-    Joystick_GetConfiguration,
-    Joystick_SetConfiguration,
-    Joystick_GetInterface,
-    Joystick_SetInterface,
-    Joystick_GetStatus,
-    Joystick_ClearFeature,
-    Joystick_SetEndPointFeature,
-    Joystick_SetDeviceFeature,
-    Joystick_SetDeviceAddress
+    Virtual_Com_Port_GetConfiguration,
+    Virtual_Com_Port_SetConfiguration,
+    Virtual_Com_Port_GetInterface,
+    Virtual_Com_Port_SetInterface,
+    Virtual_Com_Port_GetStatus,
+    Virtual_Com_Port_ClearFeature,
+    Virtual_Com_Port_SetEndPointFeature,
+    Virtual_Com_Port_SetDeviceFeature,
+    Virtual_Com_Port_SetDeviceAddress
   };
 
 ONE_DESCRIPTOR Device_Descriptor =
   {
-    (uint8_t*)Joystick_DeviceDescriptor,
-    JOYSTICK_SIZ_DEVICE_DESC
+    (uint8_t*)Virtual_Com_Port_DeviceDescriptor,
+    VIRTUAL_COM_PORT_SIZ_DEVICE_DESC
   };
 
 ONE_DESCRIPTOR Config_Descriptor =
   {
-    (uint8_t*)Joystick_ConfigDescriptor,
-    JOYSTICK_SIZ_CONFIG_DESC
-  };
-
-ONE_DESCRIPTOR Joystick_Report_Descriptor =
-  {
-    (uint8_t *)Joystick_ReportDescriptor,
-    JOYSTICK_SIZ_REPORT_DESC
-  };
-
-ONE_DESCRIPTOR Mouse_Hid_Descriptor =
-  {
-    (uint8_t*)Joystick_ConfigDescriptor + JOYSTICK_OFF_HID_DESC,
-    JOYSTICK_SIZ_HID_DESC
+    (uint8_t*)Virtual_Com_Port_ConfigDescriptor,
+    VIRTUAL_COM_PORT_SIZ_CONFIG_DESC
   };
 
 ONE_DESCRIPTOR String_Descriptor[4] =
   {
-    {(uint8_t*)Joystick_StringLangID, JOYSTICK_SIZ_STRING_LANGID},
-    {(uint8_t*)Joystick_StringVendor, JOYSTICK_SIZ_STRING_VENDOR},
-    {(uint8_t*)Joystick_StringProduct, JOYSTICK_SIZ_STRING_PRODUCT},
-    {(uint8_t*)Joystick_StringSerial, JOYSTICK_SIZ_STRING_SERIAL}
+    {(uint8_t*)Virtual_Com_Port_StringLangID, VIRTUAL_COM_PORT_SIZ_STRING_LANGID},
+    {(uint8_t*)Virtual_Com_Port_StringVendor, VIRTUAL_COM_PORT_SIZ_STRING_VENDOR},
+    {(uint8_t*)Virtual_Com_Port_StringProduct, VIRTUAL_COM_PORT_SIZ_STRING_PRODUCT},
+    {(uint8_t*)Virtual_Com_Port_StringSerial, VIRTUAL_COM_PORT_SIZ_STRING_SERIAL}
   };
 
 /* Extern variables ----------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
 /* Extern function prototypes ------------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
-
-/**
-  * Function Name  : Joystick_init.
-  * Description    : Joystick Mouse init routine.
-  * Input          : None.
-  * Output         : None.
-  * Return         : None.
-  */
-void Joystick_init(void)
+/*******************************************************************************
+* Function Name  : Virtual_Com_Port_init.
+* Description    : Virtual COM Port Mouse init routine.
+* Input          : None.
+* Output         : None.
+* Return         : None.
+*******************************************************************************/
+void Virtual_Com_Port_init(void)
 {
+
   /* Update the serial number string descriptor with the data from the unique
   ID*/
-  printf("\r\n init");
   Get_SerialNum();
 
   pInformation->Current_Configuration = 0;
+
   /* Connect the device */
   PowerOn();
 
   /* Perform basic device initialization operations */
   USB_SIL_Init();
 
+  /* configure the USART to the default settings */
+  USART_Config_Default();
+
   bDeviceState = UNCONNECTED;
 }
 
-/**
-  * Function Name  : Joystick_Reset.
-  * Description    : Joystick Mouse reset routine.
-  * Input          : None.
-  * Output         : None.
-  * Return         : None.
-  */
-void Joystick_Reset(void)
+/*******************************************************************************
+* Function Name  : Virtual_Com_Port_Reset
+* Description    : Virtual_Com_Port Mouse reset routine
+* Input          : None.
+* Output         : None.
+* Return         : None.
+*******************************************************************************/
+void Virtual_Com_Port_Reset(void)
 {
-  printf("reset");
-  /* Set Joystick_DEVICE as not configured */
+  /* Set Virtual_Com_Port DEVICE as not configured */
   pInformation->Current_Configuration = 0;
-  pInformation->Current_Interface = 0;/*the default Interface*/
 
   /* Current Feature initialization */
-  pInformation->Current_Feature = Joystick_ConfigDescriptor[7];
+  pInformation->Current_Feature = Virtual_Com_Port_ConfigDescriptor[7];
+
+  /* Set Virtual_Com_Port DEVICE with the default Interface*/
+  pInformation->Current_Interface = 0;
+
   SetBTABLE(BTABLE_ADDRESS);
+
   /* Initialize Endpoint 0 */
   SetEPType(ENDP0, EP_CONTROL);
   SetEPTxStatus(ENDP0, EP_TX_STALL);
@@ -171,25 +179,38 @@ void Joystick_Reset(void)
   SetEPRxValid(ENDP0);
 
   /* Initialize Endpoint 1 */
-  SetEPType(ENDP1, EP_INTERRUPT);
+  SetEPType(ENDP1, EP_BULK);
   SetEPTxAddr(ENDP1, ENDP1_TXADDR);
-  SetEPTxCount(ENDP1, 4);
-  SetEPRxStatus(ENDP1, EP_RX_DIS);
   SetEPTxStatus(ENDP1, EP_TX_NAK);
+  SetEPRxStatus(ENDP1, EP_RX_DIS);
+
+  /* Initialize Endpoint 2 */
+  SetEPType(ENDP2, EP_INTERRUPT);
+  SetEPTxAddr(ENDP2, ENDP2_TXADDR);
+  SetEPRxStatus(ENDP2, EP_RX_DIS);
+  SetEPTxStatus(ENDP2, EP_TX_NAK);
+
+  /* Initialize Endpoint 3 */
+  SetEPType(ENDP3, EP_BULK);
+  SetEPRxAddr(ENDP3, ENDP3_RXADDR);
+  SetEPRxCount(ENDP3, VIRTUAL_COM_PORT_DATA_SIZE);
+  SetEPRxStatus(ENDP3, EP_RX_VALID);
+  SetEPTxStatus(ENDP3, EP_TX_DIS);
 
   /* Set this device to response on default address */
   SetDeviceAddress(0);
+  
   bDeviceState = ATTACHED;
 }
 
-/**
-  * Function Name  : Joystick_SetConfiguration.
-  * Description    : Update the device state to configured.
-  * Input          : None.
-  * Output         : None.
-  * Return         : None.
-  */
-void Joystick_SetConfiguration(void)
+/*******************************************************************************
+* Function Name  : Virtual_Com_Port_SetConfiguration.
+* Description    : Update the device state to configured.
+* Input          : None.
+* Output         : None.
+* Return         : None.
+*******************************************************************************/
+void Virtual_Com_Port_SetConfiguration(void)
 {
   DEVICE_INFO *pInfo = &Device_Info;
 
@@ -200,145 +221,144 @@ void Joystick_SetConfiguration(void)
   }
 }
 
-/**
-  * Function Name  : Joystick_SetConfiguration.
-  * Description    : Update the device state to addressed.
-  * Input          : None.
-  * Output         : None.
-  * Return         : None.
-  */
-void Joystick_SetDeviceAddress (void)
+/*******************************************************************************
+* Function Name  : Virtual_Com_Port_SetConfiguration.
+* Description    : Update the device state to addressed.
+* Input          : None.
+* Output         : None.
+* Return         : None.
+*******************************************************************************/
+void Virtual_Com_Port_SetDeviceAddress (void)
 {
   bDeviceState = ADDRESSED;
 }
-/**
-  * Function Name  : Joystick_Status_In.
-  * Description    : Joystick status IN routine.
-  * Input          : None.
-  * Output         : None.
-  * Return         : None.
-  */
-void Joystick_Status_In(void)
+
+/*******************************************************************************
+* Function Name  : Virtual_Com_Port_Status_In.
+* Description    : Virtual COM Port Status In Routine.
+* Input          : None.
+* Output         : None.
+* Return         : None.
+*******************************************************************************/
+void Virtual_Com_Port_Status_In(void)
 {
-  printf("\r\n in");
+  if (Request == SET_LINE_CODING)
+  {
+    USART_Config();
+    Request = 0;
+  }
 }
 
-/**
-  * Function Name  : Joystick_Status_Out
-  * Description    : Joystick status OUT routine.
-  * Input          : None.
-  * Output         : None.
-  * Return         : None.
-  */
-void Joystick_Status_Out (void)
-{
-  printf("\r\n out");
-}
+/*******************************************************************************
+* Function Name  : Virtual_Com_Port_Status_Out
+* Description    : Virtual COM Port Status OUT Routine.
+* Input          : None.
+* Output         : None.
+* Return         : None.
+*******************************************************************************/
+void Virtual_Com_Port_Status_Out(void)
+{}
 
-/**
-  * Function Name  : Joystick_Data_Setup
-  * Description    : Handle the data class specific requests.
-  * Input          : Request Nb.
-  * Output         : None.
-  * Return         : USB_UNSUPPORT or USB_SUCCESS.
-  */
-RESULT Joystick_Data_Setup(uint8_t RequestNo)
+/*******************************************************************************
+* Function Name  : Virtual_Com_Port_Data_Setup
+* Description    : handle the data class specific requests
+* Input          : Request Nb.
+* Output         : None.
+* Return         : USB_UNSUPPORT or USB_SUCCESS.
+*******************************************************************************/
+RESULT Virtual_Com_Port_Data_Setup(uint8_t RequestNo)
 {
-  uint8_t *(*CopyRoutine)(uint16_t);
-
-  printf("\r\n setup");
+  uint8_t    *(*CopyRoutine)(uint16_t);
 
   CopyRoutine = NULL;
-  if ((RequestNo == GET_DESCRIPTOR)
-      && (Type_Recipient == (STANDARD_REQUEST | INTERFACE_RECIPIENT))
-      && (pInformation->USBwIndex0 == 0))
-  {
-    if (pInformation->USBwValue1 == REPORT_DESCRIPTOR)
-    {
-      CopyRoutine = Joystick_GetReportDescriptor;
-    }
-    else if (pInformation->USBwValue1 == HID_DESCRIPTOR_TYPE)
-    {
-      CopyRoutine = Joystick_GetHIDDescriptor;
-    }
 
-  } /* End of GET_DESCRIPTOR */
-
-  /*** GET_PROTOCOL ***/
-  else if ((Type_Recipient == (CLASS_REQUEST | INTERFACE_RECIPIENT))
-           && RequestNo == GET_PROTOCOL)
+  if (RequestNo == GET_LINE_CODING)
   {
-    CopyRoutine = Joystick_GetProtocolValue;
+    if (Type_Recipient == (CLASS_REQUEST | INTERFACE_RECIPIENT))
+    {
+      CopyRoutine = Virtual_Com_Port_GetLineCoding;
+    }
   }
+  else if (RequestNo == SET_LINE_CODING)
+  {
+    if (Type_Recipient == (CLASS_REQUEST | INTERFACE_RECIPIENT))
+    {
+      CopyRoutine = Virtual_Com_Port_SetLineCoding;
+    }
+    Request = SET_LINE_CODING;
+  }
+
   if (CopyRoutine == NULL)
   {
     return USB_UNSUPPORT;
   }
+
   pInformation->Ctrl_Info.CopyData = CopyRoutine;
   pInformation->Ctrl_Info.Usb_wOffset = 0;
   (*CopyRoutine)(0);
   return USB_SUCCESS;
 }
 
-/**
-  * Function Name  : Joystick_NoData_Setup
-  * Description    : handle the no data class specific requests
-  * Input          : Request Nb.
-  * Output         : None.
-  * Return         : USB_UNSUPPORT or USB_SUCCESS.
-  */
-RESULT Joystick_NoData_Setup(uint8_t RequestNo)
+/*******************************************************************************
+* Function Name  : Virtual_Com_Port_NoData_Setup.
+* Description    : handle the no data class specific requests.
+* Input          : Request Nb.
+* Output         : None.
+* Return         : USB_UNSUPPORT or USB_SUCCESS.
+*******************************************************************************/
+RESULT Virtual_Com_Port_NoData_Setup(uint8_t RequestNo)
 {
-  if ((Type_Recipient == (CLASS_REQUEST | INTERFACE_RECIPIENT))
-      && (RequestNo == SET_PROTOCOL))
+
+  if (Type_Recipient == (CLASS_REQUEST | INTERFACE_RECIPIENT))
   {
-    return Joystick_SetProtocol();
+    if (RequestNo == SET_COMM_FEATURE)
+    {
+      return USB_SUCCESS;
+    }
+    else if (RequestNo == SET_CONTROL_LINE_STATE)
+    {
+      return USB_SUCCESS;
+    }
   }
 
-  else
-  {
-    return USB_UNSUPPORT;
-  }
+  return USB_UNSUPPORT;
 }
 
-/**
-  * Function Name  : Joystick_GetDeviceDescriptor.
-  * Description    : Gets the device descriptor.
-  * Input          : Length
-  * Output         : None.
-  * Return         : The address of the device descriptor.
-  */
-uint8_t *Joystick_GetDeviceDescriptor(uint16_t Length)
+/*******************************************************************************
+* Function Name  : Virtual_Com_Port_GetDeviceDescriptor.
+* Description    : Gets the device descriptor.
+* Input          : Length.
+* Output         : None.
+* Return         : The address of the device descriptor.
+*******************************************************************************/
+uint8_t *Virtual_Com_Port_GetDeviceDescriptor(uint16_t Length)
 {
-  printf("\r\n desc");
   return Standard_GetDescriptorData(Length, &Device_Descriptor);
 }
 
-/**
-  * Function Name  : Joystick_GetConfigDescriptor.
-  * Description    : Gets the configuration descriptor.
-  * Input          : Length
-  * Output         : None.
-  * Return         : The address of the configuration descriptor.
-  */
-uint8_t *Joystick_GetConfigDescriptor(uint16_t Length)
+/*******************************************************************************
+* Function Name  : Virtual_Com_Port_GetConfigDescriptor.
+* Description    : get the configuration descriptor.
+* Input          : Length.
+* Output         : None.
+* Return         : The address of the configuration descriptor.
+*******************************************************************************/
+uint8_t *Virtual_Com_Port_GetConfigDescriptor(uint16_t Length)
 {
-  printf("\r\n cfgdesc");
   return Standard_GetDescriptorData(Length, &Config_Descriptor);
 }
 
-/**
-  * Function Name  : Joystick_GetStringDescriptor
-  * Description    : Gets the string descriptors according to the needed index
-  * Input          : Length
-  * Output         : None.
-  * Return         : The address of the string descriptors.
-  */
-uint8_t *Joystick_GetStringDescriptor(uint16_t Length)
+/*******************************************************************************
+* Function Name  : Virtual_Com_Port_GetStringDescriptor
+* Description    : Gets the string descriptors according to the needed index
+* Input          : Length.
+* Output         : None.
+* Return         : The address of the string descriptors.
+*******************************************************************************/
+uint8_t *Virtual_Com_Port_GetStringDescriptor(uint16_t Length)
 {
   uint8_t wValue0 = pInformation->USBwValue0;
-  printf("\r\n wd");
-	if (wValue0 >= 4)
+  if (wValue0 >= 4)
   {
     return NULL;
   }
@@ -348,84 +368,61 @@ uint8_t *Joystick_GetStringDescriptor(uint16_t Length)
   }
 }
 
-/**
-  * Function Name  : Joystick_GetReportDescriptor.
-  * Description    : Gets the HID report descriptor.
-  * Input          : Length
-  * Output         : None.
-  * Return         : The address of the configuration descriptor.
-  */
-uint8_t *Joystick_GetReportDescriptor(uint16_t Length)
-{
-  return Standard_GetDescriptorData(Length, &Joystick_Report_Descriptor);
-}
-
-/**
-  * Function Name  : Joystick_GetHIDDescriptor.
-  * Description    : Gets the HID descriptor.
-  * Input          : Length
-  * Output         : None.
-  * Return         : The address of the configuration descriptor.
-  */
-uint8_t *Joystick_GetHIDDescriptor(uint16_t Length)
-{
-  return Standard_GetDescriptorData(Length, &Mouse_Hid_Descriptor);
-}
-
-/**
-  * Function Name  : Joystick_Get_Interface_Setting.
-  * Description    : tests the interface and the alternate setting according to the
-  *                  supported one.
-  * Input          : - Interface : interface number.
-  *                  - AlternateSetting : Alternate Setting number.
-  * Output         : None.
-  * Return         : USB_SUCCESS or USB_UNSUPPORT.
-  */
-RESULT Joystick_Get_Interface_Setting(uint8_t Interface, uint8_t AlternateSetting)
+/*******************************************************************************
+* Function Name  : Virtual_Com_Port_Get_Interface_Setting.
+* Description    : test the interface and the alternate setting according to the
+*                  supported one.
+* Input1         : uint8_t: Interface : interface number.
+* Input2         : uint8_t: AlternateSetting : Alternate Setting number.
+* Output         : None.
+* Return         : The address of the string descriptors.
+*******************************************************************************/
+RESULT Virtual_Com_Port_Get_Interface_Setting(uint8_t Interface, uint8_t AlternateSetting)
 {
   if (AlternateSetting > 0)
   {
     return USB_UNSUPPORT;
   }
-  else if (Interface > 0)
+  else if (Interface > 1)
   {
     return USB_UNSUPPORT;
   }
   return USB_SUCCESS;
 }
 
-/**
-  * Function Name  : Joystick_SetProtocol
-  * Description    : Joystick Set Protocol request routine.
-  * Input          : None.
-  * Output         : None.
-  * Return         : USB SUCCESS.
-  */
-RESULT Joystick_SetProtocol(void)
-{
-  uint8_t wValue0 = pInformation->USBwValue0;
-  ProtocolValue = wValue0;
-  return USB_SUCCESS;
-}
-
-/**
-  * Function Name  : Joystick_GetProtocolValue
-  * Description    : get the protocol value
-  * Input          : Length.
-  * Output         : None.
-  * Return         : address of the protocol value.
-  */
-uint8_t *Joystick_GetProtocolValue(uint16_t Length)
+/*******************************************************************************
+* Function Name  : Virtual_Com_Port_GetLineCoding.
+* Description    : send the linecoding structure to the PC host.
+* Input          : Length.
+* Output         : None.
+* Return         : Linecoding structure base address.
+*******************************************************************************/
+uint8_t *Virtual_Com_Port_GetLineCoding(uint16_t Length)
 {
   if (Length == 0)
   {
-    pInformation->Ctrl_Info.Usb_wLength = 1;
+    pInformation->Ctrl_Info.Usb_wLength = sizeof(linecoding);
     return NULL;
   }
-  else
+  return(uint8_t *)&linecoding;
+}
+
+/*******************************************************************************
+* Function Name  : Virtual_Com_Port_SetLineCoding.
+* Description    : Set the linecoding structure fields.
+* Input          : Length.
+* Output         : None.
+* Return         : Linecoding structure base address.
+*******************************************************************************/
+uint8_t *Virtual_Com_Port_SetLineCoding(uint16_t Length)
+{
+  if (Length == 0)
   {
-    return (uint8_t *)(&ProtocolValue);
+    pInformation->Ctrl_Info.Usb_wLength = sizeof(linecoding);
+    return NULL;
   }
+  return(uint8_t *)&linecoding;
 }
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+

@@ -37,7 +37,11 @@
 
 
 /* Includes ------------------------------------------------------------------*/
+#include "usb_lib.h"
+#include "usb_prop.h"
+#include "usb_pwr.h"
 #include "usb_istr.h"
+
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -86,6 +90,20 @@ void USB_Istr(void)
  __IO uint32_t EP[8];
   
   wIstr = _GetISTR();
+
+#if (IMR_MSK & ISTR_SOF)
+  if (wIstr & ISTR_SOF & wInterrupt_Mask)
+  {
+    _SetISTR((uint16_t)CLR_SOF);
+    bIntPackSOF++;
+
+#ifdef SOF_CALLBACK
+    SOF_Callback();
+#endif
+  }
+#endif
+  /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/  
+  
 #if (IMR_MSK & ISTR_CTR)
   if (wIstr & ISTR_CTR & wInterrupt_Mask)
   {
@@ -96,8 +114,8 @@ void USB_Istr(void)
     CTR_Callback();
 #endif
   }
-#endif  
-  /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
+#endif
+  /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/  
 #if (IMR_MSK & ISTR_RESET)
   if (wIstr & ISTR_RESET & wInterrupt_Mask)
   {
@@ -162,18 +180,7 @@ void USB_Istr(void)
   }
 #endif
   /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
-#if (IMR_MSK & ISTR_SOF)
-  if (wIstr & ISTR_SOF & wInterrupt_Mask)
-  {
-    _SetISTR((uint16_t)CLR_SOF);
-    bIntPackSOF++;
 
-#ifdef SOF_CALLBACK
-    SOF_Callback();
-#endif
-  }
-#endif
-  /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 #if (IMR_MSK & ISTR_ESOF)
   if (wIstr & ISTR_ESOF & wInterrupt_Mask)
   {
@@ -224,12 +231,13 @@ void USB_Istr(void)
     
     /* resume handling timing is made with ESOFs */
     Resume(RESUME_ESOF); /* request without change of the machine state */
+
 #ifdef ESOF_CALLBACK
     ESOF_Callback();
 #endif
-    
   }
 #endif
 } /* USB_Istr */
+
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

@@ -1264,3 +1264,313 @@ Erase Done.
 Programming Done.
 Verify OK.
 Application running ...
+Build target 'Target 1'
+compiling usb_core.c...
+compiling usb_init.c...
+compiling usb_int.c...
+compiling usb_mem.c...
+compiling usb_regs.c...
+compiling usb_sil.c...
+compiling main.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\main.c(16): warning:  #223-D: function "BSP_ApiDeLayMs" declared implicitly
+..\..\src\main.c(17): warning:  #223-D: function "BSP_ApiInit" declared implicitly
+..\..\src\main.c(20): warning:  #223-D: function "CMD_Init" declared implicitly
+..\..\src\main.c(28): error:  #20: identifier "bDeviceState" is undefined
+..\..\src\main.c(28): error:  #20: identifier "CONFIGURED" is undefined
+..\..\src\main.c(12): warning:  #177-D: variable "i" was declared but never referenced
+..\..\src\main.c(13): warning:  #177-D: variable "v" was declared but never referenced
+..\..\src\main.c(14): warning:  #177-D: variable "count" was declared but never referenced
+compiling stm32f10x_it.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\bsp\stm32f10x_it.c(148): warning:  #223-D: function "BSP_SysTickSecond" declared implicitly
+..\..\src\bsp\stm32f10x_it.c(154): warning:  #223-D: function "USB_Istr" declared implicitly
+..\..\src\bsp\stm32f10x_it.c(176): warning:  #223-D: function "CMD_Rx" declared implicitly
+..\..\src\bsp\stm32f10x_it.c(182): warning:  #223-D: function "printf" declared implicitly
+compiling hw_config.c...
+..\..\src\usb\hw_config.c(41): error:  #5: cannot open source input file "stm32_it.h": No such file or directory
+compiling usb_desc.c...
+compiling usb_endp.c...
+compiling usb_istr.c...
+compiling usb_prop.c...
+compiling usb_pwr.c...
+".\keil_c8t6.axf" - 3 Errors, 12 Warning(s).
+Target not created
+Build target 'Target 1'
+compiling main.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\main.c(16): warning:  #223-D: function "BSP_ApiDeLayMs" declared implicitly
+..\..\src\main.c(17): warning:  #223-D: function "BSP_ApiInit" declared implicitly
+..\..\src\main.c(20): warning:  #223-D: function "CMD_Init" declared implicitly
+..\..\src\main.c(28): error:  #20: identifier "bDeviceState" is undefined
+..\..\src\main.c(28): error:  #20: identifier "CONFIGURED" is undefined
+..\..\src\main.c(12): warning:  #177-D: variable "i" was declared but never referenced
+..\..\src\main.c(13): warning:  #177-D: variable "v" was declared but never referenced
+..\..\src\main.c(14): warning:  #177-D: variable "count" was declared but never referenced
+compiling hw_config.c...
+".\keil_c8t6.axf" - 2 Errors, 7 Warning(s).
+Target not created
+Build target 'Target 1'
+compiling main.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\main.c(16): warning:  #223-D: function "BSP_ApiDeLayMs" declared implicitly
+..\..\src\main.c(17): warning:  #223-D: function "BSP_ApiInit" declared implicitly
+..\..\src\main.c(20): warning:  #223-D: function "CMD_Init" declared implicitly
+..\..\src\main.c(12): warning:  #177-D: variable "i" was declared but never referenced
+..\..\src\main.c(13): warning:  #177-D: variable "v" was declared but never referenced
+..\..\src\main.c(14): warning:  #177-D: variable "count" was declared but never referenced
+linking...
+.\keil_c8t6.axf: Error: L6218E: Undefined symbol Handle_USBAsynchXfer (referred from usb_endp.o).
+.\keil_c8t6.axf: Error: L6218E: Undefined symbol USB_To_USART_Send_Data (referred from usb_endp.o).
+.\keil_c8t6.axf: Error: L6218E: Undefined symbol VCP_Data_InISR (referred from usb_endp.o).
+.\keil_c8t6.axf: Error: L6218E: Undefined symbol USART_Config (referred from usb_prop.o).
+.\keil_c8t6.axf: Error: L6218E: Undefined symbol USART_Config_Default (referred from usb_prop.o).
+".\keil_c8t6.axf" - 5 Errors, 7 Warning(s).
+Target not created
+Build target 'Target 1'
+compiling virtualComPort.c...
+..\..\src\usb\virtualComPort.c(262): error:  #268: declaration may not appear after executable statement in block
+".\keil_c8t6.axf" - 1 Errors, 0 Warning(s).
+Target not created
+Build target 'Target 1'
+compiling virtualComPort.c...
+..\..\src\usb\virtualComPort.c(262): error:  #268: declaration may not appear after executable statement in block
+".\keil_c8t6.axf" - 1 Errors, 0 Warning(s).
+Target not created
+Build target 'Target 1'
+compiling virtualComPort.c...
+..\..\src\usb\virtualComPort.c(261): error:  #268: declaration may not appear after executable statement in block
+".\keil_c8t6.axf" - 1 Errors, 0 Warning(s).
+Target not created
+Build target 'Target 1'
+compiling virtualComPort.c...
+linking...
+.\keil_c8t6.axf: Error: L6218E: Undefined symbol STM_EVAL_COMInit (referred from virtualcomport.o).
+".\keil_c8t6.axf" - 1 Errors, 0 Warning(s).
+Target not created
+Build target 'Target 1'
+compiling virtualComPort.c...
+linking...
+.\keil_c8t6.axf: Error: L6218E: Undefined symbol STM_EVAL_COMInit (referred from virtualcomport.o).
+".\keil_c8t6.axf" - 1 Errors, 0 Warning(s).
+Target not created
+Build target 'Target 1'
+compiling virtualComPort.c...
+linking...
+Program Size: Code=19122 RO-data=446 RW-data=428 ZI-data=3044  
+FromELF: creating hex file...
+".\keil_c8t6.axf" - 0 Errors, 0 Warning(s).
+Build target 'Target 1'
+compiling virtualComPort.c...
+linking...
+Program Size: Code=19122 RO-data=446 RW-data=428 ZI-data=3044  
+FromELF: creating hex file...
+".\keil_c8t6.axf" - 0 Errors, 0 Warning(s).
+Rebuild target 'Target 1'
+compiling core_cm3.c...
+compiling system_stm32f10x.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_rcc.c...
+compiling misc.c...
+compiling stm32f10x_tim.c...
+compiling stm32f10x_spi.c...
+compiling stm32f10x_usart.c...
+compiling stm32f10x_flash.c...
+compiling stm32f10x_exti.c...
+compiling stm32f10x_i2c.c...
+compiling usb_core.c...
+compiling usb_init.c...
+compiling usb_int.c...
+compiling usb_mem.c...
+compiling usb_regs.c...
+compiling usb_sil.c...
+assembling startup_stm32f10x_md.s...
+compiling main.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\main.c(16): warning:  #223-D: function "BSP_ApiDeLayMs" declared implicitly
+..\..\src\main.c(17): warning:  #223-D: function "BSP_ApiInit" declared implicitly
+..\..\src\main.c(20): warning:  #223-D: function "CMD_Init" declared implicitly
+..\..\src\main.c(12): warning:  #177-D: variable "i" was declared but never referenced
+..\..\src\main.c(13): warning:  #177-D: variable "v" was declared but never referenced
+..\..\src\main.c(14): warning:  #177-D: variable "count" was declared but never referenced
+compiling ccb_cmd.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\ccb\cmd\ccb_cmd.h(4): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
+..\..\src\ccb\cmd\ccb_cmd.h(56): warning:  #494-D: declaring a void parameter list with a typedef is nonstandard
+..\..\src\ccb\cmd\ccb_cmd.h(57): warning:  #1295-D: Deprecated declaration CMD_Proc - give arg types
+..\..\src\ccb\cmd\ccb_cmd.h(61): warning:  #1295-D: Deprecated declaration PDT_Init - give arg types
+..\..\src\ccb\cmd\ccb_cmd.h(63): warning:  #1-D: last line of file ends without a newline
+..\..\src\ccb\cmd\ccb_cmd.c(21): warning:  #223-D: function "memset" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(55): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(153): warning:  #223-D: function "strlen" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(165): warning:  #223-D: function "memcmp" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(208): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(211): warning:  #940-D: missing return statement at end of non-void function "CMD_Reg"
+..\..\src\ccb\cmd\ccb_cmd.c(233): warning:  #223-D: function "strcmp" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(264): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(223): warning:  #177-D: variable "i" was declared but never referenced
+..\..\src\ccb\cmd\ccb_cmd.c(322): warning:  #550-D: variable "pucPos" was set but never used
+..\..\src\ccb\cmd\ccb_cmd.c(378): warning:  #550-D: variable "pucPos" was set but never used
+..\..\src\ccb\cmd\ccb_cmd.c(460): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\ccb\cmd\ccb_cmd.c(453): warning:  #177-D: variable "pucPos" was declared but never referenced
+..\..\src\ccb\cmd\ccb_cmd.c(454): warning:  #177-D: variable "i" was declared but never referenced
+..\..\src\ccb\cmd\ccb_cmd.c(455): warning:  #177-D: variable "ulMacPos" was declared but never referenced
+..\..\src\ccb\cmd\ccb_cmd.c(456): warning:  #177-D: variable "ulMACValue" was declared but never referenced
+..\..\src\ccb\cmd\ccb_cmd.c(466): warning:  #1-D: last line of file ends without a newline
+..\..\src\ccb\cmd\ccb_cmd.c(283): warning: C4017W: ulTemp may be used before being set
+..\..\src\ccb\cmd\ccb_cmd.c(376): warning: C4017W: ulCmdNameLen may be used before being set
+compiling bsp.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\bsp\bsp.c(69): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(70): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(71): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(72): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(86): warning:  #188-D: enumerated type mixed with another type
+..\..\src\bsp\bsp.c(87): warning:  #188-D: enumerated type mixed with another type
+..\..\src\bsp\bsp.c(427): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\bsp\bsp.c(522): warning:  #940-D: missing return statement at end of non-void function "BSP_InterruptInit"
+..\..\src\bsp\bsp.c(569): warning:  #940-D: missing return statement at end of non-void function "BSP_SpiInit"
+..\..\src\bsp\bsp.c(635): warning:  #940-D: missing return statement at end of non-void function "BSP_I2CInit"
+..\..\src\bsp\bsp.c(708): warning:  #223-D: function "USB_Init" declared implicitly
+..\..\src\bsp\bsp.c(709): warning:  #940-D: missing return statement at end of non-void function "BSP_UsbInit"
+..\..\src\bsp\bsp.c(720): warning:  #177-D: variable "TIM_TimeBaseStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(721): warning:  #177-D: variable "TIM_OCInitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(722): warning:  #177-D: variable "GPIO_InitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(723): warning:  #177-D: variable "I2C_InitStructure" was declared but never referenced
+compiling stm32f10x_it.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\bsp\stm32f10x_it.c(148): warning:  #223-D: function "BSP_SysTickSecond" declared implicitly
+..\..\src\bsp\stm32f10x_it.c(154): warning:  #223-D: function "USB_Istr" declared implicitly
+..\..\src\bsp\stm32f10x_it.c(176): warning:  #223-D: function "CMD_Rx" declared implicitly
+..\..\src\bsp\stm32f10x_it.c(182): warning:  #223-D: function "printf" declared implicitly
+compiling hw_config.c...
+compiling usb_desc.c...
+compiling usb_endp.c...
+compiling usb_istr.c...
+compiling usb_prop.c...
+compiling usb_pwr.c...
+compiling virtualComPort.c...
+linking...
+Program Size: Code=19122 RO-data=446 RW-data=428 ZI-data=3044  
+FromELF: creating hex file...
+".\keil_c8t6.axf" - 0 Errors, 54 Warning(s).
+Build target 'Target 1'
+compiling stm32f10x_it.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\bsp\stm32f10x_it.c(148): warning:  #223-D: function "BSP_SysTickSecond" declared implicitly
+..\..\src\bsp\stm32f10x_it.c(154): warning:  #223-D: function "USB_Istr" declared implicitly
+..\..\src\bsp\stm32f10x_it.c(162): warning:  #223-D: function "USART_To_USB_Send_Data" declared implicitly
+..\..\src\bsp\stm32f10x_it.c(183): warning:  #223-D: function "printf" declared implicitly
+linking...
+Program Size: Code=19130 RO-data=446 RW-data=428 ZI-data=3044  
+FromELF: creating hex file...
+".\keil_c8t6.axf" - 0 Errors, 5 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: Code=19130 RO-data=446 RW-data=428 ZI-data=3044  
+FromELF: creating hex file...
+".\keil_c8t6.axf" - 0 Errors, 0 Warning(s).
+Load "F:\\git_new\\new\\stm32_c8t6_keil\\Project\\Keil4\\keil_c8t6.axf" 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...
+Build target 'Target 1'
+compiling main.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\main.c(16): warning:  #223-D: function "BSP_ApiDeLayMs" declared implicitly
+..\..\src\main.c(17): warning:  #223-D: function "BSP_ApiInit" declared implicitly
+..\..\src\main.c(20): warning:  #223-D: function "CMD_Init" declared implicitly
+..\..\src\main.c(27): warning:  #223-D: function "USART_To_USB_Send_MyData" declared implicitly
+..\..\src\main.c(12): warning:  #177-D: variable "i" was declared but never referenced
+..\..\src\main.c(13): warning:  #177-D: variable "v" was declared but never referenced
+..\..\src\main.c(14): warning:  #177-D: variable "count" was declared but never referenced
+compiling virtualComPort.c...
+..\..\src\usb\virtualComPort.c(739): error: At end of source:  #67: expected a "}"
+".\keil_c8t6.axf" - 1 Errors, 8 Warning(s).
+Target not created
+Build target 'Target 1'
+compiling virtualComPort.c...
+linking...
+Program Size: Code=19178 RO-data=446 RW-data=428 ZI-data=3044  
+FromELF: creating hex file...
+".\keil_c8t6.axf" - 0 Errors, 0 Warning(s).
+Load "F:\\git_new\\new\\stm32_c8t6_keil\\Project\\Keil4\\keil_c8t6.axf" 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...
+Build target 'Target 1'
+compiling bsp.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\bsp\bsp.c(59): warning:  #223-D: function "USART_To_USB_Send_MyData" declared implicitly
+..\..\src\bsp\bsp.c(70): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(71): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(72): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(73): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(87): warning:  #188-D: enumerated type mixed with another type
+..\..\src\bsp\bsp.c(88): warning:  #188-D: enumerated type mixed with another type
+..\..\src\bsp\bsp.c(428): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\bsp\bsp.c(523): warning:  #940-D: missing return statement at end of non-void function "BSP_InterruptInit"
+..\..\src\bsp\bsp.c(570): warning:  #940-D: missing return statement at end of non-void function "BSP_SpiInit"
+..\..\src\bsp\bsp.c(636): warning:  #940-D: missing return statement at end of non-void function "BSP_I2CInit"
+..\..\src\bsp\bsp.c(709): warning:  #223-D: function "USB_Init" declared implicitly
+..\..\src\bsp\bsp.c(710): warning:  #940-D: missing return statement at end of non-void function "BSP_UsbInit"
+..\..\src\bsp\bsp.c(721): warning:  #177-D: variable "TIM_TimeBaseStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(722): warning:  #177-D: variable "TIM_OCInitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(723): warning:  #177-D: variable "GPIO_InitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(724): warning:  #177-D: variable "I2C_InitStructure" was declared but never referenced
+compiling virtualComPort.c...
+..\..\src\usb\virtualComPort.c(526): warning:  #223-D: function "CMD_Rx" declared implicitly
+linking...
+Program Size: Code=19142 RO-data=446 RW-data=428 ZI-data=3044  
+FromELF: creating hex file...
+".\keil_c8t6.axf" - 0 Errors, 19 Warning(s).
+Load "F:\\git_new\\new\\stm32_c8t6_keil\\Project\\Keil4\\keil_c8t6.axf" 
+Build target 'Target 1'
+linking...
+Program Size: Code=19142 RO-data=446 RW-data=428 ZI-data=3044  
+FromELF: creating hex file...
+".\keil_c8t6.axf" - 0 Errors, 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\main.c(16): warning:  #223-D: function "BSP_ApiDeLayMs" declared implicitly
+..\..\src\main.c(17): warning:  #223-D: function "BSP_ApiInit" declared implicitly
+..\..\src\main.c(20): warning:  #223-D: function "CMD_Init" declared implicitly
+..\..\src\main.c(12): warning:  #177-D: variable "i" was declared but never referenced
+..\..\src\main.c(13): warning:  #177-D: variable "v" was declared but never referenced
+..\..\src\main.c(14): warning:  #177-D: variable "count" was declared but never referenced
+compiling bsp.c...
+..\..\src\ccb\def\ccb_def.h(73): warning:  #1-D: last line of file ends without a newline
+..\..\src\bsp\bsp.c(59): warning:  #223-D: function "USART_To_USB_Send_MyData" declared implicitly
+..\..\src\bsp\bsp.c(70): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(71): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(72): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(73): warning:  #1296-D: extended constant initialiser used
+..\..\src\bsp\bsp.c(87): warning:  #188-D: enumerated type mixed with another type
+..\..\src\bsp\bsp.c(88): warning:  #188-D: enumerated type mixed with another type
+..\..\src\bsp\bsp.c(428): warning:  #223-D: function "memcpy" declared implicitly
+..\..\src\bsp\bsp.c(523): warning:  #940-D: missing return statement at end of non-void function "BSP_InterruptInit"
+..\..\src\bsp\bsp.c(570): warning:  #940-D: missing return statement at end of non-void function "BSP_SpiInit"
+..\..\src\bsp\bsp.c(636): warning:  #940-D: missing return statement at end of non-void function "BSP_I2CInit"
+..\..\src\bsp\bsp.c(709): warning:  #223-D: function "USB_Init" declared implicitly
+..\..\src\bsp\bsp.c(710): warning:  #940-D: missing return statement at end of non-void function "BSP_UsbInit"
+..\..\src\bsp\bsp.c(721): warning:  #177-D: variable "TIM_TimeBaseStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(722): warning:  #177-D: variable "TIM_OCInitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(723): warning:  #177-D: variable "GPIO_InitStructure" was declared but never referenced
+..\..\src\bsp\bsp.c(724): warning:  #177-D: variable "I2C_InitStructure" was declared but never referenced
+linking...
+Program Size: Code=19138 RO-data=446 RW-data=428 ZI-data=3044  
+FromELF: creating hex file...
+".\keil_c8t6.axf" - 0 Errors, 25 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: Code=19138 RO-data=446 RW-data=428 ZI-data=3044  
+FromELF: creating hex file...
+".\keil_c8t6.axf" - 0 Errors, 0 Warning(s).
+Load "F:\\git_new\\new\\stm32_c8t6_keil\\Project\\Keil4\\keil_c8t6.axf" 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...

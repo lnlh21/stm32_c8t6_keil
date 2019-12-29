@@ -153,7 +153,22 @@ void USB_LP_CAN1_RX0_IRQHandler(void)
 {
     USB_Istr();
 }
+#if 1
+void USART1_IRQHandler(void)
+{
+  if (USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)
+  {
+    /* Send the received data to the PC Host*/
+    USART_To_USB_Send_Data();
+  }
 
+  /* If overrun condition occurs, clear the ORE flag and recover communication */
+  if (USART_GetFlagStatus(USART1, USART_FLAG_ORE) != RESET)
+  {
+    (void)USART_ReceiveData(USART1);
+  }
+}
+#else
 void USART1_IRQHandler(void)
 {
     if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET) 
@@ -161,6 +176,7 @@ void USART1_IRQHandler(void)
         CMD_Rx(USART1->DR & (uint16_t)0x00FF);
     }                 
 }
+#endif
 
 void SPI1_IRQHandler(void)
 {

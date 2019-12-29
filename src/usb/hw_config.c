@@ -35,33 +35,56 @@
   ******************************************************************************
   */
 
+
 /* Includes ------------------------------------------------------------------*/
+
+#include "usb_lib.h"
+#include "usb_prop.h"
+#include "usb_desc.h"
 #include "hw_config.h"
+#include "usb_pwr.h"
+
 
 /* Private typedef -----------------------------------------------------------*/
+/* Communication boards USART Interface */
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 ErrorStatus HSEStartUpStatus;
+
 EXTI_InitTypeDef EXTI_InitStructure;
 
+#ifdef VCP_RX_BY_DMA
+DMA_InitTypeDef  DMA_InitStructure;
+#endif
+
+uint32_t USART_Rx_ptr_in = 0;
+uint32_t USART_Rx_ptr_out = 0;
+uint32_t USART_Rx_length  = 0;
+
+uint8_t  USB_Tx_State = 0;
+static void IntToUnicode (uint32_t value , uint8_t *pbuf , uint8_t len);
 /* Extern variables ----------------------------------------------------------*/
-extern __IO uint8_t PrevXferComplete;
+
+extern LINE_CODING linecoding;
 
 /* Private function prototypes -----------------------------------------------*/
-static void IntToUnicode (uint32_t value , uint8_t *pbuf , uint8_t len);
-static void Delay(__IO uint32_t nTime);
 /* Private functions ---------------------------------------------------------*/
-
-/**
-  * Function Name  : Set_System
-  * Description    : Configures Main system clocks & power.
-  * Input          : None.
-  * Return         : None.
-  */
+/*******************************************************************************
+* Function Name  : Set_System
+* Description    : Configures Main system clocks & power
+* Input          : None.
+* Return         : None.
+*******************************************************************************/
 void Set_System(void)
 {
-  GPIO_InitTypeDef  GPIO_InitStructure;  
+  GPIO_InitTypeDef  GPIO_InitStructure;
+  
+#ifdef VCP_RX_BY_DMA
+  TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
+  NVIC_InitTypeDef NVIC_InitStructure;
+#endif
+  
   /*!< At this stage the microcontroller clock setting is already configured, 
        this is done through SystemInit() function which is called from startup
        file (startup_stm32xxx.s) before to branch to application main.
@@ -69,12 +92,7 @@ void Set_System(void)
        system_stm32xxx.c file
      */ 
   
-  /******************************************/
-  /*           Enable the PWR clock         */
-  /******************************************/
-  RCC_APB1PeriphClockCmd(RCC_APB1Periph_PWR, ENABLE);
-  
-#if defined(STM32L1XX_MD) || defined(STM32L1XX_HD) || defined(STM32F37X) || defined(STM32F303xC) || defined(STM32F303xE) || defined(STM32F302x8)
+#if defined(STM32L1XX_MD) || defined(STM32L1XX_HD) || defined(STM32F37X) || defined(STM32F303xC) || defined(STM32F303xE)
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
 
 #else /* defined(STM32F10X_HD) || defined(STM32F10X_MD) defined(STM32F10X_XL)*/
@@ -97,7 +115,7 @@ void Set_System(void)
   GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
   GPIO_Init(GPIOA, &GPIO_InitStructure);
   GPIO_InitStructure.GPIO_Pin = GPIO_Pin_All;
-
+  
 #elif defined(STM32F10X_HD) || defined(STM32F10X_MD)  || defined(STM32F10X_XL)
   GPIO_InitStructure.GPIO_Pin = GPIO_Pin_11 | GPIO_Pin_12;
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
@@ -106,16 +124,6 @@ void Set_System(void)
   
   /* Enable all GPIOs Clock*/
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_ALLGPIO, ENABLE);
-  
-  #if defined(USB_USE_VBUS_SENSING)
-  
-  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIO_USB_VBUS_SENSING | RCC_APB2Periph_AFIO, ENABLE);  
-  GPIO_InitStructure.GPIO_Pin   = USB_VBUS_SENSING_PIN;
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-  GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_IN_FLOATING;
-  GPIO_Init(USB_VBUS_SENSING_PORT, &GPIO_InitStructure);
-  
-  #endif /* USB_USE_VBUS_SENSING */
 
 #else /* defined(STM32F37X) || defined(STM32F303xC) */
   
@@ -131,8 +139,7 @@ void Set_System(void)
   GPIO_PinAFConfig(GPIOA, GPIO_PinSource12, GPIO_AF_14);
   
 #endif 
-
-
+  
   /********************************************/
   /* Enable the USB PULL UP                   */
   /********************************************/
@@ -153,7 +160,7 @@ void Set_System(void)
   /* Enable the USB disconnect GPIO clock */
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIO_DISCONNECT, ENABLE);
   
-#elif defined(STM32F37X) || defined(STM32F303xC)
+#else  /* defined(STM32F37X) || defined(STM32F303xC) */
   
   /* Enable the USB disconnect GPIO clock */
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIO_DISCONNECT, ENABLE);
@@ -166,30 +173,8 @@ void Set_System(void)
   GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
   GPIO_Init(USB_DISCONNECT, &GPIO_InitStructure);
   
-#else /* USE_NUCLEO*/
-  
-   /* Enable the USB disconnect GPIO clock */
-  RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIO_DISCONNECT, ENABLE);
-
-  /* USB_DISCONNECT used as USB pull-up */
-  GPIO_InitStructure.GPIO_Pin = USB_DISCONNECT_PIN;
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
-  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
-  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
-  GPIO_Init(USB_DISCONNECT, &GPIO_InitStructure); 
- 
 #endif
-#if ! defined(USE_NUCLEO)
-  /****************************************************/
-  /*  Configure the Joystick buttons in GPIO mode     */
-  /****************************************************/
   
-  //STM_EVAL_PBInit(Button_RIGHT, Mode_GPIO);
-  //STM_EVAL_PBInit(Button_LEFT, Mode_GPIO);
-  //STM_EVAL_PBInit(Button_UP, Mode_GPIO);
-  //STM_EVAL_PBInit(Button_DOWN, Mode_GPIO);
-#endif /* USE_NUCLEO */  
 #ifdef USB_LOW_PWR_MGMT_SUPPORT
   
   /**********************************************************************/
@@ -197,7 +182,6 @@ void Set_System(void)
   /**********************************************************************/
   
   EXTI_ClearITPendingBit(EXTI_Line18);
-  
   EXTI_InitStructure.EXTI_Line = EXTI_Line18;
   EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising;
   EXTI_InitStructure.EXTI_LineCmd = ENABLE;
@@ -205,71 +189,64 @@ void Set_System(void)
 
 #endif  /* USB_LOW_PWR_MGMT_SUPPORT */
   
-#if defined (USE_NUCLEO)  
-  /****************************************************/
-  /*  Configure Key push-button for remote wakeup     */
-  /****************************************************/
+#ifdef VCP_RX_BY_DMA
+  /********************************************************************************/
+  /*      Configure Timer. It will be used (instead of SOF) to check USART buffer */
+  /********************************************************************************/
+
+  /* Enable the TIM2 gloabal Interrupt */
+  NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;
+  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
+  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+  NVIC_Init(&NVIC_InitStructure);
   
-  EXTI_InitTypeDef EXTI_InitStructure;
+  /* TIM2 clock enable */
+  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
   
-  RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE);
-  RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
+  /* Time base configuration */
+  TIM_TimeBaseStructure.TIM_Period = 348;/* This will be changed when the COM port is configured */
+  TIM_TimeBaseStructure.TIM_Prescaler = 31;// 32 - 1
+  TIM_TimeBaseStructure.TIM_ClockDivision = 0;
+  TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
+  TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);
   
-  /* Connect Button EXTI Line to Button GPIO Pin */
-  SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOC, EXTI_PinSource13);
-  
-  /* Configure Button EXTI line */
-  EXTI_InitStructure.EXTI_Line = EXTI_Line13;
-  EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
-  
-  EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising;  
-  
-  EXTI_InitStructure.EXTI_LineCmd = ENABLE;
-  EXTI_Init(&EXTI_InitStructure);
-  
-  
-  EXTI_ClearITPendingBit(EXTI_Line13);
-#else
-  
-  //STM_EVAL_PBInit(Button_KEY, Mode_EXTI);
-  EXTI_ClearITPendingBit(KEY_BUTTON_EXTI_LINE);
-#endif /* USE_NUCLEO */
-} 
- 
-/**
-  * Function Name  : Set_USBClock
-  * Description    : Configures USB Clock input (48MHz).
-  * Input          : None.
-  * Output         : None.
-  * Return         : None.
-  */
+  /* TIM IT enable */
+  TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
+#endif 
+}
+
+/*******************************************************************************
+* Function Name  : Set_USBClock
+* Description    : Configures USB Clock input (48MHz)
+* Input          : None.
+* Return         : None.
+*******************************************************************************/
 void Set_USBClock(void)
 {
-#if defined(STM32L1XX_MD) || defined(STM32L1XX_HD)|| defined(STM32L1XX_MD_PLUS)
+#if defined(STM32L1XX_MD) || defined(STM32L1XX_HD) || defined(STM32L1XX_MD_PLUS) 
   /* Enable USB clock */
   RCC_APB1PeriphClockCmd(RCC_APB1Periph_USB, ENABLE);
-
-#else
+  
+#else 
   /* Select USBCLK source */
   RCC_USBCLKConfig(RCC_USBCLKSource_PLLCLK_1Div5);
   
   /* Enable the USB clock */
   RCC_APB1PeriphClockCmd(RCC_APB1Periph_USB, ENABLE);
-#endif /* STM32L1XX_XD */
-
+#endif /* STM32L1XX_MD */
 }
 
-/**
-  * Function Name  : Leave_LowPowerMode.
-  * Description    : Restores system clocks and power while exiting suspend mode.
-  * Input          : None.
-  * Output         : None.
-  * Return         : None.
-  */
+/*******************************************************************************
+* Function Name  : Leave_LowPowerMode
+* Description    : Restores system clocks and power while exiting suspend mode
+* Input          : None.
+* Return         : None.
+*******************************************************************************/
 void Leave_LowPowerMode(void)
 {
   DEVICE_INFO *pInfo = &Device_Info;
-  
+
   /* Set the device state to the correct state */
   if (pInfo->Current_Configuration != 0)
   {
@@ -280,45 +257,35 @@ void Leave_LowPowerMode(void)
   {
     bDeviceState = ATTACHED;
   }
-  
-#ifdef USB_LOW_PWR_MGMT_SUPPORT
-  /* Reset SLEEPDEEP bit of Cortex System Control Register */
-  SCB->SCR &= (uint32_t)~((uint32_t)(SCB_SCR_SLEEPDEEP_Msk | SCB_SCR_SLEEPONEXIT_Msk));
-  
   /*Enable SystemCoreClock*/
   SystemInit();
-    
-#endif /* USB_LOW_PWR_MGMT_SUPPORT */
 }
 
-/**
-  * Function Name  : USB_Interrupts_Config.
-  * Description    : Configures the USB interrupts.
-  * Input          : None.
-  * Output         : None.
-  * Return         : None.
-  */
+/*******************************************************************************
+* Function Name  : USB_Interrupts_Config
+* Description    : Configures the USB interrupts
+* Input          : None.
+* Return         : None.
+*******************************************************************************/
 void USB_Interrupts_Config(void)
 {
-  NVIC_InitTypeDef NVIC_InitStructure;
-
+  NVIC_InitTypeDef NVIC_InitStructure; 
+  
   /* 2 bit for pre-emption priority, 2 bits for subpriority */
-  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
- 
-#if defined(STM32L1XX_MD)|| defined(STM32L1XX_HD) || defined(STM32L1XX_MD_PLUS)
-  /* Enable the USB interrupt */
+  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);  
+  
+#if defined(STM32L1XX_MD) || defined(STM32L1XX_HD)|| defined(STM32L1XX_MD_PLUS)
   NVIC_InitStructure.NVIC_IRQChannel = USB_LP_IRQn;
   NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 2;
   NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
   NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
   NVIC_Init(&NVIC_InitStructure);
-#ifdef USB_LOW_PWR_MGMT_SUPPORT
-  /* Enable the USB Wake-up interrupt */
+  
+    /* Enable the USB Wake-up interrupt */
   NVIC_InitStructure.NVIC_IRQChannel = USB_FS_WKUP_IRQn;
-  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
+  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 4;
   NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
   NVIC_Init(&NVIC_InitStructure);
-#endif /* USB_LOW_PWR_MGMT_SUPPORT */
   
 #elif defined(STM32F37X)
   /* Enable the USB interrupt */
@@ -327,52 +294,45 @@ void USB_Interrupts_Config(void)
   NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
   NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
   NVIC_Init(&NVIC_InitStructure);
-
-#ifdef USB_LOW_PWR_MGMT_SUPPORT
+  
   /* Enable the USB Wake-up interrupt */
   NVIC_InitStructure.NVIC_IRQChannel = USBWakeUp_IRQn;
-  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
+  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
   NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
   NVIC_Init(&NVIC_InitStructure);
-#endif /* USB_LOW_PWR_MGMT_SUPPORT */
   
-#else /* USE_STM3210B_EVAL or USE_STM3210E_EVAL */
-  
-  /* Enable the USB interrupt */
+#else
   NVIC_InitStructure.NVIC_IRQChannel = USB_LP_CAN1_RX0_IRQn;
-  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 5;
+  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
   NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
   NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
   NVIC_Init(&NVIC_InitStructure);
   
-#ifdef USB_LOW_PWR_MGMT_SUPPORT
-  /* Enable the USB Wake-up interrupt */
+    /* Enable the USB Wake-up interrupt */
   NVIC_InitStructure.NVIC_IRQChannel = USBWakeUp_IRQn;
   NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
-  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
-  NVIC_Init(&NVIC_InitStructure); 
-#endif /* USB_LOW_PWR_MGMT_SUPPORT */ 
-  
-#endif
-#if !defined (USE_NUCLEO) 
-  
-  /* Enable the Key EXTI line Interrupt */
-  NVIC_InitStructure.NVIC_IRQChannel = KEY_BUTTON_EXTI_IRQn;
+  NVIC_Init(&NVIC_InitStructure);
+#endif /* STM32L1XX_XD */
+
+  /* Enable USART Interrupt */
+  NVIC_InitStructure.NVIC_IRQChannel = EVAL_COM1_IRQn;
   NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
   NVIC_Init(&NVIC_InitStructure);
-#endif
+  
+  NVIC_InitStructure.NVIC_IRQChannel = USARTx_TX_DMA_IRQ;
+  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+  NVIC_Init(&NVIC_InitStructure);
 }
 
-/**
-  * Function Name  : USB_Cable_Config.
-  * Description    : Software Connection/Disconnection of USB Cable.
-  * Input          : NewState: new state.
-  * Output         : None.
-  * Return         : None
-  */
+/*******************************************************************************
+* Function Name  : USB_Cable_Config
+* Description    : Software Connection/Disconnection of USB Cable
+* Input          : None.
+* Return         : Status
+*******************************************************************************/
 void USB_Cable_Config (FunctionalState NewState)
 {
-#if defined(STM32L1XX_MD) || defined(STM32L1XX_HD)|| defined(STM32L1XX_MD_PLUS)
+#if defined(STM32L1XX_MD) || defined (STM32L1XX_HD)|| (STM32L1XX_MD_PLUS)
   if (NewState != DISABLE)
   {
     STM32L15_USB_CONNECT;
@@ -381,19 +341,8 @@ void USB_Cable_Config (FunctionalState NewState)
   {
     STM32L15_USB_DISCONNECT;
   }  
-   
-#elif defined (USE_NUCLEO)
   
-  if (NewState == DISABLE)
-  {
-    GPIO_ResetBits(USB_DISCONNECT, USB_DISCONNECT_PIN);
-  }
-  else
-  {
-    GPIO_SetBits(USB_DISCONNECT, USB_DISCONNECT_PIN);
-  }
-#else  
-  
+#else /* USE_STM3210B_EVAL or USE_STM3210E_EVAL */
   if (NewState != DISABLE)
   {
     GPIO_ResetBits(USB_DISCONNECT, USB_DISCONNECT_PIN);
@@ -404,173 +353,38 @@ void USB_Cable_Config (FunctionalState NewState)
   }
 #endif /* STM32L1XX_MD */
 }
-#if !defined (USE_NUCLEO)
-/**
-  * Function Name : JoyState.
-  * Description   : Decodes the Joystick direction.
-  * Input         : None.
-  * Output        : None.
-  * Return value  : The direction value.
-  */
-uint8_t JoyState(void)
-{
-   /* No key is pressed */
-     {
-       return JOY_UP;
-     } 
-}
 
-/**
-  * Function Name : Joystick_Send.
-  * Description   : prepares buffer to be sent containing Joystick event infos.
-  * Input         : Keys: keys received from terminal.
-  * Output        : None.
-  * Return value  : None.
-  */
-void Joystick_Send(uint8_t Keys)
-{
-  uint8_t Mouse_Buffer[4] = {0, 0, 0, 0};
-  int8_t X = 0, Y = 0;
-  
-      switch (Keys)
-  {
-    case JOY_LEFT:
-      X -= CURSOR_STEP;
-      break;
-    case JOY_RIGHT:
-
-      X += CURSOR_STEP;
-      break;
-    case JOY_UP:
-      Y -= CURSOR_STEP;
-      break;
-    case JOY_DOWN:
-      Y += CURSOR_STEP;
-      break;
-    default:
-      return;
-  }
-  /* prepare buffer to send */
-  Mouse_Buffer[1] = X;
-  Mouse_Buffer[2] = Y;
-  
-  /* Reset the control token to inform upper layer that a transfer is ongoing */
-  PrevXferComplete = 0;
-  
-  /* Copy mouse position info in ENDP1 Tx Packet Memory Area*/
-  USB_SIL_Write(EP1_IN, Mouse_Buffer, 4);
-  
-  /* Enable endpoint for transmission */
-  SetEPTxValid(ENDP1);
-
-}
-#endif /* USE_NUCLEO */
-/**
-  * Function Name  : Joy_Emul.
-  * Description    : Gets Pointer Data
-  * Input          : None.
-  * Output         : None.
-  * Return         : None.
-  */
-void Joy_Emul(void)
-{
-  uint8_t Mouse_Buffer[4] = {0, 0, 0, 0};
-  uint8_t X = 0, Y = 0; 
-  static uint8_t Sens = 0;
-  static uint8_t Step = 0;
-  
-  Delay(0x0FFFF);
-  
-  if (Step == 35)
-  {
-    Step = 0;
-    Sens++;
-  }
-  
-  if(Sens == 0)
-  {
-    X = Step++;
-    Y = 0;
-  }
-  
-  if(Sens == 1)
-  {
-    Y = Step++;
-    X = 0;
-  }      
-  if (Sens==2)
-  {
-    X = 256 - Step++;
-    Y = 0;
-  } 
-  
-  if (Sens == 3)
-  {
-    Y = 256 - Step++;
-    X = 0;
-  }
-  
-  if (Sens == 4)
-  { 
-    Sens = 0;
-    X = 0;
-    Y = 0;
-  }
-  
-  Mouse_Buffer[0] = 0;
-  Mouse_Buffer[1] = X;
-  Mouse_Buffer[2] = Y;
-  Mouse_Buffer[3] = 0;
-  
-  /* Reset the control token to inform upper layer that a transfer is ongoing */
-  PrevXferComplete = 0;
-  /* Copy mouse position info in ENDP1 Tx Packet Memory Area*/
-  USB_SIL_Write(EP1_IN, Mouse_Buffer, 4);
-  /* Enable endpoint for transmission */
-  SetEPTxValid(ENDP1);
-}
-
-/**
-  * @brief  Inserts a delay time.
-  * @param  nTime: specifies the delay time length, in milliseconds.
-  * @retval None
-  */
-static void Delay(__IO uint32_t nTime)
-{
-  for(; nTime != 0; nTime--);
-}
-
-/**
-  * Function Name  : Get_SerialNum.
-  * Description    : Create the serial number string descriptor.
-  * Input          : None.
-  * Output         : None.
-  * Return         : None.
-  */
+/*******************************************************************************
+* Function Name  : Get_SerialNum.
+* Description    : Create the serial number string descriptor.
+* Input          : None.
+* Output         : None.
+* Return         : None.
+*******************************************************************************/
 void Get_SerialNum(void)
 {
   uint32_t Device_Serial0, Device_Serial1, Device_Serial2;
 
   Device_Serial0 = *(uint32_t*)ID1;
   Device_Serial1 = *(uint32_t*)ID2;
-  Device_Serial2 = *(uint32_t*)ID3;
-  
+  Device_Serial2 = *(uint32_t*)ID3;  
+
   Device_Serial0 += Device_Serial2;
 
   if (Device_Serial0 != 0)
   {
-    IntToUnicode (Device_Serial0, &Joystick_StringSerial[2] , 8);
-    IntToUnicode (Device_Serial1, &Joystick_StringSerial[18], 4);
+    IntToUnicode (Device_Serial0, &Virtual_Com_Port_StringSerial[2] , 8);
+    IntToUnicode (Device_Serial1, &Virtual_Com_Port_StringSerial[18], 4);
   }
 }
 
-/**
-  * Function Name  : HexToChar.
-  * Description    : Convert Hex 32Bits value into char.
-  * Input          : None.
-  * Output         : None.
-  * Return         : None.
-  */
+/*******************************************************************************
+* Function Name  : HexToChar.
+* Description    : Convert Hex 32Bits value into char.
+* Input          : None.
+* Output         : None.
+* Return         : None.
+*******************************************************************************/
 static void IntToUnicode (uint32_t value , uint8_t *pbuf , uint8_t len)
 {
   uint8_t idx = 0;

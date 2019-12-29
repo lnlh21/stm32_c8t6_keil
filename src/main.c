@@ -24,17 +24,6 @@ int main(void)
 		BSP_ApiDeLayMs(100);
 		BSP_GpioSet(BSP_GPIO_LED_0, 0);
 		BSP_ApiDeLayMs(100);
-
-		if (bDeviceState == CONFIGURED)
-        {
-            if (PrevXferComplete)
-            {
-                Joystick_Send(v[count]);
-				count = (count + 1) % 4;
-			    printf(".");
-            }
-		}
-
 	}
 }
 
